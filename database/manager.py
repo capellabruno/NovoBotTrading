@@ -49,8 +49,13 @@ class DatabaseManager:
             )
             logger.info(f"DatabaseManager inicializado: SQLite ({db_path})")
 
+        self._engine = engine
         Base.metadata.create_all(engine)
         self._SessionFactory = sessionmaker(bind=engine)
+
+    def ensure_tables(self):
+        """Garante que todas as tabelas existem. Seguro chamar múltiplas vezes."""
+        Base.metadata.create_all(self._engine)
 
     def _session(self) -> Session:
         return self._SessionFactory()

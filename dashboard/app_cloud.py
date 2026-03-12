@@ -487,6 +487,7 @@ def _render_llm_usage(db):
 # App principal
 # ---------------------------------------------------------------------------
 db = get_db()
+db.ensure_tables()  # garante tabelas novas mesmo com cache ativo
 
 with st.sidebar:
     st.markdown("## 📈 NovoBotTrading")
