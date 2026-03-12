@@ -11,6 +11,7 @@ mcp
 google-generativeai
 # Novas dependências v2
 sqlalchemy
+psycopg2-binary
 streamlit>=1.40.0
 streamlit-autorefresh
 plotly
