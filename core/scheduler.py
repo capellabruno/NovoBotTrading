@@ -13,7 +13,7 @@ class Scheduler:
         self._state = engine.state  # pode ser None
 
     def start(self):
-        logger.info("Iniciando Scheduler...")
+        logger.debug("Scheduler iniciado.")
 
         while True:
             try:
@@ -21,12 +21,12 @@ class Scheduler:
                 if self._state:
                     # Verificar pedido de pause
                     if self._state.check_and_clear_pause():
-                        logger.info("Bot PAUSADO pelo dashboard.")
+                        logger.info("Bot pausado.")
 
                     # Enquanto pausado, aguardar
                     while self._state and self._state.is_paused:
                         if self._state.check_and_clear_resume():
-                            logger.info("Bot RETOMADO pelo dashboard.")
+                            logger.info("Bot retomado.")
                             break
                         time.sleep(5)
 
@@ -40,7 +40,6 @@ class Scheduler:
                 # --- Relatório Diário (23:00) ---
                 now = datetime.now()
                 if now.hour == 23 and now.minute >= 0 and now.day != self.last_run_day:
-                    logger.info("Horário do Relatório Diário (23:00). Executando...")
                     self.engine.send_daily_report()
                     self.last_run_day = now.day
 
@@ -51,7 +50,6 @@ class Scheduler:
                     interval_hours = self.engine.config.get("adaptive", {}).get("update_interval_hours", 6)
 
                     if not last_run or (now - last_run).total_seconds() > interval_hours * 3600:
-                        logger.info(f"Executando Otimização Adaptativa...")
                         optimizer.optimize_all(self.engine.symbols)
 
                 # --- Aguardar próximo ciclo de 5min ---
@@ -62,7 +60,7 @@ class Scheduler:
                 if self._state:
                     self._state.end_cycle(next_cycle_time=next_cycle)
 
-                logger.info(f"Aguardando {sleep_time:.0f}s para próximo ciclo...")
+                logger.debug(f"Próximo ciclo em {sleep_time:.0f}s.")
                 time.sleep(sleep_time)
 
             except KeyboardInterrupt:

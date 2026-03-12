@@ -39,7 +39,6 @@ class TradingEngine:
         use_all_symbols = system_conf.get("use_all_symbols", False)
 
         if use_all_symbols:
-            logger.info("use_all_symbols=true: Buscando todos os símbolos disponíveis na Bybit...")
             self.symbols = self.bybit.get_all_symbols()
             if not self.symbols:
                 logger.warning("Falha ao buscar símbolos da Bybit. Usando fallback do settings.yaml.")
@@ -59,7 +58,6 @@ class TradingEngine:
 
         # Otimização inicial se necessário
         if config.get("adaptive", {}).get("enabled", False):
-            logger.info("Otimizador Adaptativo habilitado - Executando otimização inicial...")
             self.optimizer.optimize_all(self.symbols)
 
         self._cycle_count = 0
@@ -69,7 +67,9 @@ class TradingEngine:
         Executa um ciclo completo de análise para CADA símbolo.
         """
         self._cycle_count += 1
-        logger.info(f"--- Iniciando Ciclo #{self._cycle_count} {datetime.now()} para {self.symbols} ---")
+        dry_run = self.config.get("system", {}).get("dry_run", True)
+        mode_label = "DRY RUN" if dry_run else "LIVE"
+        logger.info(f"=== Ciclo #{self._cycle_count} | Modo: {mode_label} ===")
 
         if self.state:
             self.state.start_cycle(self._cycle_count)
@@ -78,12 +78,11 @@ class TradingEngine:
         active_positions = self.bybit.get_positions()
         positions_map = {p['symbol']: p for p in active_positions}
 
-        # Atualizar estado com posições
         if self.state:
             self.state.update_positions(positions_map)
 
         # --- Detectar fechamentos por SL/TP (exchange-side) ---
-        if self.db and not self.config.get("system", {}).get("dry_run", True):
+        if self.db and not dry_run:
             self._reconcile_closed_trades(positions_map)
 
         # Atualizar saldo
@@ -95,15 +94,13 @@ class TradingEngine:
         max_positions = self.config.get("risk", {}).get("max_open_positions", 2)
         current_open = len(active_positions)
         slots_available = max(0, max_positions - current_open)
-        logger.info(f"Posições abertas: {current_open}/{max_positions} | Slots disponíveis: {slots_available}")
 
-        # --- FASE 1: Analisar todos os símbolos em paralelo (um agente por símbolo) ---
+        # --- FASE 1: Analisar todos os símbolos em paralelo ---
         candidates = []
 
         if slots_available == 0:
-            logger.info(f"Limite de posições atingido ({current_open}/{max_positions}). Pulando análise de todos os símbolos.")
+            logger.info(f"Limite de posições atingido ({current_open}/{max_positions}). Aguardando slot.")
         else:
-            logger.info(f"Iniciando análise paralela de {len(self.symbols)} símbolos com {self._symbol_workers} workers...")
 
             def analyze_worker(symbol: str):
                 return self.analyze_symbol(symbol, positions_map.get(symbol))
@@ -121,21 +118,13 @@ class TradingEngine:
 
         # --- FASE 2: Selecionar os melhores e executar ---
         if candidates and slots_available > 0:
-            # Ordenar por score de qualidade desc, depois por confiança MCP desc
             candidates.sort(key=lambda x: (x["quality_score"], x["mcp_confidence"]), reverse=True)
             selected = candidates[:slots_available]
-
-            logger.info(f"{len(candidates)} candidatos | Executando top {len(selected)}:")
-            for c in candidates:
-                marker = ">>> EXECUTA" if c in selected else "    AGUARDA"
-                logger.info(f"  {marker} [{c['symbol']}] {c['signal']} | Score={c['quality_score']} | MCP={c['mcp_confidence']:.2f}")
-
+            logger.info(f"{len(candidates)} candidato(s) aprovado(s). Executando {len(selected)}.")
             for candidate in selected:
                 self.execute_signal(candidate)
                 time.sleep(3)
-        elif candidates:
-            logger.info(f"Limite de posições atingido ({current_open}/{max_positions}). {len(candidates)} candidatos aguardando.")
-        else:
+        elif not candidates:
             logger.info("Nenhum candidato válido neste ciclo.")
 
         # Salvar snapshot no DB
@@ -223,7 +212,7 @@ class TradingEngine:
             else:
                 msg += "\n✅ Nenhuma posição aberta."
 
-            logger.info("Enviando relatório de conta...")
+            logger.debug("Enviando relatório de conta...")
             self.telegram.manager.send_message(TopicType.PORTFOLIO, msg)
 
         except Exception as e:
@@ -233,7 +222,7 @@ class TradingEngine:
         """
         Gera e envia o relatório diário de PnL (23:00)
         """
-        logger.info("Gerando Relatório Diário...")
+        logger.debug("Gerando relatório diário...")
         try:
             now = datetime.utcnow()
             start_of_day = now.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -268,7 +257,6 @@ class TradingEngine:
             )
 
             self.telegram.manager.send_message(TopicType.DAILY_REPORT, msg)
-            logger.info("Relatório diário enviado com sucesso.")
 
         except Exception as e:
             logger.error(f"Erro ao enviar relatório diário: {e}")
@@ -279,14 +267,14 @@ class TradingEngine:
         Analisa um símbolo e retorna um candidato para execução, ou None.
         Se houver posição aberta, cuida da lógica de saída por reversão de tendência.
         """
-        logger.info(f"[{symbol}] Iniciando Análise...")
+        logger.debug(f"[{symbol}] Iniciando análise...")
 
         interval = 15
 
         # 1. Busca dados
         candles = self.bybit.fetch_candles(symbol=symbol, interval=interval, limit=200)
         if not candles:
-            logger.warning(f"[{symbol}] Nenhum dado recebido. Pulando.")
+            logger.debug(f"[{symbol}] Nenhum dado recebido. Pulando.")
             return None
 
         try:
@@ -309,7 +297,6 @@ class TradingEngine:
         latest_metrics = TechnicalIndicators.get_latest(df)
 
         close = latest_metrics.get('close')
-        logger.info(f"[{symbol}] Preço: {close} | RSI: {latest_metrics.get('rsi'):.2f}")
 
         if self.state and close:
             self.state.update_price(symbol, close)
@@ -342,7 +329,7 @@ class TradingEngine:
                     should_close = True
                     close_reason += f" | RSI Confirmado ({rsi:.1f} < 40)"
                 else:
-                    logger.info(f"[{symbol}] SAÍDA ADIADA: PnL Negativo ({pnl:.2f}) e RSI não confirma ({rsi:.1f})")
+                    logger.debug(f"[{symbol}] Saída adiada: PnL={pnl:.2f} RSI={rsi:.1f}")
 
             elif side == "Sell" and trend == "UP":
                 close_reason = "Reversão de Tendência (DOWN -> UP)"
@@ -353,10 +340,10 @@ class TradingEngine:
                     should_close = True
                     close_reason += f" | RSI Confirmado ({rsi:.1f} > 60)"
                 else:
-                    logger.info(f"[{symbol}] SAÍDA ADIADA: PnL Negativo ({pnl:.2f}) e RSI não confirma ({rsi:.1f})")
+                    logger.debug(f"[{symbol}] Saída adiada: PnL={pnl:.2f} RSI={rsi:.1f}")
 
             if should_close:
-                logger.info(f"[{symbol}] SAÍDA CONFIRMADA: {side} | Trend: {trend} | PnL: {pnl:.2f} | RSI: {rsi:.1f}")
+                logger.info(f"[{symbol}] FECHANDO POSIÇÃO | {side} | Motivo: {close_reason} | PnL: {pnl:.2f}")
                 success = self.bybit.close_position(symbol)
                 if success:
                     real_pnl = pnl
@@ -381,33 +368,23 @@ class TradingEngine:
 
         # 4. Estratégia Determinística (Entrada)
         signal = self.strategy.analyze(latest_metrics)
-        logger.info(f"[{symbol}] Signal: {signal}")
 
         if not signal:
-            logger.info(f"[{symbol}] Nenhum setup identificado.")
             if self.state:
                 self.state.update_signal(symbol, {"signal": None, "trend": trend})
             return None
 
-        logger.info(f"[{symbol}] Setup Identificado: {signal.action} | Razão: {signal.reason}")
-
         # 5. Sessão de Mercado
         session_info = SessionFilter.get_session_info()
-        logger.info(f"[{symbol}] Sessão: {session_info['current_session']} | Score: {session_info['session_score']}")
         latest_metrics['current_session'] = session_info['current_session']
         latest_metrics['session_score'] = session_info['session_score']
 
         # 6. Score de Qualidade
         quality_result = QualityScorer.calculate_score(latest_metrics, signal.action)
-        logger.info(f"[{symbol}] Qualidade: Score={quality_result.score}/100 | Nota={quality_result.grade} | Tradeável={quality_result.is_tradeable}")
-
-        if quality_result.warnings:
-            for warning in quality_result.warnings:
-                logger.warning(f"[{symbol}] {warning}")
 
         min_score = self.config.get("quality", {}).get("min_score", 70)
         if quality_result.score < min_score:
-            logger.info(f"[{symbol}] Setup bloqueado: Score {quality_result.score} < {min_score} mínimo")
+            logger.debug(f"[{symbol}] Score {quality_result.score} < {min_score}. Bloqueado.")
             if self.state:
                 self.state.update_signal(symbol, {
                     "signal": signal.action, "trend": trend,
@@ -419,13 +396,11 @@ class TradingEngine:
         if self.db:
             open_for_symbol = [t for t in self.db.get_open_trades(mode="live") if t["symbol"] == symbol]
             if open_for_symbol:
-                logger.info(f"[{symbol}] Já existe trade aberto no DB. Pulando.")
                 return None
 
         # 7. Refinamento de Entrada (3m)
         candles_3m = self.bybit.fetch_candles(symbol=symbol, interval=3, limit=50)
         entry_context_3m = self._analyze_3m_entry(symbol, candles_3m, signal.action)
-        logger.info(f"[{symbol}] Contexto 3m: {entry_context_3m}")
 
         # 8. Validação MCP
         volume_ma = latest_metrics.get('volume_ma')
@@ -452,11 +427,7 @@ class TradingEngine:
             entry_context_3m=entry_context_3m
         )
 
-        logger.info(f"[{symbol}] S/R: Suporte={latest_metrics.get('support_level')} | Resistência={latest_metrics.get('resistance_level')}")
-        logger.info(f"[{symbol}] Candle: {latest_metrics.get('candle_pattern')} | ATR: {latest_metrics.get('atr_percent')}%")
-
         validation = self.mcp.validate_signal(mcp_input)
-        logger.info(f"[{symbol}] MCP: Aprovado={validation.approved} | Confiança={validation.confidence}")
 
         # Atualizar state
         if self.state:
@@ -470,7 +441,7 @@ class TradingEngine:
             })
 
         if not validation.approved:
-            logger.info(f"[{symbol}] Sinal rejeitado pelo MCP.")
+            logger.debug(f"[{symbol}] Sinal rejeitado pelo MCP (confiança={validation.confidence:.2f}).")
             return None
 
         # Calcular SL/TP ajustados ao timeframe (curto prazo = alvos menores e rápidos)
@@ -502,10 +473,7 @@ class TradingEngine:
             if tp_percent < sl_percent * 1.5:
                 tp_percent = sl_percent * 1.5
 
-            logger.info(
-                f"[{symbol}] ATR Stop ({interval}m): SL={sl_percent*100:.2f}% | TP={tp_percent*100:.2f}% "
-                f"(ATR={latest_metrics.get('atr_percent', 0):.2f}% | mult SL={sl_mult} TP={tp_mult})"
-            )
+            logger.debug(f"[{symbol}] ATR Stop: SL={sl_percent*100:.2f}% TP={tp_percent*100:.2f}%")
         else:
             sl_percent = self.config.get("risk", {}).get("stop_loss_percent", 0.02)
             tp_percent = self.config.get("risk", {}).get("take_profit_percent", 0.03)
@@ -548,7 +516,7 @@ class TradingEngine:
             5.0
         )
 
-        logger.info(f"[{symbol}] Executando ordem {direction} | SL={sl_percent*100:.1f}% | TP={tp_percent*100:.1f}% | ${amount_usdt:.2f}")
+        logger.info(f"[{symbol}] ABRINDO POSIÇÃO | {direction} | Entrada=${close:.4f} | SL={sl_percent*100:.1f}% | TP={tp_percent*100:.1f}% | ${amount_usdt:.2f}")
 
         order_response = self.bybit.execute_order(
             symbol=symbol,

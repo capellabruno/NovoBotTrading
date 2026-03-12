@@ -50,13 +50,8 @@ class MCPServer:
     def _record_usage(self, provider: str, model: str, symbol: str,
                       prompt_tokens: int, completion_tokens: int,
                       approved: bool, confidence: float, latency_ms: int):
-        """Persiste o uso de tokens no banco e loga no console."""
         total = prompt_tokens + completion_tokens
-        logger.info(
-            f"[{symbol}] LLM usage | provider={provider} model={model} "
-            f"tokens={total} (prompt={prompt_tokens} completion={completion_tokens}) "
-            f"approved={approved} confidence={confidence:.2f} latency={latency_ms}ms"
-        )
+        logger.debug(f"[{symbol}] {provider} | tokens={total} approved={approved} latency={latency_ms}ms")
         if self.db:
             try:
                 self.db.save_llm_usage(
@@ -80,7 +75,7 @@ class MCPServer:
         3. Ollama  (último recurso local)
         4. Mock    (somente se TUDO falhar)
         """
-        logger.info(f"[{data.symbol}] Validando sinal via MCP (modo={self.mode})")
+        logger.debug(f"[{data.symbol}] MCP validando sinal (modo={self.mode})")
 
         if self.mode == "mock":
             return self._mock_validation(data)
@@ -270,7 +265,6 @@ class MCPServer:
                 approved=result.approved, confidence=result.confidence,
                 latency_ms=latency_ms,
             )
-            logger.info(f"Groq respondeu com sucesso (modelo={self.groq_model}).")
             return result
 
         except json.JSONDecodeError as e:
