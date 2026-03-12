@@ -1,0 +1,17 @@
+pandas
+numpy
+ta
+python-telegram-bot
+pybit
+pydantic
+pyyaml
+requests
+schedule
+mcp
+google-generativeai
+# Novas dependências v2
+sqlalchemy
+streamlit
+streamlit-autorefresh
+plotly
+flask

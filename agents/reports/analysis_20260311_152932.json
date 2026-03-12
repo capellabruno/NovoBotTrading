@@ -1,0 +1,114 @@
+{
+  "timestamp": "20260311_152932",
+  "diagnosis": {
+    "cycles": 183,
+    "total_signals": 12,
+    "total_blocked_score": 0,
+    "total_blocked_mcp": 0,
+    "total_orders": 0,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "XRPUSDT": 70.0,
+      "ADAUSDT": 60.0,
+      "AVAXUSDT": 65.0,
+      "DOTUSDT": 60.0,
+      "NOTUSDT": 60.0,
+      "LINKUSDT": 60.0
+    },
+    "avg_rsi": {
+      "ETHUSDT": 58.5,
+      "SOLUSDT": 66.99,
+      "XRPUSDT": 63.39,
+      "ADAUSDT": 61.99,
+      "DOGEUSDT": 62.42,
+      "AVAXUSDT": 57.02,
+      "DOTUSDT": 59.57,
+      "1000PEPEUSDT": 62.13,
+      "WIFUSDT": 62.01,
+      "NOTUSDT": 54.29,
+      "LINKUSDT": 59.3,
+      "BNBUSDT": 62.62,
+      "SUIUSDT": 60.73,
+      "NEARUSDT": 50.21,
+      "APTUSDT": 45.5,
+      "TONUSDT": 65.33
+    },
+    "top_sessions": [
+      [
+        "NEW_YORK",
+        12
+      ]
+    ],
+    "mcp_approval_rate": 100.0,
+    "avg_mcp_confidence": 0.7166666666666667,
+    "mcp_total": 12,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "ETHUSDT",
+        2
+      ],
+      [
+        "DOGEUSDT",
+        2
+      ],
+      [
+        "1000PEPEUSDT",
+        2
+      ],
+      [
+        "WIFUSDT",
+        2
+      ],
+      [
+        "BNBUSDT",
+        2
+      ]
+    ],
+    "most_blocked": [],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "15": {
+        "hour_utc": 15,
+        "signals": 12,
+        "avg_score": 62.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 15,
+        "signals": 12,
+        "avg_score": 62.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "Bot analisou 183 ciclos. Gerou 12 sinais, 0 ordens executadas. MCP aprovou 100% dos sinais enviados.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Nenhuma ordem executada",
+        "causa": "Pipeline completo bloqueando todos os sinais",
+        "impacto": "Bot inativo mesmo com sinais"
+      }
+    ],
+    "recomendacoes": [],
+    "ajustes_config": {
+      "quality": {},
+      "risk": {},
+      "mcp": {}
+    },
+    "alertas": []
+  },
+  "applied_adjustments": []
+}

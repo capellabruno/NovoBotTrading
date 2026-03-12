@@ -1,0 +1,299 @@
+{
+  "timestamp": "20260309_232004",
+  "diagnosis": {
+    "cycles": 51,
+    "total_signals": 105,
+    "total_blocked_score": 2,
+    "total_blocked_mcp": 6,
+    "total_orders": 2,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 59.04761904761905,
+    "volume_block_rate": 1.9047619047619049,
+    "avg_scores": {
+      "AVAXUSDT": 73.44444444444444,
+      "WIFUSDT": 69.75,
+      "1000PEPEUSDT": 72.5,
+      "SOLUSDT": 70.33333333333333,
+      "DOTUSDT": 64.0,
+      "ETHUSDT": 69.81818181818181,
+      "ADAUSDT": 68.66666666666667,
+      "XRPUSDT": 79.75,
+      "NOTUSDT": 80.0,
+      "DOGEUSDT": 65.0,
+      "LINKUSDT": 60.0,
+      "BNBUSDT": 53.0,
+      "APTUSDT": 70.0,
+      "TONUSDT": 83.0
+    },
+    "avg_rsi": {
+      "ETHUSDT": 51.7392349726776,
+      "SOLUSDT": 53.2908,
+      "XRPUSDT": 52.57089552238806,
+      "ADAUSDT": 49.94707692307692,
+      "DOGEUSDT": 48.74645161290323,
+      "AVAXUSDT": 54.207521367521366,
+      "DOTUSDT": 51.39872727272727,
+      "1000PEPEUSDT": 48.538712871287125,
+      "WIFUSDT": 43.875,
+      "NOTUSDT": 56.15720430107527,
+      "LINKUSDT": 51.5370786516854,
+      "BNBUSDT": 53.92,
+      "SUIUSDT": 41.52,
+      "NEARUSDT": 51.16,
+      "APTUSDT": 50.59,
+      "TONUSDT": 43.12
+    },
+    "top_sessions": [
+      [
+        "NEW_YORK",
+        54
+      ],
+      [
+        "ASIAN",
+        46
+      ],
+      [
+        "OFF_HOURS",
+        5
+      ]
+    ],
+    "mcp_approval_rate": 25.0,
+    "avg_mcp_confidence": 0.51875,
+    "mcp_total": 8,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "ETHUSDT",
+        150
+      ],
+      [
+        "SOLUSDT",
+        132
+      ],
+      [
+        "XRPUSDT",
+        130
+      ],
+      [
+        "ADAUSDT",
+        124
+      ],
+      [
+        "DOGEUSDT",
+        116
+      ]
+    ],
+    "most_blocked": [
+      [
+        "SOLUSDT",
+        1
+      ],
+      [
+        "BNBUSDT",
+        1
+      ],
+      [
+        "ETHUSDT",
+        1
+      ],
+      [
+        "XRPUSDT",
+        1
+      ],
+      [
+        "DOTUSDT",
+        1
+      ]
+    ],
+    "warnings_summary": {
+      "AVAXUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          4
+        ]
+      ],
+      "WIFUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          2
+        ]
+      ],
+      "1000PEPEUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          3
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          1
+        ]
+      ],
+      "SOLUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          10
+        ],
+        [
+          "Sessão de baixa liquidez",
+          5
+        ]
+      ],
+      "DOTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          10
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          26
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          5
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          1
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          8
+        ]
+      ],
+      "XRPUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          1
+        ]
+      ],
+      "LINKUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          1
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          1
+        ]
+      ],
+      "BNBUSDT": [
+        [
+          "Volume baixo (0.77x média)",
+          1
+        ],
+        [
+          "CALL próximo à resistência - risco alto",
+          1
+        ]
+      ],
+      "APTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          1
+        ]
+      ]
+    }
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando muitos sinais, mas a execução de trades é quase nula devido a filtros excessivamente restritivos, principalmente a proximidade a níveis de resistência/suporte e a baixa taxa de aprovação do MCP. Atualmente, não há PnL ou trades fechados para avaliar a performance da estratégia.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Altíssima taxa de bloqueio por proximidade a níveis de resistência/suporte (59%).",
+        "causa": "A lógica de detecção de resistência/suporte ou a margem de segurança configurada é excessivamente restritiva, ou a estratégia gera sinais inerentemente próximos a esses níveis, conforme evidenciado pelas 'warnings_summary'.",
+        "impacto": "Impede a execução de quase 60% dos sinais gerados, resultando em uma frequência de trades extremamente baixa e impossibilitando a avaliação da estratégia."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Baixa taxa de aprovação do Módulo de Confiança Preditiva (MCP) de 25%.",
+        "causa": "O MCP (Gemini-2.5-flash) está rejeitando 75% dos sinais que chegam a ele. Isso pode ser devido à sua natureza conservadora, à qualidade dos sinais que recebe ou a um desalinhamento com a estratégia. A confiança média de 0.51875 é borderline.",
+        "impacto": "Reduz drasticamente o número de trades executados, mesmo após outros filtros, e indica uma possível falta de alinhamento entre a estratégia e o validador de IA."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "Ausência de trades fechados e PnL (0 wins, 0 losses, 0 PnL).",
+        "causa": "Consequência direta dos problemas de bloqueio por resistência/suporte e MCP. Apenas 2 ordens foram abertas e nenhuma foi fechada, impedindo qualquer avaliação de performance ou otimização.",
+        "impacto": "O bot não está gerando valor e não há dados para otimização ou validação da estratégia, tornando sua operação em modo real ineficaz."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Seleção de símbolos não otimizada.",
+        "causa": "O bot opera em uma lista ampla de símbolos, incluindo alguns com scores médios mais baixos (ex: BNBUSDT com 53) ou alta frequência de bloqueios por resistência/suporte (ex: ETHUSDT com 26 warnings).",
+        "impacto": "Pode diluir a performance geral e direcionar recursos para ativos menos promissores, enquanto símbolos com maior potencial são ofuscados."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO/CONFIG",
+        "descricao": "Revisar e ajustar a lógica de detecção de resistência/suporte ou o buffer de segurança.",
+        "parametro": "N/A (relacionado à lógica interna da estratégia)",
+        "valor_atual": "N/A",
+        "valor_sugerido": "N/A (requer análise e ajuste do código ou configuração interna da estratégia de resistência/suporte)",
+        "justificativa": "É o maior gargalo, impedindo quase 60% dos trades. A estratégia precisa ser capaz de operar sem ser constantemente bloqueada por esses níveis. Considere uma abordagem que permita trades de breakout ou utilize uma margem de segurança menor."
+      },
+      {
+        "tipo": "MONITORAR/CONFIG",
+        "descricao": "Analisar as rejeições do MCP e experimentar com modelos ou configurações mais adequadas.",
+        "parametro": "mcp.mode, mcp.gemini_model",
+        "valor_atual": "gemini, gemini-2.5-flash",
+        "valor_sugerido": "mcp.mode: ollama (para usar deepseek-r1:32b já configurado) OU mcp.gemini_model: gemini-1.5-pro (se disponível e viável em custo)",
+        "justificativa": "Aumentar a taxa de aprovação do MCP é vital para a execução de trades. O 'gemini-2.5-flash' pode ser muito conservador. O 'deepseek-r1:32b' via Ollama pode oferecer um raciocínio mais robusto. É crucial logar as razões de rejeição do MCP para entender o problema."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Otimizar a lista de símbolos operados, focando nos mais promissores.",
+        "parametro": "system.symbols",
+        "valor_atual": "[\"ETHUSDT\", \"SOLUSDT\", \"XRPUSDT\", \"ADAUSDT\", \"DOGEUSDT\", \"AVAXUSDT\", \"DOTUSDT\", \"MATICUSDT\", \"1000PEPEUSDT\", \"WIFUSDT\", \"NOTUSDT\", \"LINKUSDT\", \"BNBUSDT\", \"SUIUSDT\", \"NEARUSDT\", \"APTUSDT\", \"TONUSDT\"]",
+        "valor_sugerido": "[\"TONUSDT\", \"NOTUSDT\", \"XRPUSDT\", \"AVAXUSDT\", \"1000PEPEUSDT\", \"WIFUSDT\", \"LINKUSDT\", \"APTUSDT\", \"SUIUSDT\", \"NEARUSDT\"] (Removendo ETH, SOL, DOT, DOGE, BNB devido a bloqueios ou baixo score médio)",
+        "justificativa": "Concentrar esforços em ativos com maior potencial de sinal (baseado em avg_scores) e menor histórico de bloqueios por resistência/suporte pode melhorar a eficiência e a frequência de trades."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Mudar o bot para 'dry_run' (simulação) até que os problemas de bloqueio sejam resolvidos e a estratégia possa ser validada.",
+        "parametro": "system.dry_run",
+        "valor_atual": "false",
+        "valor_sugerido": "true",
+        "justificativa": "O bot está operando em modo real sem gerar trades ou PnL, o que é ineficiente e potencialmente arriscado. Operar em 'dry_run' permite testes e otimizações em ambiente seguro."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Habilitar o uso do MCP no backtest para uma avaliação mais realista da estratégia.",
+        "parametro": "backtest.use_mcp",
+        "valor_atual": "false",
+        "valor_sugerido": "true",
+        "justificativa": "O backtest atual não reflete as condições de trading real, onde o MCP é um filtro crítico. Habilitá-lo fornecerá uma avaliação mais precisa da performance da estratégia com todos os filtros ativos."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": "ollama"
+      }
+    },
+    "alertas": [
+      "O bot está em modo de execução real ('dry_run: false') mas não está realizando trades efetivos (0 PnL, 0 closes). Isso representa um risco e um desperdício de recursos.",
+      "A alta taxa de bloqueio por resistência/suporte (quase 60%) é o principal impedimento para a operação do bot e requer atenção imediata na lógica da estratégia.",
+      "A baixa taxa de aprovação do MCP (25%) é um segundo gargalo significativo que precisa ser investigado, possivelmente com a troca de modelo ou ajuste de prompt.",
+      "O backtest não está utilizando o MCP, o que significa que os resultados do backtest não são representativos da performance real do bot com todos os filtros ativos."
+    ]
+  },
+  "applied_adjustments": [
+    "mcp.mode: gemini → ollama"
+  ]
+}

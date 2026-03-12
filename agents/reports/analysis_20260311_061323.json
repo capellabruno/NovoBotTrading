@@ -1,0 +1,303 @@
+{
+  "timestamp": "20260311_061323",
+  "diagnosis": {
+    "cycles": 77,
+    "total_signals": 480,
+    "total_blocked_score": 91,
+    "total_blocked_mcp": 23,
+    "total_orders": 1,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "1000PEPEUSDT": 61.146341463414636,
+      "NOTUSDT": 70.03125,
+      "NEARUSDT": 68.90243902439025,
+      "ETHUSDT": 62.729166666666664,
+      "XRPUSDT": 60.54545454545455,
+      "APTUSDT": 59.47692307692308,
+      "AVAXUSDT": 68.0,
+      "ADAUSDT": 67.65,
+      "DOGEUSDT": 70.89655172413794,
+      "TONUSDT": 67.03125,
+      "SOLUSDT": 65.93333333333334,
+      "LINKUSDT": 58.0,
+      "SUIUSDT": 60.0
+    },
+    "avg_rsi": {
+      "WIFUSDT": 46.20876404494382,
+      "NOTUSDT": 46.87966292134831,
+      "LINKUSDT": 45.91438202247191,
+      "BNBUSDT": 47.959775280898874,
+      "SUIUSDT": 43.86741573033708,
+      "NEARUSDT": 47.634157303370785,
+      "APTUSDT": 39.504044943820226,
+      "TONUSDT": 38.730898876404495,
+      "ETHUSDT": 43.557011494252876,
+      "SOLUSDT": 47.637926829268295,
+      "XRPUSDT": 43.431309523809524,
+      "ADAUSDT": 41.506321839080464,
+      "DOGEUSDT": 34.663333333333334,
+      "AVAXUSDT": 49.957126436781614,
+      "DOTUSDT": 48.47715909090909,
+      "1000PEPEUSDT": 44.00272727272727
+    },
+    "top_sessions": [
+      [
+        "ASIAN",
+        365
+      ],
+      [
+        "LONDON",
+        116
+      ]
+    ],
+    "mcp_approval_rate": 93.40974212034384,
+    "avg_mcp_confidence": 0.7441260744985673,
+    "mcp_total": 349,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NOTUSDT",
+        57
+      ],
+      [
+        "AVAXUSDT",
+        50
+      ],
+      [
+        "1000PEPEUSDT",
+        48
+      ],
+      [
+        "NEARUSDT",
+        48
+      ],
+      [
+        "TONUSDT",
+        42
+      ]
+    ],
+    "most_blocked": [
+      [
+        "APTUSDT",
+        32
+      ],
+      [
+        "DOGEUSDT",
+        17
+      ],
+      [
+        "XRPUSDT",
+        17
+      ],
+      [
+        "ETHUSDT",
+        9
+      ],
+      [
+        "TONUSDT",
+        8
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "0": {
+        "hour_utc": 0,
+        "signals": 58,
+        "avg_score": 63.1,
+        "mcp_approval_rate": 84.8,
+        "orders": 0
+      },
+      "1": {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      },
+      "2": {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      "3": {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      "4": {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "5": {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "6": {
+        "hour_utc": 6,
+        "signals": 18,
+        "avg_score": 55.0,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "22": {
+        "hour_utc": 22,
+        "signals": 12,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "23": {
+        "hour_utc": 23,
+        "signals": 35,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 86.4,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 0,
+        "signals": 58,
+        "avg_score": 63.1,
+        "mcp_approval_rate": 84.8,
+        "orders": 0
+      },
+      {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot de trading está gerando um número considerável de sinais de alta qualidade, com boa aprovação do MCP, mas falha criticamente na execução de ordens, tendo realizado apenas 1 trade em 77 ciclos. Isso impede qualquer avaliação de performance e indica um gargalo severo na pipeline de execução.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Quase total ausência de execução de ordens",
+        "causa": "Apenas 1 ordem foi colocada de 480 sinais, e 0 fechamentos. Isso sugere um bloqueio significativo após a geração do sinal e aprovação inicial por score/MCP. Possíveis causas incluem filtros de qualidade adicionais (ATR, padrões de candle, filtro de sessão), gestão de risco (limites de posição, saldo), ou falhas no timing de entrada (3m). A taxa de bloqueio por resistência e volume ser 0.0 é suspeita.",
+        "impacto": "O bot não está operando efetivamente, impossibilitando a avaliação da estratégia e a geração de PnL."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Alto número de sinais bloqueados por score",
+        "causa": "91 sinais (aprox. 19% do total) foram bloqueados pelo 'min_score' de 60. Muitos 'avg_scores' estão próximos ou ligeiramente acima desse limite, indicando que o filtro pode estar um pouco restritivo.",
+        "impacto": "Redução do número de oportunidades de trading, potencialmente descartando sinais válidos que poderiam levar a trades lucrativos."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Filtros de resistência e volume inativos ou mal configurados",
+        "causa": "As taxas de bloqueio por resistência e volume são 0.0, o que é incomum se esses filtros estão ativos e funcionando conforme o esperado.",
+        "impacto": "Potencialmente permite a entrada em trades de menor qualidade que deveriam ser filtrados, ou indica uma falha na implementação desses filtros."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO/MONITORAR",
+        "descricao": "Investigar e depurar o gargalo de execução de ordens.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Esta é a prioridade máxima. O bot não está operando. É crucial identificar qual etapa da pipeline de execução (após a aprovação do MCP) está impedindo a colocação de ordens. Verificar logs detalhados, desativar temporariamente filtros de qualidade adicionais (ATR, padrões de candle, filtro de sessão) em 'dry_run' para isolar a causa, e revisar as regras de gestão de risco (max_open_positions, daily_loss_percent, entry_percent)."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar o score mínimo para entrada.",
+        "parametro": "quality.min_score",
+        "valor_atual": 60,
+        "valor_sugerido": 55,
+        "justificativa": "Reduzir o 'min_score' de 60 para 55 pode permitir que mais sinais passem, aumentando o pool de oportunidades. Isso deve ser feito em conjunto com a resolução do problema de execução e testado em 'dry_run' ou backtest para garantir que a qualidade dos sinais não seja comprometida excessivamente."
+      },
+      {
+        "tipo": "CODIGO/MONITORAR",
+        "descricao": "Verificar a funcionalidade dos filtros de resistência e volume.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "As taxas de bloqueio de 0.0% para resistência e volume sugerem que esses filtros podem não estar funcionando. É importante verificar se estão ativados corretamente e se as condições para bloqueio estão sendo avaliadas. Se não forem intencionais, podem ser removidos."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Otimizar a lista de símbolos.",
+        "parametro": "system.symbols",
+        "valor_atual": "ETHUSDT, SOLUSDT, XRPUSDT, ADAUSDT, DOGEUSDT, AVAXUSDT, DOTUSDT, MATICUSDT, 1000PEPEUSDT, WIFUSDT, NOTUSDT, LINKUSDT, BNBUSDT, SUIUSDT, NEARUSDT, APTUSDT, TONUSDT",
+        "valor_sugerido": "Focar em símbolos com 'avg_scores' consistentemente altos e menor taxa de bloqueio, como DOGEUSDT, NOTUSDT, NEARUSDT, AVAXUSDT, ADAUSDT, TONUSDT, SOLUSDT. Considerar remover LINKUSDT e APTUSDT se continuarem com scores baixos e alto bloqueio após outras otimizações.",
+        "justificativa": "Concentrar os recursos em ativos que geram sinais de maior qualidade pode melhorar a eficiência geral do bot, uma vez que a execução de ordens esteja funcional."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Avaliar a janela de trading ideal.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": "Focar a operação nas horas UTC 2-5, que apresentam a melhor combinação de sinais, score médio e taxa de aprovação MCP. A única ordem executada ocorreu às 3 UTC.",
+        "justificativa": "A análise horária indica que as sessões asiáticas (principalmente 2-5 UTC) são as mais ativas e de maior qualidade. Concentrar a operação nessas janelas pode otimizar o desempenho."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": 55
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot está em um estado de 'quase inatividade' em termos de execução de trades, o que é o problema mais crítico a ser resolvido.",
+      "A ausência de erros explícitos no 'error_counter' e 'warnings_summary' sugere que o bloqueio ocorre por lógica de negócio ou filtros, e não por falhas técnicas diretas.",
+      "A taxa de aprovação do MCP (93.4%) é alta, indicando que o modelo de IA não é o principal fator de bloqueio, mas sua eficácia real só poderá ser avaliada após a execução de trades."
+    ]
+  },
+  "applied_adjustments": [
+    "quality.min_score: 60 → 55"
+  ]
+}

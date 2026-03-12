@@ -1,0 +1,85 @@
+adaptive:
+  candidate_timeframes:
+  - 5
+  - 15
+  - 30
+  - 60
+  enabled: true
+  lookback_days: 10
+  min_profit_factor: 1.1
+  min_win_rate: 50.0
+  update_interval_hours: 6
+  use_cache: true
+backtest:
+  compare_timeframes: true
+  enabled: false
+  end_date: '2026-01-20'
+  initial_balance: 1000.0
+  mode: historical
+  start_date: '2025-01-10'
+  symbols:
+  - XRPUSDT
+  - DOGEUSDT
+  timeframes:
+  - 5
+  - 10
+  - 15
+  - 30
+  - 60
+  - 120
+  - 240
+  - 1440
+  - 2880
+  use_cache: true
+  use_mcp: false
+execution:
+  api_key: ENV
+  api_secret: ENV
+  exchange: bybit
+  testnet: false
+indicators:
+  ema_fast: 20
+  ema_slow: 50
+  rsi_overbought: 70
+  rsi_oversold: 30
+  rsi_period: 14
+  volume_ma_period: 20
+mcp:
+  enabled: true
+  # Ordem de prioridade: gemini → groq → ollama → mock
+  mode: gemini
+  # 1. Gemini (principal)
+  gemini_api_key: ENV
+  gemini_model: gemini-2.5-flash
+  # 2. Groq (fallback por rate limit do Gemini)
+  groq_api_key: ENV
+  groq_model: llama-3.3-70b-versatile
+  # 3. Ollama (último recurso local)
+  ollama_url: http://localhost:11434/api/generate
+  model: deepseek-r1:32b
+notifications:
+  enabled: true
+  min_confidence: 0.0
+quality:
+  min_score: 60
+  use_atr_stops: true
+  use_candle_patterns: true
+  use_session_filter: true
+risk:
+  account_balance_fixed: 100.0
+  daily_loss_percent: 0.05
+  entry_percent: 0.05
+  max_consecutive_losses: 5
+  max_open_positions: 3
+  stop_loss_percent: 0.02
+  take_profit_percent: 0.03
+signals:
+  notify_all_signals: true
+  telegram_chat_id: ENV
+  telegram_token: ENV
+system:
+  dry_run: false
+  log_level: INFO
+  use_all_symbols: true   # true = busca todos os símbolos USDT da Bybit dinamicamente
+  symbol_workers: 20      # número de threads paralelas para análise por símbolo
+  timeframe: 15m

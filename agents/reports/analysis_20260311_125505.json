@@ -1,0 +1,263 @@
+{
+  "timestamp": "20260311_125505",
+  "diagnosis": {
+    "cycles": 155,
+    "total_signals": 310,
+    "total_blocked_score": 26,
+    "total_blocked_mcp": 38,
+    "total_orders": 9,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "ETHUSDT": 72.59375,
+      "SOLUSDT": 67.3125,
+      "XRPUSDT": 75.17391304347827,
+      "ADAUSDT": 67.36363636363636,
+      "DOGEUSDT": 77.44444444444444,
+      "AVAXUSDT": 67.23076923076923,
+      "DOTUSDT": 66.03448275862068,
+      "TONUSDT": 67.66666666666667,
+      "NOTUSDT": 72.41666666666667,
+      "NEARUSDT": 69.18181818181819,
+      "WIFUSDT": 71.42857142857143,
+      "SUIUSDT": 69.48275862068965,
+      "1000PEPEUSDT": 80.0,
+      "LINKUSDT": 75.0,
+      "APTUSDT": 75.71428571428571,
+      "BNBUSDT": 64.25
+    },
+    "avg_rsi": {
+      "ETHUSDT": 58.8154347826087,
+      "SOLUSDT": 53.85463414634146,
+      "XRPUSDT": 57.70288888888889,
+      "ADAUSDT": 62.035999999999994,
+      "DOGEUSDT": 56.59891304347826,
+      "AVAXUSDT": 57.375,
+      "DOTUSDT": 65.20326086956521,
+      "1000PEPEUSDT": 60.60217391304347,
+      "WIFUSDT": 64.4758695652174,
+      "NOTUSDT": 61.02173913043478,
+      "LINKUSDT": 59.23195652173913,
+      "BNBUSDT": 57.97652173913043,
+      "SUIUSDT": 63.28826086956522,
+      "NEARUSDT": 61.09739130434782,
+      "APTUSDT": 60.53804347826087,
+      "TONUSDT": 56.79065217391304
+    },
+    "top_sessions": [
+      [
+        "OVERLAP",
+        252
+      ],
+      [
+        "LONDON",
+        58
+      ]
+    ],
+    "mcp_approval_rate": 85.09803921568627,
+    "avg_mcp_confidence": 0.7462745098039216,
+    "mcp_total": 255,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "TONUSDT",
+        39
+      ],
+      [
+        "DOGEUSDT",
+        36
+      ],
+      [
+        "APTUSDT",
+        25
+      ],
+      [
+        "SOLUSDT",
+        25
+      ],
+      [
+        "ADAUSDT",
+        23
+      ]
+    ],
+    "most_blocked": [
+      [
+        "SUIUSDT",
+        12
+      ],
+      [
+        "DOTUSDT",
+        11
+      ],
+      [
+        "ADAUSDT",
+        11
+      ],
+      [
+        "WIFUSDT",
+        7
+      ],
+      [
+        "BNBUSDT",
+        5
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "9": {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      "10": {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      "11": {
+        "hour_utc": 11,
+        "signals": 119,
+        "avg_score": 70.0,
+        "mcp_approval_rate": 84.9,
+        "orders": 0
+      },
+      "12": {
+        "hour_utc": 12,
+        "signals": 51,
+        "avg_score": 69.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 3
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 11,
+        "signals": 119,
+        "avg_score": 70.0,
+        "mcp_approval_rate": 84.9,
+        "orders": 0
+      },
+      {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      {
+        "hour_utc": 12,
+        "signals": 51,
+        "avg_score": 69.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 3
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando sinais de alta qualidade e com boa aprovação do MCP, mas enfrenta um problema crítico: nenhuma posição foi fechada, resultando em PnL zero. Há também um grande número de sinais bloqueados por fatores não identificados, e os filtros de resistência/volume não estão reportando atividade.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Nenhuma posição foi fechada (total_closes: 0), resultando em PnL, wins e losses zerados.",
+        "causa": "Falha na lógica de Take Profit/Stop Loss, problema na execução de ordens de fechamento na Bybit, ou erro no sistema de tracking de trades. Isso impede a realização de lucros ou perdas e a avaliação da performance.",
+        "impacto": "O bot não está operando de forma completa, não há realização de resultados financeiros, e a gestão de risco é comprometida."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Grande número de sinais (237) que passaram pelos filtros de score e MCP, mas não resultaram em ordens executadas.",
+        "causa": "Outros filtros (ex: gestão de risco, número máximo de posições abertas, filtro de sessão, timing de entrada de 3m, liquidez) estão bloqueando a execução de ordens, mas não estão sendo explicitamente reportados ou diagnosticados.",
+        "impacto": "Perda significativa de oportunidades de trading e dificuldade em identificar gargalos na estratégia."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "As taxas de bloqueio por resistência e volume são 0.0%.",
+        "causa": "Os filtros de resistência e volume (seja via ATR Stops, Candle Patterns ou outros) não estão ativos, não estão configurados corretamente, ou não estão sendo rastreados e reportados pelo sistema.",
+        "impacto": "Se esses filtros são importantes para a estratégia, sua inatividade pode levar a trades de menor qualidade ou a uma falsa percepção de que não há bloqueios por esses critérios."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO/MONITORAR",
+        "descricao": "Investigar e corrigir a causa raiz para a falta de fechamento de posições. Verificar a lógica de Take Profit (TP) e Stop Loss (SL), a comunicação com a API da Bybit para ordens de fechamento, e o sistema de tracking de trades.",
+        "parametro": null,
+        "valor_atual": "total_closes: 0",
+        "valor_sugerido": "> 0",
+        "justificativa": "Este é o problema mais crítico, pois impede o bot de funcionar como um sistema de trading completo e de gerar qualquer PnL."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Analisar detalhadamente os 237 sinais que foram aprovados por score e MCP, mas não se tornaram ordens. Implementar logs mais detalhados para identificar qual filtro ou condição está impedindo a execução.",
+        "parametro": null,
+        "valor_atual": "237 sinais não executados",
+        "valor_sugerido": "Reduzir o número de bloqueios não identificados",
+        "justificativa": "Entender e otimizar esses bloqueios é crucial para aumentar a taxa de execução de trades e aproveitar mais oportunidades."
+      },
+      {
+        "tipo": "CODIGO/CONFIG",
+        "descricao": "Verificar a implementação e o tracking dos filtros de resistência e volume. Assegurar que, se forem parte da estratégia, estejam ativos e reportando corretamente.",
+        "parametro": "resistance_block_rate, volume_block_rate",
+        "valor_atual": "0.0",
+        "valor_sugerido": "> 0.0 (se os filtros estiverem ativos)",
+        "justificativa": "A ausência de bloqueios por resistência/volume é suspeita e pode indicar uma falha nos filtros, comprometendo a qualidade dos sinais."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Reavaliar a lista de símbolos operados, priorizando aqueles com maior score médio e menor taxa de bloqueio, e considerando adicionar ativos com alto score geral.",
+        "parametro": "system.symbols",
+        "valor_atual": "[\"DOTUSDT\", \"DOGEUSDT\", \"NOTUSDT\", \"ADAUSDT\", \"NEARUSDT\", \"AVAXUSDT\"]",
+        "valor_sugerido": "Manter DOGEUSDT (77.44) e NOTUSDT (72.41). Reavaliar ADAUSDT (67.36, 11 bloqueios) e DOTUSDT (66.03, 11 bloqueios). Considerar adicionar 1000PEPEUSDT (80.0), APTUSDT (75.71), XRPUSDT (75.17), LINKUSDT (75.0) após backtesting.",
+        "justificativa": "Focar em ativos com maior qualidade de sinal e menor propensão a bloqueios pode melhorar a eficiência e o potencial de lucro da estratégia."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Otimizar o horário de operação do bot, concentrando a atividade nas janelas UTC que demonstraram melhor combinação de ordens executadas e aprovação MCP.",
+        "parametro": "quality.use_session_filter (ou lógica de agendamento)",
+        "valor_atual": "use_session_filter: true",
+        "valor_sugerido": "Focar nas horas 10 UTC (6 ordens, avg_score 71.6, MCP 73.4%) e 12 UTC (3 ordens, avg_score 69.5, MCP 100%).",
+        "justificativa": "Concentrar a operação nos períodos de maior sucesso pode aumentar a probabilidade de trades lucrativos e otimizar o uso de recursos."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Reavaliar a gestão de risco, especialmente o `entry_percent` (10% do saldo fixo) e a relação risco/recompensa (SL 1.5% vs TP 4%).",
+        "parametro": "risk.entry_percent, risk.stop_loss_percent, risk.take_profit_percent",
+        "valor_atual": "entry_percent: 0.1, stop_loss_percent: 0.015, take_profit_percent: 0.04",
+        "valor_sugerido": "Manter por enquanto, mas revisar após a resolução do problema de fechamento de trades e obtenção de dados de performance. 10% do saldo fixo ($100) por trade ($10) é um tamanho de posição considerável. A relação R:R de 1:2.66 é boa, mas precisa ser validada com trades reais.",
+        "justificativa": "A gestão de risco é fundamental. Sem dados de trades fechados, é difícil otimizar, mas é importante estar ciente da agressividade da configuração atual."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "Nenhuma posição foi fechada. Isso é um problema crítico que impede a avaliação da performance e a realização de lucros/prejuízos.",
+      "A alta taxa de sinais bloqueados por fatores não identificados (237 sinais) requer investigação imediata para otimizar a execução.",
+      "Os filtros de resistência e volume não estão reportando bloqueios (0.0%), o que pode indicar uma falha na sua implementação ou tracking."
+    ]
+  },
+  "applied_adjustments": []
+}

@@ -1,0 +1,270 @@
+{
+  "timestamp": "20260311_180111",
+  "diagnosis": {
+    "cycles": 214,
+    "total_signals": 96,
+    "total_blocked_score": 0,
+    "total_blocked_mcp": 0,
+    "total_orders": 1,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "XRPUSDT": 70.0,
+      "ADAUSDT": 62.142857142857146,
+      "AVAXUSDT": 65.0,
+      "DOTUSDT": 65.25,
+      "NOTUSDT": 61.875,
+      "LINKUSDT": 60.0,
+      "DOGEUSDT": 80.28571428571429,
+      "1000PEPEUSDT": 58.333333333333336,
+      "APTUSDT": 65.0,
+      "ETHUSDT": 60.0,
+      "BNBUSDT": 58.0,
+      "WIFUSDT": 65.0
+    },
+    "avg_rsi": {
+      "ETHUSDT": 58.083030303030306,
+      "SOLUSDT": 58.94875,
+      "XRPUSDT": 54.32181818181819,
+      "ADAUSDT": 57.74677419354839,
+      "DOGEUSDT": 58.066874999999996,
+      "AVAXUSDT": 54.118787878787884,
+      "DOTUSDT": 57.776363636363634,
+      "1000PEPEUSDT": 56.889375,
+      "WIFUSDT": 56.7346875,
+      "NOTUSDT": 54.3434375,
+      "LINKUSDT": 54.989375,
+      "BNBUSDT": 59.280967741935484,
+      "SUIUSDT": 61.631875,
+      "NEARUSDT": 48.4240625,
+      "APTUSDT": 45.5871875,
+      "TONUSDT": 67.008125
+    },
+    "top_sessions": [
+      [
+        "NEW_YORK",
+        95
+      ],
+      [
+        "OFF_HOURS",
+        1
+      ]
+    ],
+    "mcp_approval_rate": 100.0,
+    "avg_mcp_confidence": 0.7168674698795181,
+    "mcp_total": 83,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NEARUSDT",
+        32
+      ],
+      [
+        "WIFUSDT",
+        29
+      ],
+      [
+        "XRPUSDT",
+        28
+      ],
+      [
+        "ETHUSDT",
+        27
+      ],
+      [
+        "LINKUSDT",
+        27
+      ]
+    ],
+    "most_blocked": [],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "15": {
+        "hour_utc": 15,
+        "signals": 44,
+        "avg_score": 63.8,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "16": {
+        "hour_utc": 16,
+        "signals": 44,
+        "avg_score": 64.1,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "17": {
+        "hour_utc": 17,
+        "signals": 7,
+        "avg_score": 67.1,
+        "mcp_approval_rate": 100.0,
+        "orders": 1
+      },
+      "18": {
+        "hour_utc": 18,
+        "signals": 1,
+        "avg_score": 67.0,
+        "mcp_approval_rate": 0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 16,
+        "signals": 44,
+        "avg_score": 64.1,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 15,
+        "signals": 44,
+        "avg_score": 63.8,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 17,
+        "signals": 7,
+        "avg_score": 67.1,
+        "mcp_approval_rate": 100.0,
+        "orders": 1
+      },
+      {
+        "hour_utc": 18,
+        "signals": 1,
+        "avg_score": 67.0,
+        "mcp_approval_rate": 0,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando um bom volume de sinais de alta qualidade, predominantemente durante a sessão de Nova York, com alta taxa de aprovação do MCP. No entanto, a configuração atual em modo 'dry_run' impede a execução de ordens reais, resultando em uma taxa de conversão de sinais para ordens extremamente baixa e nenhuma métrica de performance real.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Bot em modo 'dry_run', impedindo a execução de trades reais.",
+        "causa": "Configuração intencional do parâmetro 'system.dry_run' como 'true'.",
+        "impacto": "Nenhuma performance real (PNL, wins, losses) pode ser avaliada, o bot não está operando de fato no mercado."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Taxa de conversão de sinais em ordens é extremamente baixa (1 ordem de 96 sinais).",
+        "causa": "Principalmente devido ao modo 'dry_run'. Outros filtros implícitos ou limites de posição podem estar atuando, mas não são explicitamente reportados como bloqueios.",
+        "impacto": "O potencial da estratégia não está sendo explorado, e a eficácia dos sinais e do MCP não pode ser medida em um ambiente de trading real."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Taxa de aprovação do MCP (quase 100% no geral, mas 0% em uma hora específica) é suspeitamente alta.",
+        "causa": "O modelo de IA pode ser muito permissivo, ou os sinais de entrada já são de altíssima qualidade. A discrepância com a hora 18 (0% aprovação) sugere que o cálculo geral pode ser impreciso ou que o MCP falhou em um caso específico.",
+        "impacto": "O MCP pode não estar atuando como um filtro eficaz para sinais de menor qualidade, ou sua configuração precisa de revisão para ser mais seletiva."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "O score mínimo atual (55) não está filtrando nenhum sinal.",
+        "causa": "Os sinais gerados pela estratégia já possuem scores médios consistentemente acima de 55, conforme indicado por 'avg_scores' e 'total_blocked_score: 0'.",
+        "impacto": "O filtro de score mínimo não está contribuindo para a seletividade dos sinais, potencialmente permitindo sinais de qualidade inferior se a estratégia base começar a gerar scores mais baixos."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CONFIG",
+        "descricao": "Desativar o modo 'dry_run' para permitir a execução de ordens reais e iniciar a coleta de dados de performance.",
+        "parametro": "system.dry_run",
+        "valor_atual": "true",
+        "valor_sugerido": "false",
+        "justificativa": "Essencial para validar a estratégia em condições de mercado reais e obter métricas de performance válidas (PNL, win rate, etc.)."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Monitorar de perto a performance do bot (PNL, wins, losses, drawdowns) após a transição para operações reais.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "A transição para operações reais pode revelar comportamentos inesperados do mercado ou da execução que não foram observados no 'dry_run'."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Aumentar o 'min_score' para filtrar sinais de entrada, dado que o 'avg_scores' é consistentemente alto e nenhum sinal foi bloqueado por score.",
+        "parametro": "quality.min_score",
+        "valor_atual": "55",
+        "valor_sugerido": "60",
+        "justificativa": "Potencialmente melhora a qualidade média dos sinais de entrada, focando nos melhores setups e aumentando a seletividade da estratégia."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar a lista de símbolos monitorados para priorizar aqueles com maior 'avg_score' e frequência de sinais, como DOGEUSDT e XRPUSDT.",
+        "parametro": "system.symbols",
+        "valor_atual": "[\"DOGEUSDT\", \"NOTUSDT\", \"ETHUSDT\", \"SOLUSDT\", \"XRPUSDT\", \"LINKUSDT\"]",
+        "valor_sugerido": "[\"DOGEUSDT\", \"XRPUSDT\", \"AVAXUSDT\", \"DOTUSDT\", \"APTUSDT\", \"WIFUSDT\", \"ETHUSDT\", \"LINKUSDT\"]",
+        "justificativa": "Focar em ativos que historicamente geram sinais de maior qualidade pode otimizar a performance e a eficiência do bot."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Investigar a configuração e os prompts do modelo MCP ('deepseek-r1:32b') para garantir que ele esteja atuando como um filtro eficaz e não apenas aprovando a maioria dos sinais. Analisar o motivo da rejeição na hora 18.",
+        "parametro": "mcp.model",
+        "valor_atual": "deepseek-r1:32b",
+        "valor_sugerido": "deepseek-r1:32b (revisar prompts/configurações internas)",
+        "justificativa": "Um filtro de IA deve ter uma taxa de rejeição razoável para ser útil. Uma alta taxa de aprovação pode indicar que o MCP não está sendo desafiado ou configurado para ser seletivo."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Analisar os logs detalhados para entender por que 13 sinais não foram enviados ao MCP (96 sinais totais vs 83 enviados ao MCP).",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Entender os pontos de falha no pipeline de sinais é crucial para otimizar a estratégia e garantir que todos os sinais qualificados sejam processados."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Considerar otimizar a lógica de timing de entrada (3m) ou os critérios de execução final, especialmente para a janela UTC 17, que mostrou a melhor combinação de qualidade e aprovação MCP.",
+        "parametro": "system.timeframe (para timing de entrada)",
+        "valor_atual": "15m (sinal), 3m (timing)",
+        "valor_sugerido": "Manter 15m para sinal, revisar lógica de 3m para timing",
+        "justificativa": "A discrepância entre sinais e ordens (mesmo em dry_run) pode indicar problemas na janela de execução ou nos critérios de entrada final, que podem ser ajustados para melhorar a conversão."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": 60
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      },
+      "system": {
+        "dry_run": false,
+        "symbols": [
+          "DOGEUSDT",
+          "XRPUSDT",
+          "AVAXUSDT",
+          "DOTUSDT",
+          "APTUSDT",
+          "WIFUSDT",
+          "ETHUSDT",
+          "LINKUSDT"
+        ]
+      }
+    },
+    "alertas": [
+      "O bot está em modo 'dry_run' e não está executando trades reais. Desative-o para validar a performance da estratégia.",
+      "A taxa de conversão de sinais para ordens é extremamente baixa (1 de 96), principalmente devido ao modo 'dry_run'.",
+      "A taxa de aprovação do MCP de 100% (ou quase) é suspeita e pode indicar que o filtro não está sendo eficaz ou que o cálculo geral é impreciso.",
+      "Não há dados de PNL, wins ou losses, o que impede uma avaliação real da rentabilidade da estratégia. A ativação do modo real é crucial para obter essas métricas."
+    ]
+  },
+  "applied_adjustments": [
+    "quality.min_score: 55 → 60",
+    "system.dry_run: True → False",
+    "system.symbols: ['DOGEUSDT', 'NOTUSDT', 'ETHUSDT', 'SOLUSDT', 'XRPUSDT', 'LINKUSDT'] → ['DOGEUSDT', 'XRPUSDT', 'AVAXUSDT', 'DOTUSDT', 'APTUSDT', 'WIFUSDT', 'ETHUSDT', 'LINKUSDT']"
+  ]
+}

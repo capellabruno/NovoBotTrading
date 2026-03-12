@@ -1,0 +1,11 @@
+pandas
+numpy
+ta
+sqlalchemy
+psycopg2-binary
+streamlit
+streamlit-autorefresh
+plotly
+requests
+pyyaml
+pybit

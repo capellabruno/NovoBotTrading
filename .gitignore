@@ -1,0 +1,42 @@
+# Credenciais - NUNCA commitar
+.env
+.streamlit/secrets.toml
+
+# Banco de dados
+*.db
+*.sqlite
+
+# Logs
+*.log
+trading_system.log
+backtest.log
+
+# Dados de cache
+data/
+backtest_reports/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Ambiente virtual
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

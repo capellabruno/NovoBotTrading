@@ -1,0 +1,170 @@
+{
+  "timestamp": "20260311_110757",
+  "diagnosis": {
+    "cycles": 134,
+    "total_signals": 160,
+    "total_blocked_score": 4,
+    "total_blocked_mcp": 24,
+    "total_orders": 6,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "ETHUSDT": 74.84615384615384,
+      "SOLUSDT": 69.27272727272727,
+      "XRPUSDT": 78.4,
+      "ADAUSDT": 71.2,
+      "DOGEUSDT": 86.0,
+      "AVAXUSDT": 67.23076923076923,
+      "DOTUSDT": 70.9375,
+      "TONUSDT": 66.0,
+      "NOTUSDT": 73.34782608695652,
+      "NEARUSDT": 70.15,
+      "WIFUSDT": 79.375,
+      "SUIUSDT": 68.63636363636364,
+      "1000PEPEUSDT": 80.0,
+      "LINKUSDT": 75.0,
+      "APTUSDT": 72.5,
+      "BNBUSDT": 67.0
+    },
+    "avg_rsi": {
+      "ETHUSDT": 56.602799999999995,
+      "SOLUSDT": 50.95227272727273,
+      "XRPUSDT": 58.905833333333334,
+      "ADAUSDT": 63.218,
+      "DOGEUSDT": 58.3412,
+      "AVAXUSDT": 59.7532,
+      "DOTUSDT": 70.8596,
+      "1000PEPEUSDT": 59.986,
+      "WIFUSDT": 68.8788,
+      "NOTUSDT": 61.435199999999995,
+      "LINKUSDT": 58.8608,
+      "BNBUSDT": 55.9748,
+      "SUIUSDT": 62.4268,
+      "NEARUSDT": 63.2976,
+      "APTUSDT": 63.452,
+      "TONUSDT": 54.602399999999996
+    },
+    "top_sessions": [
+      [
+        "OVERLAP",
+        102
+      ],
+      [
+        "LONDON",
+        58
+      ]
+    ],
+    "mcp_approval_rate": 83.21678321678321,
+    "avg_mcp_confidence": 0.7552447552447552,
+    "mcp_total": 143,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "DOGEUSDT",
+        23
+      ],
+      [
+        "TONUSDT",
+        23
+      ],
+      [
+        "1000PEPEUSDT",
+        17
+      ],
+      [
+        "APTUSDT",
+        17
+      ],
+      [
+        "ADAUSDT",
+        15
+      ]
+    ],
+    "most_blocked": [
+      [
+        "SUIUSDT",
+        6
+      ],
+      [
+        "ADAUSDT",
+        6
+      ],
+      [
+        "SOLUSDT",
+        3
+      ],
+      [
+        "DOTUSDT",
+        3
+      ],
+      [
+        "NEARUSDT",
+        3
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "9": {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      "10": {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      "11": {
+        "hour_utc": 11,
+        "signals": 20,
+        "avg_score": 77.3,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      {
+        "hour_utc": 11,
+        "signals": 20,
+        "avg_score": 77.3,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "Bot analisou 134 ciclos. Gerou 160 sinais, 6 ordens executadas. MCP aprovou 83% dos sinais enviados.",
+    "problemas": [],
+    "recomendacoes": [],
+    "ajustes_config": {
+      "quality": {},
+      "risk": {},
+      "mcp": {}
+    },
+    "alertas": []
+  },
+  "applied_adjustments": []
+}

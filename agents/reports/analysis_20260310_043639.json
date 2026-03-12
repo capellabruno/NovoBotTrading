@@ -1,0 +1,371 @@
+{
+  "timestamp": "20260310_043639",
+  "diagnosis": {
+    "cycles": 64,
+    "total_signals": 393,
+    "total_blocked_score": 130,
+    "total_blocked_mcp": 20,
+    "total_orders": 243,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 78.88040712468194,
+    "volume_block_rate": 31.552162849872772,
+    "avg_scores": {
+      "DOTUSDT": 64.24242424242425,
+      "NOTUSDT": 63.47826086956522,
+      "LINKUSDT": 63.21212121212121,
+      "BNBUSDT": 62.84848484848485,
+      "NEARUSDT": 65.06666666666666,
+      "ETHUSDT": 60.861111111111114,
+      "SOLUSDT": 61.333333333333336,
+      "XRPUSDT": 58.5,
+      "ADAUSDT": 60.294117647058826,
+      "AVAXUSDT": 66.53333333333333,
+      "WIFUSDT": 59.55555555555556,
+      "TONUSDT": 64.25,
+      "DOGEUSDT": 57.17391304347826,
+      "1000PEPEUSDT": 60.0,
+      "APTUSDT": 60.55555555555556,
+      "SUIUSDT": 62.5
+    },
+    "avg_rsi": {
+      "DOTUSDT": 55.85666666666666,
+      "1000PEPEUSDT": 49.71977777777777,
+      "WIFUSDT": 38.79955555555556,
+      "NOTUSDT": 52.50933333333334,
+      "LINKUSDT": 54.85466666666667,
+      "BNBUSDT": 57.80422222222222,
+      "SUIUSDT": 48.440666666666665,
+      "NEARUSDT": 59.31466666666666,
+      "APTUSDT": 49.16466666666666,
+      "TONUSDT": 52.550888888888885,
+      "ETHUSDT": 58.925111111111114,
+      "SOLUSDT": 54.90666666666667,
+      "XRPUSDT": 56.028666666666666,
+      "ADAUSDT": 53.717555555555556,
+      "DOGEUSDT": 54.650444444444446,
+      "AVAXUSDT": 51.82159090909091
+    },
+    "top_sessions": [
+      [
+        "ASIAN",
+        393
+      ]
+    ],
+    "mcp_approval_rate": 92.39543726235742,
+    "avg_mcp_confidence": 0.7295817490494296,
+    "mcp_total": 263,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "1000PEPEUSDT",
+        33
+      ],
+      [
+        "SUIUSDT",
+        33
+      ],
+      [
+        "TONUSDT",
+        33
+      ],
+      [
+        "AVAXUSDT",
+        29
+      ],
+      [
+        "ADAUSDT",
+        28
+      ]
+    ],
+    "most_blocked": [
+      [
+        "DOGEUSDT",
+        19
+      ],
+      [
+        "XRPUSDT",
+        19
+      ],
+      [
+        "BNBUSDT",
+        16
+      ],
+      [
+        "WIFUSDT",
+        13
+      ],
+      [
+        "LINKUSDT",
+        13
+      ]
+    ],
+    "warnings_summary": {
+      "DOTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          33
+        ],
+        [
+          "Padrão PIN_BAR_BEARISH contrário ao sinal CALL",
+          3
+        ]
+      ],
+      "NOTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          23
+        ],
+        [
+          "Volume baixo (0.74x média)",
+          3
+        ]
+      ],
+      "LINKUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          27
+        ],
+        [
+          "Volume baixo (0.66x média)",
+          3
+        ]
+      ],
+      "BNBUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          21
+        ],
+        [
+          "Padrão PIN_BAR_BEARISH contrário ao sinal CALL",
+          7
+        ]
+      ],
+      "NEARUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          29
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          3
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          36
+        ],
+        [
+          "Volume baixo (0.68x média)",
+          3
+        ]
+      ],
+      "XRPUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          30
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          5
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          14
+        ],
+        [
+          "Volume baixo (0.63x média)",
+          3
+        ]
+      ],
+      "WIFUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          29
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          9
+        ]
+      ],
+      "TONUSDT": [
+        [
+          "Volume baixo (0.72x média)",
+          3
+        ],
+        [
+          "Padrão PIN_BAR_BULLISH contrário ao sinal PUT",
+          3
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          23
+        ],
+        [
+          "Volume baixo (0.72x média)",
+          3
+        ]
+      ],
+      "AVAXUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          6
+        ],
+        [
+          "Volume baixo (0.77x média)",
+          3
+        ]
+      ],
+      "1000PEPEUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          10
+        ],
+        [
+          "Volume baixo (0.80x média)",
+          3
+        ]
+      ],
+      "APTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          18
+        ],
+        [
+          "Volume baixo (0.77x média)",
+          3
+        ]
+      ],
+      "SOLUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          28
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          6
+        ]
+      ],
+      "SUIUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          9
+        ],
+        [
+          "Volume baixo (0.68x média)",
+          3
+        ]
+      ]
+    }
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando e filtrando sinais, mas não está executando ou fechando nenhuma operação de trading. A principal causa é uma configuração incorreta do backtest com datas futuras, impedindo qualquer operação real ou histórica. Além disso, muitos sinais são bloqueados por proximidade a resistências/suportes e baixo volume.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Bot não executa trades reais ou históricos.",
+        "causa": "A configuração `backtest.enabled` está como `true` com `start_date` e `end_date` no futuro (2025/2026), o que impede o bot de operar em tempo real ou realizar um backtest significativo.",
+        "impacto": "Nenhuma operação de trading é realizada, resultando em 0 PnL, 0 wins e 0 losses. O bot está inoperante para fins de trading."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Alta taxa de sinais bloqueados por proximidade a resistências/suportes.",
+        "causa": "A `resistance_block_rate` é de 78.88%, e o `warnings_summary` mostra que a maioria dos símbolos tem sinais 'próximo à resistência - risco alto' ou 'próximo ao suporte - risco alto'. Isso indica que a estratégia gera muitos sinais em zonas de alta incerteza ou reversão.",
+        "impacto": "Reduz drasticamente o número de sinais considerados válidos para execução, limitando as oportunidades de trading e potencialmente indicando uma estratégia excessivamente conservadora ou mal calibrada para detecção de zonas de suporte/resistência."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Bloqueio significativo de sinais por baixo volume.",
+        "causa": "A `volume_block_rate` é de 31.55%, e o `warnings_summary` aponta 'Volume baixo' para vários símbolos. Isso sugere que muitos sinais ocorrem em condições de mercado com pouca liquidez ou interesse.",
+        "impacto": "Sinais em mercados com liquidez insuficiente são descartados, o que é bom para evitar slippage, mas uma taxa tão alta pode indicar que a estratégia não está otimizada para os ativos ou condições de mercado atuais."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Concentração de todos os sinais na sessão de mercado ASIAN.",
+        "causa": "O `top_sessions` indica que 100% dos 393 sinais foram gerados durante a sessão ASIAN. Isso pode ser devido a um filtro de sessão ativo ou a um problema na coleta de dados/geração de sinais em outras sessões.",
+        "impacto": "Limita a exposição do bot a outras sessões de mercado (europeia, americana) que podem oferecer diferentes oportunidades e volatilidade, reduzindo a diversificação e o potencial de lucro."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "O `min_score` de 55 bloqueia uma quantidade considerável de sinais.",
+        "causa": "130 sinais foram bloqueados especificamente pelo filtro `min_score`. Embora seja um filtro de qualidade, sem dados de trades reais, não é possível avaliar se ele está sendo excessivamente restritivo ou se está filtrando corretamente sinais de baixa qualidade.",
+        "impacto": "Reduz o número de entradas potenciais. A adequação deste filtro só pode ser determinada após o bot começar a executar trades e gerar dados de PnL."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CONFIG",
+        "descricao": "Desativar o modo de backtest ou configurar datas válidas para backtest.",
+        "parametro": "backtest.enabled, backtest.start_date, backtest.end_date",
+        "valor_atual": "true, 2025-01-10, 2026-01-20",
+        "valor_sugerido": "false (para live trading) ou datas históricas válidas (ex: 2023-01-01, 2023-12-31 para backtest)",
+        "justificativa": "Esta é a correção mais crítica para permitir que o bot comece a operar, seja em modo de simulação histórica ou em tempo real."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Reavaliar e ajustar a lógica de detecção e filtragem de resistência/suporte.",
+        "parametro": "N/A (lógica interna da estratégia)",
+        "valor_atual": "resistance_block_rate: 78.88%",
+        "valor_sugerido": "Investigar a definição de 'próximo à resistência/suporte'. Pode-se considerar permitir entradas mais próximas com stop loss mais apertado, ou ajustar os parâmetros que definem essas zonas.",
+        "justificativa": "A alta taxa de bloqueio por resistência/suporte indica que a estratégia está perdendo muitas oportunidades. É crucial otimizar esses filtros para encontrar um equilíbrio entre segurança e frequência de trades."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar o filtro de volume ou a seleção de ativos.",
+        "parametro": "N/A (lógica interna da estratégia, ou lista de símbolos)",
+        "valor_atual": "volume_block_rate: 31.55%",
+        "valor_sugerido": "Considerar um limiar de volume ligeiramente mais flexível ou focar em ativos com maior liquidez média. Se a estratégia é para ativos de alta liquidez, revisar a lista de `system.symbols`.",
+        "justificativa": "Embora o volume baixo seja um risco, uma taxa de bloqueio de 31% pode ser otimizada para não perder oportunidades em mercados com liquidez moderada, ou para garantir que o bot opere apenas em mercados com liquidez adequada."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Expandir a lista de símbolos para o backtest para uma avaliação completa.",
+        "parametro": "backtest.symbols",
+        "valor_atual": "[\"XRPUSDT\", \"DOGEUSDT\"]",
+        "valor_sugerido": "Todos os símbolos de interesse, por exemplo, a lista completa de `system.symbols`.",
+        "justificativa": "Para obter uma avaliação abrangente da estratégia em todos os ativos que o bot pretende operar, é essencial incluir todos eles no backtest."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Investigar e ajustar o filtro de sessão de mercado.",
+        "parametro": "quality.use_session_filter (se aplicável, ou lógica interna)",
+        "valor_atual": "top_sessions: [[\"ASIAN\", 393]]",
+        "valor_sugerido": "Se a intenção é operar 24/7, garantir que o filtro de sessão não esteja limitando a operação apenas à sessão ASIAN. Se for intencional, documentar o motivo.",
+        "justificativa": "Operar em múltiplas sessões pode aumentar as oportunidades de trading e diversificar o risco, aproveitando diferentes dinâmicas de mercado."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Monitorar o desempenho dos símbolos e do `min_score` após a execução de trades.",
+        "parametro": "quality.min_score",
+        "valor_atual": "55",
+        "valor_sugerido": "Manter 55 inicialmente. Ajustar para cima (ex: 60) se os trades com scores mais baixos tiverem PnL negativo, ou para baixo (ex: 50) se trades com scores ligeiramente abaixo de 55 forem potencialmente lucrativos.",
+        "justificativa": "Sem dados de PnL, não é possível otimizar o `min_score` ou priorizar símbolos. A avaliação deve ser feita com base em resultados reais de trading."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot não está realizando nenhuma operação de trading real ou backtest significativo devido à configuração de datas futuras no modo backtest. Esta é a prioridade máxima para correção.",
+      "A alta taxa de bloqueio por resistência/suporte e volume baixo indica que a estratégia pode ser excessivamente conservadora ou precisa de ajustes finos nos seus critérios de entrada para aproveitar mais oportunidades."
+    ]
+  },
+  "applied_adjustments": []
+}

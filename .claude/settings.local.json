@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \":*)",
+      "Bash(pip install streamlit-autorefresh --quiet)",
+      "Bash(python scripts/reconcile_trades.py)"
+    ]
+  }
+}

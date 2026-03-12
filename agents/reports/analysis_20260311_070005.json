@@ -1,0 +1,297 @@
+{
+  "timestamp": "20260311_070005",
+  "diagnosis": {
+    "cycles": 86,
+    "total_signals": 480,
+    "total_blocked_score": 83,
+    "total_blocked_mcp": 23,
+    "total_orders": 1,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "AVAXUSDT": 67.2051282051282,
+      "1000PEPEUSDT": 61.08108108108108,
+      "NOTUSDT": 70.45161290322581,
+      "NEARUSDT": 67.62790697674419,
+      "APTUSDT": 59.55172413793103,
+      "ETHUSDT": 61.09756097560975,
+      "XRPUSDT": 59.549019607843135,
+      "ADAUSDT": 67.56521739130434,
+      "DOGEUSDT": 70.90163934426229,
+      "TONUSDT": 66.86842105263158,
+      "SOLUSDT": 65.03030303030303,
+      "LINKUSDT": 58.0,
+      "SUIUSDT": 60.0
+    },
+    "avg_rsi": {
+      "DOTUSDT": 50.59541176470588,
+      "1000PEPEUSDT": 44.542,
+      "WIFUSDT": 47.04988235294118,
+      "NOTUSDT": 50.747176470588236,
+      "LINKUSDT": 45.338235294117645,
+      "BNBUSDT": 47.856117647058824,
+      "SUIUSDT": 44.27576470588235,
+      "NEARUSDT": 47.24305882352941,
+      "APTUSDT": 41.194823529411764,
+      "TONUSDT": 40.627529411764705,
+      "ETHUSDT": 43.73530120481928,
+      "SOLUSDT": 46.78291139240506,
+      "ADAUSDT": 42.00337349397591,
+      "DOGEUSDT": 36.020843373493975,
+      "AVAXUSDT": 50.38698795180723,
+      "XRPUSDT": 43.16475
+    },
+    "top_sessions": [
+      [
+        "ASIAN",
+        322
+      ],
+      [
+        "LONDON",
+        158
+      ]
+    ],
+    "mcp_approval_rate": 93.66391184573003,
+    "avg_mcp_confidence": 0.7415977961432506,
+    "mcp_total": 363,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NOTUSDT",
+        54
+      ],
+      [
+        "1000PEPEUSDT",
+        48
+      ],
+      [
+        "AVAXUSDT",
+        45
+      ],
+      [
+        "TONUSDT",
+        45
+      ],
+      [
+        "NEARUSDT",
+        42
+      ]
+    ],
+    "most_blocked": [
+      [
+        "APTUSDT",
+        22
+      ],
+      [
+        "DOGEUSDT",
+        17
+      ],
+      [
+        "XRPUSDT",
+        17
+      ],
+      [
+        "ETHUSDT",
+        9
+      ],
+      [
+        "TONUSDT",
+        8
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "0": {
+        "hour_utc": 0,
+        "signals": 58,
+        "avg_score": 63.1,
+        "mcp_approval_rate": 84.8,
+        "orders": 0
+      },
+      "1": {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      },
+      "2": {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      "3": {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      "4": {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "5": {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "6": {
+        "hour_utc": 6,
+        "signals": 60,
+        "avg_score": 61.2,
+        "mcp_approval_rate": 93.3,
+        "orders": 0
+      },
+      "23": {
+        "hour_utc": 23,
+        "signals": 5,
+        "avg_score": 70.2,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 6,
+        "signals": 60,
+        "avg_score": 61.2,
+        "mcp_approval_rate": 93.3,
+        "orders": 0
+      },
+      {
+        "hour_utc": 0,
+        "signals": 58,
+        "avg_score": 63.1,
+        "mcp_approval_rate": 84.8,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando um alto volume de sinais de qualidade e o filtro de IA (MCP) está aprovando a maioria deles. No entanto, a execução de trades é extremamente baixa (apenas 1 ordem em 86 ciclos), indicando um gargalo crítico após a aprovação do sinal, impedindo o bot de operar efetivamente e gerar PnL.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Baixíssima execução de trades",
+        "causa": "Apenas 1 ordem foi executada de 340 sinais que passaram pelos filtros de score e MCP. A configuração de `daily_loss_percent` (0.01) é menor que a perda de um único `stop_loss_percent` (0.015), o que significa que uma única perda já excede o limite diário, paralisando o bot.",
+        "impacto": "O bot está inoperante, incapaz de realizar operações e gerar qualquer PnL, apesar de identificar muitos sinais potenciais."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Bloqueio de sinais por score",
+        "causa": "83 sinais foram bloqueados pelo `min_score` de 50. Embora não seja o principal gargalo, reduz o volume de sinais que chegam aos filtros subsequentes.",
+        "impacto": "Reduz o universo de oportunidades de trading, potencialmente perdendo trades de boa qualidade que estão ligeiramente abaixo do score mínimo atual."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Bloqueio de sinais por filtro não identificado",
+        "causa": "Aproximadamente 34 sinais foram bloqueados entre o filtro de score e o MCP, e não foram atribuídos a resistência ou volume. Pode ser `use_candle_patterns` ou `use_session_filter`.",
+        "impacto": "Pequena redução no volume de sinais, mas não é o fator limitante principal."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar o limite de perda diária (`daily_loss_percent`) para permitir múltiplas operações e perdas antes de parar.",
+        "parametro": "risk.daily_loss_percent",
+        "valor_atual": 0.01,
+        "valor_sugerido": 0.05,
+        "justificativa": "O valor atual de 0.01 (1% do saldo) é menor que a perda de um único stop loss (1.5% do saldo), o que paralisa o bot após a primeira perda. Aumentar este limite é crucial para permitir que o bot opere."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Considerar uma leve redução do `min_score` para aumentar o volume de sinais, mantendo a qualidade.",
+        "parametro": "quality.min_score",
+        "valor_atual": 50,
+        "valor_sugerido": 45,
+        "justificativa": "Embora não seja o principal problema, 83 sinais foram bloqueados por score. Uma pequena redução pode aumentar as oportunidades sem comprometer drasticamente a qualidade, especialmente porque os `avg_scores` são geralmente mais altos."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Investigar o motivo exato pelo qual 339 sinais aprovados (pós-MCP) não resultaram em ordens, caso o ajuste do `daily_loss_percent` não resolva completamente.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Se o limite de perda diária não for o único fator, pode haver um problema com o timing de entrada de 3m, requisitos de liquidez, ou outros filtros silenciosos que impedem a execução."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ativar o módulo adaptativo para otimizar os timeframes de forma dinâmica.",
+        "parametro": "adaptive.enabled",
+        "valor_atual": false,
+        "valor_sugerido": true,
+        "justificativa": "O módulo adaptativo pode identificar os timeframes mais lucrativos para cada símbolo, potencialmente melhorando a performance geral e a taxa de execução."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Monitorar de perto o desempenho dos símbolos com alta pontuação média (`avg_scores`) e baixo bloqueio (`most_blocked`, `no_signal_syms`) após as mudanças.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Uma vez que o bot esteja operando, focar nos ativos com melhor potencial pode otimizar os resultados."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": 45
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null,
+        "daily_loss_percent": 0.05
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot está atualmente inoperante devido a uma configuração de risco excessivamente restritiva que impede a execução de múltiplos trades.",
+      "Apesar da alta qualidade dos sinais e aprovação do MCP, a falta de execução de ordens é o principal problema a ser resolvido urgentemente."
+    ]
+  },
+  "applied_adjustments": [
+    "quality.min_score: 50 → 45",
+    "risk.daily_loss_percent: 0.01 → 0.05"
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "timestamp": "20260311_074706",
+  "diagnosis": {
+    "cycles": 96,
+    "total_signals": 471,
+    "total_blocked_score": 64,
+    "total_blocked_mcp": 18,
+    "total_orders": 1,
+    "total_closes": 1,
+    "total_pnl": -0.06,
+    "wins": 0,
+    "losses": 1,
+    "win_rate": 0.0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "APTUSDT": 60.320754716981135,
+      "XRPUSDT": 59.604166666666664,
+      "ADAUSDT": 67.12820512820512,
+      "DOGEUSDT": 71.98333333333333,
+      "ETHUSDT": 61.973684210526315,
+      "NEARUSDT": 67.57142857142857,
+      "NOTUSDT": 70.0,
+      "TONUSDT": 65.64285714285714,
+      "1000PEPEUSDT": 61.214285714285715,
+      "AVAXUSDT": 67.21951219512195,
+      "SOLUSDT": 65.52777777777777,
+      "LINKUSDT": 58.0,
+      "SUIUSDT": 60.0
+    },
+    "avg_rsi": {
+      "WIFUSDT": 47.930952380952384,
+      "NOTUSDT": 53.46678571428571,
+      "LINKUSDT": 45.488571428571426,
+      "BNBUSDT": 48.68083333333333,
+      "SUIUSDT": 45.21083333333333,
+      "NEARUSDT": 46.774880952380954,
+      "APTUSDT": 42.16726190476191,
+      "TONUSDT": 42.78855421686747,
+      "ETHUSDT": 45.1059756097561,
+      "SOLUSDT": 46.21103896103896,
+      "XRPUSDT": 43.80666666666667,
+      "ADAUSDT": 42.67207317073171,
+      "DOGEUSDT": 37.42707317073171,
+      "AVAXUSDT": 50.19426829268293,
+      "DOTUSDT": 51.171445783132526,
+      "1000PEPEUSDT": 44.65542168674699
+    },
+    "top_sessions": [
+      [
+        "ASIAN",
+        264
+      ],
+      [
+        "LONDON",
+        207
+      ]
+    ],
+    "mcp_approval_rate": 95.17426273458445,
+    "avg_mcp_confidence": 0.7447721179624666,
+    "mcp_total": 373,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NOTUSDT",
+        56
+      ],
+      [
+        "ETHUSDT",
+        44
+      ],
+      [
+        "ADAUSDT",
+        43
+      ],
+      [
+        "1000PEPEUSDT",
+        42
+      ],
+      [
+        "NEARUSDT",
+        42
+      ]
+    ],
+    "most_blocked": [
+      [
+        "XRPUSDT",
+        16
+      ],
+      [
+        "APTUSDT",
+        14
+      ],
+      [
+        "DOGEUSDT",
+        12
+      ],
+      [
+        "ETHUSDT",
+        6
+      ],
+      [
+        "NEARUSDT",
+        6
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "0": {
+        "hour_utc": 0,
+        "signals": 5,
+        "avg_score": 57.8,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "1": {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      },
+      "2": {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      "3": {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      "4": {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "5": {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "6": {
+        "hour_utc": 6,
+        "signals": 60,
+        "avg_score": 61.2,
+        "mcp_approval_rate": 93.3,
+        "orders": 0
+      },
+      "7": {
+        "hour_utc": 7,
+        "signals": 49,
+        "avg_score": 65.8,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 6,
+        "signals": 60,
+        "avg_score": 61.2,
+        "mcp_approval_rate": 93.3,
+        "orders": 0
+      },
+      {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot de trading está gerando um grande volume de sinais de alta qualidade e com alta taxa de aprovação do MCP, mas falha drasticamente na execução de ordens, resultando em apenas uma única operação perdedora. Isso indica um gargalo crítico e não identificado entre a geração de sinais e a execução de trades, tornando o bot ineficaz.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Baixíssima Execução de Ordens",
+        "causa": "Apenas 1 ordem executada de 471 sinais gerados. Os bloqueios por score (64) e MCP (18) não justificam a maioria dos sinais não executados (389). As taxas de bloqueio por resistência e volume são 0.0, o que é suspeito e pode indicar filtros não aplicados ou não reportados, ou outros problemas de lógica/conectividade.",
+        "impacto": "O bot está essencialmente inoperante, não gerando P&L e impossibilitando a validação da estratégia."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Estratégia Não Comprovada e P&L Negativo",
+        "causa": "Com apenas uma operação (uma perda), não há dados suficientes para avaliar a eficácia da estratégia EMA 20/50 + RSI + Volume. O P&L é negativo (-0.06).",
+        "impacto": "Não é possível determinar a viabilidade ou lucratividade da estratégia, e o bot está perdendo capital na única operação realizada."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "Filtros de Qualidade Inconsistentes/Não Reportados",
+        "causa": "As métricas 'resistance_block_rate' e 'volume_block_rate' são 0.0, apesar de 'use_candle_patterns' e 'volume_ma_period' estarem ativos. Isso sugere que esses filtros podem não estar funcionando como esperado ou seus bloqueios não estão sendo contabilizados.",
+        "impacto": "Falta de visibilidade sobre o funcionamento de filtros importantes, o que pode levar a decisões de trade subótimas ou a uma falsa sensação de segurança."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Configuração de Risco Potencialmente Restritiva",
+        "causa": "A relação Risco:Recompensa (R:R) de 1:3 (SL 1.5%, TP 4.5%) pode ser ambiciosa para uma estratégia não comprovada, potencialmente dificultando o fechamento de trades com lucro ou resultando em stops prematuros.",
+        "impacto": "Pode contribuir para a baixa taxa de vitórias e P&L negativo se os trades forem executados, embora não seja a causa principal da falta de trades."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO",
+        "descricao": "Implementar logs detalhados em cada etapa do pipeline de execução de sinais (após score, após MCP, após filtros de sessão, após filtros de resistência/volume, antes de enviar a ordem para a Bybit, etc.) para identificar o ponto exato onde os 389 sinais restantes estão sendo bloqueados.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "É o problema mais crítico. Sem entender o gargalo de execução, o bot não pode operar e a estratégia não pode ser avaliada."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Verificar a implementação e o registro dos filtros de resistência e volume. Assegurar que estão funcionando corretamente e que seus bloqueios são contabilizados no diagnóstico.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "A taxa de bloqueio zero para esses filtros é suspeita e impede a análise completa do processo de filtragem de qualidade."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Para fins de teste e coleta de dados, ajustar a relação Risco:Recompensa (R:R) para um valor mais conservador (ex: 1:2 ou 1:1) ou até mesmo desativar temporariamente o stop loss/take profit para observar se os trades são abertos e fechados.",
+        "parametro": "risk.stop_loss_percent, risk.take_profit_percent",
+        "valor_atual": "0.015, 0.045",
+        "valor_sugerido": "0.02, 0.04 (R:R 1:2) ou 0.03, 0.03 (R:R 1:1) para testes iniciais.",
+        "justificativa": "Um R:R de 1:3 pode ser muito ambicioso para uma estratégia não comprovada. Ajustar para coletar mais dados de trades e validar a execução completa."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ativar o módulo 'adaptive' para permitir que o bot otimize timeframes e parâmetros com base em dados históricos, uma vez que o problema de execução seja resolvido.",
+        "parametro": "adaptive.enabled",
+        "valor_atual": "false",
+        "valor_sugerido": "true",
+        "justificativa": "Ajudará a validar e otimizar a estratégia em diferentes timeframes e condições de mercado, melhorando o desempenho a longo prazo."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Após resolver o problema de execução, focar a atenção em símbolos como DOGEUSDT, NOTUSDT, NEARUSDT, AVAXUSDT e ADAUSDT, que apresentaram os maiores scores médios, para observar seu desempenho real.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Esses símbolos mostram potencial de qualidade de sinal e podem ser os melhores candidatos para trades lucrativos."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Considerar a revisão do modelo do MCP ('deepseek-r1:32b' via Ollama) se a latência ou o consumo de recursos se tornarem um problema. Embora a taxa de aprovação seja alta, um modelo mais leve ou um provedor de IA mais rápido pode otimizar a eficiência.",
+        "parametro": "mcp.model",
+        "valor_atual": "deepseek-r1:32b",
+        "valor_sugerido": "Manter por enquanto, mas monitorar latência. Se for um problema, considerar um modelo Ollama mais leve ou 'gemini-2.5-flash' diretamente.",
+        "justificativa": "O MCP não é o gargalo principal, mas a otimização pode melhorar a eficiência geral do sistema."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": 0.02,
+        "take_profit_percent": 0.04
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot está essencialmente inoperante devido a um gargalo crítico na execução de ordens, que precisa ser investigado e resolvido com urgência.",
+      "A estratégia de trading não pode ser avaliada ou otimizada sem a coleta de dados de trades reais, o que exige a resolução do problema de execução."
+    ]
+  },
+  "applied_adjustments": [
+    "risk.stop_loss_percent: 0.015 → 0.02",
+    "risk.take_profit_percent: 0.045 → 0.04"
+  ]
+}

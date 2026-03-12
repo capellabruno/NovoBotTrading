@@ -1,0 +1,202 @@
+{
+  "timestamp": "20260311_132546",
+  "diagnosis": {
+    "cycles": 162,
+    "total_signals": 327,
+    "total_blocked_score": 26,
+    "total_blocked_mcp": 38,
+    "total_orders": 9,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "ETHUSDT": 72.59375,
+      "SOLUSDT": 70.10526315789474,
+      "XRPUSDT": 75.17391304347827,
+      "ADAUSDT": 65.78571428571429,
+      "DOGEUSDT": 77.44444444444444,
+      "AVAXUSDT": 67.23076923076923,
+      "DOTUSDT": 66.03448275862068,
+      "TONUSDT": 67.66666666666667,
+      "NOTUSDT": 72.61538461538461,
+      "NEARUSDT": 69.18181818181819,
+      "WIFUSDT": 71.42857142857143,
+      "SUIUSDT": 69.48275862068965,
+      "1000PEPEUSDT": 68.57142857142857,
+      "LINKUSDT": 75.0,
+      "APTUSDT": 75.71428571428571,
+      "BNBUSDT": 64.25
+    },
+    "avg_rsi": {
+      "ETHUSDT": 58.314528301886796,
+      "SOLUSDT": 53.024166666666666,
+      "XRPUSDT": 56.32038461538461,
+      "ADAUSDT": 60.85807692307692,
+      "DOGEUSDT": 55.348301886792456,
+      "AVAXUSDT": 56.02547169811321,
+      "DOTUSDT": 63.4225,
+      "1000PEPEUSDT": 59.964038461538465,
+      "WIFUSDT": 62.847115384615385,
+      "NOTUSDT": 59.987884615384615,
+      "LINKUSDT": 58.135384615384616,
+      "BNBUSDT": 57.731923076923074,
+      "SUIUSDT": 62.80942307692308,
+      "NEARUSDT": 59.64519230769231,
+      "APTUSDT": 57.94538461538461,
+      "TONUSDT": 57.19923076923077
+    },
+    "top_sessions": [
+      [
+        "OVERLAP",
+        252
+      ],
+      [
+        "LONDON",
+        58
+      ],
+      [
+        "NEW_YORK",
+        17
+      ]
+    ],
+    "mcp_approval_rate": 86.02941176470588,
+    "avg_mcp_confidence": 0.7463235294117647,
+    "mcp_total": 272,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "TONUSDT",
+        39
+      ],
+      [
+        "DOGEUSDT",
+        36
+      ],
+      [
+        "APTUSDT",
+        31
+      ],
+      [
+        "XRPUSDT",
+        29
+      ],
+      [
+        "SOLUSDT",
+        29
+      ]
+    ],
+    "most_blocked": [
+      [
+        "SUIUSDT",
+        12
+      ],
+      [
+        "DOTUSDT",
+        11
+      ],
+      [
+        "ADAUSDT",
+        11
+      ],
+      [
+        "WIFUSDT",
+        7
+      ],
+      [
+        "BNBUSDT",
+        5
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "9": {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      "10": {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      "11": {
+        "hour_utc": 11,
+        "signals": 119,
+        "avg_score": 70.0,
+        "mcp_approval_rate": 84.9,
+        "orders": 0
+      },
+      "12": {
+        "hour_utc": 12,
+        "signals": 51,
+        "avg_score": 69.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 3
+      },
+      "13": {
+        "hour_utc": 13,
+        "signals": 17,
+        "avg_score": 68.2,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 11,
+        "signals": 119,
+        "avg_score": 70.0,
+        "mcp_approval_rate": 84.9,
+        "orders": 0
+      },
+      {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      {
+        "hour_utc": 12,
+        "signals": 51,
+        "avg_score": 69.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 3
+      },
+      {
+        "hour_utc": 13,
+        "signals": 17,
+        "avg_score": 68.2,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "Bot analisou 162 ciclos. Gerou 327 sinais, 9 ordens executadas. MCP aprovou 86% dos sinais enviados.",
+    "problemas": [],
+    "recomendacoes": [],
+    "ajustes_config": {
+      "quality": {},
+      "risk": {},
+      "mcp": {}
+    },
+    "alertas": []
+  },
+  "applied_adjustments": []
+}

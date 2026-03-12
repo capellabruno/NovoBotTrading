@@ -1,0 +1,471 @@
+{
+  "timestamp": "20260310_194852",
+  "diagnosis": {
+    "cycles": 78,
+    "total_signals": 317,
+    "total_blocked_score": 151,
+    "total_blocked_mcp": 17,
+    "total_orders": 112,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 6.309148264984227,
+    "volume_block_rate": 33.4384858044164,
+    "avg_scores": {
+      "LINKUSDT": 66.52173913043478,
+      "APTUSDT": 62.26923076923077,
+      "AVAXUSDT": 69.5,
+      "DOTUSDT": 59.89655172413793,
+      "ADAUSDT": 66.75,
+      "DOGEUSDT": 64.5,
+      "1000PEPEUSDT": 60.0,
+      "WIFUSDT": 63.529411764705884,
+      "NEARUSDT": 71.6,
+      "SOLUSDT": 66.27272727272727,
+      "NOTUSDT": 64.5,
+      "TONUSDT": 65.32142857142857,
+      "XRPUSDT": 53.5,
+      "BNBUSDT": 68.42105263157895,
+      "ETHUSDT": 60.18181818181818,
+      "SUIUSDT": 69.5
+    },
+    "avg_rsi": {
+      "WIFUSDT": 40.413636363636364,
+      "NOTUSDT": 41.71818181818182,
+      "LINKUSDT": 42.598333333333336,
+      "BNBUSDT": 42.69257575757576,
+      "SUIUSDT": 39.91621212121212,
+      "NEARUSDT": 42.63409090909091,
+      "APTUSDT": 37.0140909090909,
+      "TONUSDT": 39.28151515151515,
+      "ETHUSDT": 42.42029411764706,
+      "SOLUSDT": 41.31716417910448,
+      "XRPUSDT": 39.214,
+      "ADAUSDT": 41.22181818181818,
+      "DOGEUSDT": 40.69723076923077,
+      "AVAXUSDT": 49.07046153846154,
+      "DOTUSDT": 39.32446153846154,
+      "1000PEPEUSDT": 38.90630769230769
+    },
+    "top_sessions": [
+      [
+        "OFF_HOURS",
+        173
+      ],
+      [
+        "NEW_YORK",
+        144
+      ]
+    ],
+    "mcp_approval_rate": 89.7590361445783,
+    "avg_mcp_confidence": 0.7506024096385543,
+    "mcp_total": 166,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "XRPUSDT",
+        59
+      ],
+      [
+        "ETHUSDT",
+        57
+      ],
+      [
+        "SUIUSDT",
+        54
+      ],
+      [
+        "1000PEPEUSDT",
+        53
+      ],
+      [
+        "DOGEUSDT",
+        53
+      ]
+    ],
+    "most_blocked": [
+      [
+        "WIFUSDT",
+        31
+      ],
+      [
+        "DOTUSDT",
+        23
+      ],
+      [
+        "APTUSDT",
+        21
+      ],
+      [
+        "TONUSDT",
+        18
+      ],
+      [
+        "AVAXUSDT",
+        10
+      ]
+    ],
+    "warnings_summary": {
+      "LINKUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          15
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          6
+        ]
+      ],
+      "APTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          15
+        ],
+        [
+          "Sessão de baixa liquidez",
+          12
+        ]
+      ],
+      "AVAXUSDT": [
+        [
+          "Volume baixo (0.73x média)",
+          3
+        ],
+        [
+          "Volume baixo (0.72x média)",
+          3
+        ]
+      ],
+      "DOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          25
+        ],
+        [
+          "Sessão de baixa liquidez",
+          16
+        ]
+      ],
+      "1000PEPEUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          10
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          7
+        ]
+      ],
+      "WIFUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          39
+        ],
+        [
+          "Sessão de baixa liquidez",
+          18
+        ]
+      ],
+      "NEARUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          12
+        ],
+        [
+          "Volume baixo (0.75x média)",
+          3
+        ]
+      ],
+      "SOLUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          16
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          13
+        ]
+      ],
+      "NOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          15
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          6
+        ]
+      ],
+      "TONUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          16
+        ],
+        [
+          "Sessão de baixa liquidez",
+          10
+        ]
+      ],
+      "XRPUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          6
+        ],
+        [
+          "Volume baixo (0.64x média)",
+          3
+        ]
+      ],
+      "BNBUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          16
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          6
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          13
+        ],
+        [
+          "Volume baixo (0.78x média)",
+          4
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          11
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          7
+        ]
+      ],
+      "SUIUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          12
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          3
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          6
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          3
+        ]
+      ]
+    },
+    "hourly_stats": {
+      "14": {
+        "hour_utc": 14,
+        "signals": 42,
+        "avg_score": 67.9,
+        "mcp_approval_rate": 87.0,
+        "orders": 20
+      },
+      "15": {
+        "hour_utc": 15,
+        "signals": 36,
+        "avg_score": 69.3,
+        "mcp_approval_rate": 85.7,
+        "orders": 18
+      },
+      "16": {
+        "hour_utc": 16,
+        "signals": 36,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 100.0,
+        "orders": 3
+      },
+      "17": {
+        "hour_utc": 17,
+        "signals": 30,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 11
+      },
+      "18": {
+        "hour_utc": 18,
+        "signals": 69,
+        "avg_score": 64.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 33
+      },
+      "19": {
+        "hour_utc": 19,
+        "signals": 104,
+        "avg_score": 62.9,
+        "mcp_approval_rate": 85.3,
+        "orders": 27
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 19,
+        "signals": 104,
+        "avg_score": 62.9,
+        "mcp_approval_rate": 85.3,
+        "orders": 27
+      },
+      {
+        "hour_utc": 18,
+        "signals": 69,
+        "avg_score": 64.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 33
+      },
+      {
+        "hour_utc": 14,
+        "signals": 42,
+        "avg_score": 67.9,
+        "mcp_approval_rate": 87.0,
+        "orders": 20
+      },
+      {
+        "hour_utc": 15,
+        "signals": 36,
+        "avg_score": 69.3,
+        "mcp_approval_rate": 85.7,
+        "orders": 18
+      },
+      {
+        "hour_utc": 16,
+        "signals": 36,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 100.0,
+        "orders": 3
+      },
+      {
+        "hour_utc": 17,
+        "signals": 30,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 11
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando sinais e abrindo ordens, mas falha criticamente em fechar qualquer posição, resultando em PnL e taxas de vitória/perda zerados. Uma alta porcentagem de sinais é bloqueada devido a um score baixo, baixa liquidez de mercado e proximidade a níveis de resistência, limitando as oportunidades de trading.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Bot não fecha trades (total_closes: 0)",
+        "causa": "Indica um bug crítico na lógica de gestão de posição ou na integração com a Bybit para fechamento de ordens.",
+        "impacto": "O bot não realiza lucros nem perdas, tornando-o inoperante e impossibilitando qualquer avaliação de performance ou otimização."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Ausência de PnL e Win Rate",
+        "causa": "Consequência direta do problema de não fechamento de trades.",
+        "impacto": "Não é possível determinar a rentabilidade ou eficácia da estratégia, impedindo qualquer tomada de decisão baseada em dados."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Alta taxa de bloqueio por score (151 de 317 sinais)",
+        "causa": "O `min_score` de 55 pode ser muito restritivo, ou a estratégia está gerando muitos sinais de qualidade marginal.",
+        "impacto": "Reduz significativamente o número de oportunidades de trading que chegam ao MCP e à execução."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Alta taxa de bloqueio por volume/liquidez (33.44%)",
+        "causa": "O bot está operando em sessões de baixa liquidez (principalmente 'OFF_HOURS') ou o filtro de volume é muito sensível.",
+        "impacto": "Perda de oportunidades e potencial risco de slippage e spreads maiores se os trades fossem executados nessas condições."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Frequentes bloqueios por 'PUT próximo ao suporte - risco alto'",
+        "causa": "A estratégia gera sinais de venda (PUT) em níveis de suporte, indicando um alto risco de reversão ou falta de espaço para o preço cair.",
+        "impacto": "Bloqueia sinais que poderiam ser de alto risco, mas também pode estar perdendo oportunidades se o suporte for fraco."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Grande lista de símbolos, alguns com baixa atividade ou muitos bloqueios",
+        "causa": "Alguns ativos na lista `system.symbols` não são ideais para a estratégia ou para as condições de mercado atuais (ex: XRPUSDT, ETHUSDT com poucos sinais; WIFUSDT, DOTUSDT com muitos bloqueios).",
+        "impacto": "Desperdício de recursos computacionais e potencial ruído na análise de sinais."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO",
+        "descricao": "Investigar e corrigir o problema de fechamento de trades.",
+        "parametro": null,
+        "valor_atual": "0 closes",
+        "valor_sugerido": "Funcionalidade de fechamento de trades",
+        "justificativa": "Esta é a falha mais crítica. Sem fechamento de trades, o bot não pode gerar PnL, tornando todas as outras análises e otimizações irrelevantes. Verificar logs de execução, integração com a API da Bybit e lógica de stop loss/take profit."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar o score mínimo para entrada de sinais.",
+        "parametro": "quality.min_score",
+        "valor_atual": 55,
+        "valor_sugerido": 50,
+        "justificativa": "Reduzir o `min_score` para 50 pode aumentar o número de sinais que passam pelo filtro de qualidade, potencialmente revelando mais oportunidades. É crucial monitorar a qualidade dos trades após essa mudança."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Otimizar o filtro de sessão de mercado e/ou restringir horários de operação.",
+        "parametro": "quality.use_session_filter",
+        "valor_atual": "true",
+        "valor_sugerido": "Manter 'true', mas considerar ajustar os parâmetros internos do filtro ou operar apenas em horários de maior liquidez.",
+        "justificativa": "A alta taxa de bloqueio por volume e as sessões 'OFF_HOURS' indicam que operar em baixa liquidez é problemático. Focar em horários como 18 UTC, que mostrou 100% de aprovação MCP e alto número de ordens, pode melhorar a performance."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Revisar e otimizar a lista de símbolos monitorados.",
+        "parametro": "system.symbols",
+        "valor_atual": "ETHUSDT, SOLUSDT, XRPUSDT, ADAUSDT, DOGEUSDT, AVAXUSDT, DOTUSDT, MATICUSDT, 1000PEPEUSDT, WIFUSDT, NOTUSDT, LINKUSDT, BNBUSDT, SUIUSDT, NEARUSDT, APTUSDT, TONUSDT",
+        "valor_sugerido": "Focar inicialmente em símbolos com avg_scores mais altos e menos bloqueios, como NEARUSDT, BNBUSDT, LINKUSDT, ADAUSDT, SOLUSDT, AVAXUSDT. Considerar remover ou reavaliar XRPUSDT, ETHUSDT, 1000PEPEUSDT, DOGEUSDT (poucos sinais) e WIFUSDT, DOTUSDT, APTUSDT (muitos bloqueios).",
+        "justificativa": "Concentrar os recursos em ativos que geram sinais de maior qualidade e menos problemáticos pode melhorar a eficiência e a performance geral do bot."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Monitorar a qualidade dos sinais e a performance do MCP após os ajustes.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Após a correção do problema de fechamento e os ajustes de `min_score` e símbolos, é crucial observar como a qualidade dos sinais e a taxa de aprovação do MCP se comportam para novas otimizações."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Considerar ativar a estratégia adaptativa.",
+        "parametro": "adaptive.enabled",
+        "valor_atual": false,
+        "valor_sugerido": true,
+        "justificativa": "Uma vez que os problemas críticos de execução e filtragem sejam resolvidos, a funcionalidade adaptativa pode otimizar automaticamente timeframes e parâmetros, melhorando a performance a longo prazo."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": 50
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O problema mais crítico é que o bot não está fechando nenhuma posição. Isso precisa ser investigado e corrigido imediatamente, pois impede qualquer avaliação de performance e lucro.",
+      "Apesar de gerar muitos sinais, a alta taxa de bloqueio por score e liquidez indica que a estratégia atual ou seus filtros precisam de refinamento para focar em oportunidades de maior qualidade e em condições de mercado mais favoráveis."
+    ]
+  },
+  "applied_adjustments": [
+    "quality.min_score: 55 → 50"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "timestamp": "20260311_095208",
+  "diagnosis": {
+    "cycles": 119,
+    "total_signals": 53,
+    "total_blocked_score": 4,
+    "total_blocked_mcp": 3,
+    "total_orders": 0,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "ETHUSDT": 71.0,
+      "SOLUSDT": 67.9,
+      "XRPUSDT": 71.0,
+      "ADAUSDT": 71.0,
+      "DOGEUSDT": 86.0,
+      "AVAXUSDT": 66.57142857142857,
+      "DOTUSDT": 74.0,
+      "TONUSDT": 66.0,
+      "NOTUSDT": 73.625,
+      "NEARUSDT": 70.0
+    },
+    "avg_rsi": {
+      "ETHUSDT": 49.051,
+      "SOLUSDT": 41.798,
+      "XRPUSDT": 47.79333333333333,
+      "ADAUSDT": 56.711,
+      "DOGEUSDT": 52.427,
+      "AVAXUSDT": 53.254999999999995,
+      "DOTUSDT": 72.441,
+      "1000PEPEUSDT": 57.202,
+      "WIFUSDT": 63.784000000000006,
+      "NOTUSDT": 57.54299999999999,
+      "LINKUSDT": 52.72099999999999,
+      "BNBUSDT": 47.286,
+      "SUIUSDT": 56.085,
+      "NEARUSDT": 61.146,
+      "APTUSDT": 58.55799999999999,
+      "TONUSDT": 50.66111111111112
+    },
+    "top_sessions": [
+      [
+        "LONDON",
+        53
+      ]
+    ],
+    "mcp_approval_rate": 92.85714285714286,
+    "avg_mcp_confidence": 0.7761904761904762,
+    "mcp_total": 42,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "1000PEPEUSDT",
+        10
+      ],
+      [
+        "APTUSDT",
+        10
+      ],
+      [
+        "ADAUSDT",
+        8
+      ],
+      [
+        "DOGEUSDT",
+        8
+      ],
+      [
+        "TONUSDT",
+        7
+      ]
+    ],
+    "most_blocked": [
+      [
+        "SOLUSDT",
+        3
+      ],
+      [
+        "DOTUSDT",
+        3
+      ],
+      [
+        "NOTUSDT",
+        1
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "9": {
+        "hour_utc": 9,
+        "signals": 53,
+        "avg_score": 70.8,
+        "mcp_approval_rate": 92.9,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 9,
+        "signals": 53,
+        "avg_score": 70.8,
+        "mcp_approval_rate": 92.9,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando um número razoável de sinais de alta qualidade (53 sinais, score médio > 70, alta taxa de aprovação do MCP de 92.9%) predominantemente durante a sessão de Londres. No entanto, o problema mais crítico é a completa ausência de ordens executadas (total_orders: 0), o que impede qualquer atividade de trading real e a geração de PnL, tornando o bot inoperante.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Nenhuma ordem executada (total_orders: 0) e discrepância na pipeline de sinais.",
+        "causa": "Provavelmente devido a restrições de gestão de risco (tamanho da ordem muito pequeno), falha na execução da API da Bybit, ou um problema na lógica de 'timing de entrada' (3m timeframe) que impede a colocação da ordem. Além disso, 7 sinais que passaram pelo filtro de score não foram enviados ao MCP (49 passaram o score, mas apenas 42 foram para o MCP), indicando um filtro intermediário não contabilizado ou um bug na pipeline.",
+        "impacto": "O bot está inoperante, não gerando PnL, e não permite avaliar a eficácia da estratégia. A falha na pipeline de sinais pode mascarar problemas de filtragem."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "Taxa de aprovação do MCP muito alta (92.9%).",
+        "causa": "O modelo de IA pode ser muito permissivo, ou os prompts não são suficientemente desafiadores para atuar como um filtro de qualidade robusto.",
+        "impacto": "O MCP pode não estar adicionando valor real como filtro de qualidade, aprovando sinais que talvez não sejam ideais, ou sua configuração atual não está otimizada para a seletividade desejada."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Alguns símbolos com alto score médio (ex: DOGEUSDT) aparecem em 'no_signal_syms' (pararam de gerar sinais) e outros com bom score (ex: DOTUSDT, NOTUSDT, SOLUSDT) estão em 'most_blocked'.",
+        "causa": "Pode indicar que as condições de mercado para esses ativos mudaram, que os filtros (score, MCP) estão sendo mais rigorosos para eles, ou que a lógica de geração de sinais é inconsistente.",
+        "impacto": "Perda de oportunidades de trading em ativos potencialmente lucrativos ou sinais de baixa qualidade sendo gerados e bloqueados, reduzindo a eficiência do bot."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CONFIG/MONITORAR",
+        "descricao": "Investigar e ajustar o tamanho da ordem para garantir que atenda aos requisitos mínimos da Bybit.",
+        "parametro": "risk.entry_percent e risk.account_balance_fixed",
+        "valor_atual": "entry_percent: 0.1, account_balance_fixed: 100.0 (resulta em $10 por trade)",
+        "valor_sugerido": "Aumentar 'account_balance_fixed' ou 'entry_percent' para garantir que o valor da ordem seja significativamente maior que o mínimo da Bybit (ex: $20-$50 como ponto de partida), ou usar uma abordagem de dimensionamento de posição baseada em % do saldo *real* da conta.",
+        "justificativa": "A causa mais provável para 'total_orders: 0' é que o tamanho da ordem calculada ($10) é muito pequeno para ser executado na Bybit para os pares de cripto selecionados."
+      },
+      {
+        "tipo": "CODIGO/MONITORAR",
+        "descricao": "Depurar a pipeline de execução de ordens e o fluxo de sinais para identificar por que os sinais aprovados não estão se convertendo em ordens e por que nem todos os sinais que passaram pelo score são enviados ao MCP.",
+        "parametro": "N/A",
+        "valor_atual": "N/A",
+        "valor_sugerido": "Adicionar logs detalhados em cada etapa da pipeline (geração de sinal, filtro de score, envio ao MCP, aprovação do MCP, tentativa de ordem, resposta da API). Verificar a lógica do 'timing de entrada' (3m timeframe) e sua interação com o timeframe de sinal (15m).",
+        "justificativa": "É crucial entender onde a execução falha e onde os sinais são descartados. Pode ser um problema de conectividade, erro na API, uma condição de timing que nunca é satisfeita, ou um filtro silencioso."
+      },
+      {
+        "tipo": "CONFIG/MONITORAR",
+        "descricao": "Reavaliar a eficácia do filtro MCP e a consistência de sua aplicação.",
+        "parametro": "mcp.enabled, mcp.model",
+        "valor_atual": "enabled: true, model: deepseek-r1:32b",
+        "valor_sugerido": "Considerar ajustar os prompts do MCP para torná-lo mais seletivo ou testar um modelo diferente se a alta taxa de aprovação persistir após a depuração. Investigar por que 'mcp_total' é menor que 'total_signals'.",
+        "justificativa": "Uma taxa de aprovação muito alta pode indicar que o MCP não está adicionando valor como filtro. A inconsistência nos números de sinais enviados ao MCP precisa ser entendida."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Expandir a lista de símbolos monitorados e potencialmente negociados.",
+        "parametro": "system.symbols",
+        "valor_atual": "[\"DOTUSDT\", \"DOGEUSDT\", \"NOTUSDT\", \"ADAUSDT\", \"NEARUSDT\", \"AVAXUSDT\"]",
+        "valor_sugerido": "Adicionar símbolos com bom 'avg_rsi' e potencial de liquidez, como ETHUSDT, SOLUSDT, XRPUSDT, LINKUSDT, BNBUSDT, SUIUSDT, APTUSDT, 1000PEPEUSDT (se a liquidez for boa e não houver problemas de 'no_signal_syms').",
+        "justificativa": "Diversificar os ativos pode aumentar as oportunidades de trading e reduzir a dependência de poucos pares, potencialmente melhorando o PnL."
+      },
+      {
+        "tipo": "CONFIG/MONITORAR",
+        "descricao": "Avaliar a configuração 'adaptive' e sua interação com o 'system.timeframe'.",
+        "parametro": "adaptive.enabled, system.timeframe",
+        "valor_atual": "adaptive.enabled: true, system.timeframe: \"15m\"",
+        "valor_sugerido": "Se o bot não estiver usando os timeframes adaptativos para a geração de sinais, considerar desabilitar 'adaptive.enabled' ou garantir que a lógica de sinal esteja usando o timeframe adaptativo corretamente.",
+        "justificativa": "A configuração adaptativa pode introduzir complexidade e comportamento inesperado se não estiver totalmente integrada ou se houver conflito com o timeframe fixo do sistema."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": 0.2,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O problema mais crítico é a ausência total de ordens executadas. Isso precisa ser resolvido antes de qualquer otimização da estratégia.",
+      "A discrepância entre 'total_signals' (53) e 'mcp_total' (42) sugere um gargalo ou filtro não contabilizado antes do MCP, que precisa ser investigado.",
+      "Monitorar de perto os símbolos que aparecem em 'no_signal_syms' para entender por que pararam de gerar sinais e se isso é um comportamento esperado ou um problema."
+    ]
+  },
+  "applied_adjustments": [
+    "risk.entry_percent: 0.1 → 0.2"
+  ]
+}

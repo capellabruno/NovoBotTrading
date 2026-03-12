@@ -1,0 +1,286 @@
+{
+  "timestamp": "20260311_135721",
+  "diagnosis": {
+    "cycles": 168,
+    "total_signals": 366,
+    "total_blocked_score": 26,
+    "total_blocked_mcp": 38,
+    "total_orders": 9,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "ETHUSDT": 72.44117647058823,
+      "SOLUSDT": 68.72727272727273,
+      "XRPUSDT": 74.0,
+      "ADAUSDT": 66.19354838709677,
+      "DOGEUSDT": 77.44444444444444,
+      "AVAXUSDT": 66.8125,
+      "DOTUSDT": 66.875,
+      "TONUSDT": 67.66666666666667,
+      "NOTUSDT": 72.42857142857143,
+      "NEARUSDT": 68.65714285714286,
+      "WIFUSDT": 73.33333333333333,
+      "SUIUSDT": 69.48275862068965,
+      "1000PEPEUSDT": 67.72727272727273,
+      "LINKUSDT": 73.33333333333333,
+      "APTUSDT": 75.21739130434783,
+      "BNBUSDT": 63.357142857142854
+    },
+    "avg_rsi": {
+      "ETHUSDT": 58.43,
+      "SOLUSDT": 53.29203703703703,
+      "XRPUSDT": 55.84344827586207,
+      "ADAUSDT": 60.35293103448276,
+      "DOGEUSDT": 54.93864406779661,
+      "AVAXUSDT": 55.51949152542373,
+      "DOTUSDT": 62.075762711864414,
+      "1000PEPEUSDT": 59.61983050847457,
+      "WIFUSDT": 62.080169491525425,
+      "NOTUSDT": 59.169999999999995,
+      "LINKUSDT": 57.70016949152542,
+      "BNBUSDT": 57.84103448275862,
+      "SUIUSDT": 62.51362068965517,
+      "NEARUSDT": 58.57931034482758,
+      "APTUSDT": 56.04482758620689,
+      "TONUSDT": 57.81965517241379
+    },
+    "top_sessions": [
+      [
+        "OVERLAP",
+        252
+      ],
+      [
+        "LONDON",
+        58
+      ],
+      [
+        "NEW_YORK",
+        56
+      ]
+    ],
+    "mcp_approval_rate": 87.66233766233766,
+    "avg_mcp_confidence": 0.7454545454545455,
+    "mcp_total": 308,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "TONUSDT",
+        39
+      ],
+      [
+        "DOGEUSDT",
+        36
+      ],
+      [
+        "APTUSDT",
+        35
+      ],
+      [
+        "XRPUSDT",
+        32
+      ],
+      [
+        "SOLUSDT",
+        32
+      ]
+    ],
+    "most_blocked": [
+      [
+        "SUIUSDT",
+        12
+      ],
+      [
+        "DOTUSDT",
+        11
+      ],
+      [
+        "ADAUSDT",
+        11
+      ],
+      [
+        "WIFUSDT",
+        7
+      ],
+      [
+        "BNBUSDT",
+        5
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "9": {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      "10": {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      "11": {
+        "hour_utc": 11,
+        "signals": 119,
+        "avg_score": 70.0,
+        "mcp_approval_rate": 84.9,
+        "orders": 0
+      },
+      "12": {
+        "hour_utc": 12,
+        "signals": 51,
+        "avg_score": 69.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 3
+      },
+      "13": {
+        "hour_utc": 13,
+        "signals": 56,
+        "avg_score": 68.7,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 11,
+        "signals": 119,
+        "avg_score": 70.0,
+        "mcp_approval_rate": 84.9,
+        "orders": 0
+      },
+      {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      {
+        "hour_utc": 13,
+        "signals": 56,
+        "avg_score": 68.7,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 12,
+        "signals": 51,
+        "avg_score": 69.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 3
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot completou 168 ciclos, gerando 366 sinais, mas está operando em modo 'dry_run', resultando em zero trades reais, PnL, vitórias ou perdas. O principal gargalo é a baixa conversão de sinais aprovados pelo MCP (270) para ordens efetivas (9), provavelmente devido ao 'dry_run' e configurações de risco.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Modo 'dry_run' ativo",
+        "causa": "Configuração 'system.dry_run: true'",
+        "impacto": "Impede a execução de trades reais, impossibilitando a coleta de dados de performance e PnL para avaliação e otimização da estratégia."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Baixa taxa de conversão de sinais aprovados para ordens",
+        "causa": "270 sinais foram aprovados pelo MCP, mas apenas 9 ordens foram registradas. Além do 'dry_run', isso pode ser devido a 'max_open_positions' (3) ou o tamanho da ordem ($5) ser muito pequeno para os requisitos mínimos da Bybit.",
+        "impacto": "O bot não está capitalizando a maioria dos sinais gerados, mesmo em modo 'dry_run', limitando o potencial de aprendizado e otimização da estratégia."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Taxas de bloqueio por resistência e volume são 0.0",
+        "causa": "Possível falha na implementação, ativação ou contagem desses filtros, ou eles estão desativados/mal configurados.",
+        "impacto": "Se esses filtros deveriam estar ativos, o bot pode estar considerando sinais de menor qualidade que deveriam ser bloqueados, ou as métricas não estão sendo coletadas corretamente, mascarando potenciais problemas na estratégia."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Ausência de dados de performance por símbolo",
+        "causa": "O modo 'dry_run' impede a execução de trades reais e, consequentemente, a coleta de PnL, wins e losses por símbolo.",
+        "impacto": "Impossibilita a otimização da seleção de símbolos com base em dados de performance reais, dependendo apenas de scores teóricos."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CONFIG",
+        "descricao": "Desativar o modo 'dry_run' para iniciar o trading real.",
+        "parametro": "system.dry_run",
+        "valor_atual": "true",
+        "valor_sugerido": "false",
+        "justificativa": "Essencial para coletar dados de performance reais, avaliar a estratégia e permitir que o bot opere. Recomenda-se começar com um capital pequeno e alavancagem baixa."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Aumentar o 'account_balance_fixed' para garantir que o tamanho da ordem seja viável para a Bybit (mínimo de 10-20 USDT por trade).",
+        "parametro": "risk.account_balance_fixed",
+        "valor_atual": "100.0",
+        "valor_sugerido": "200.0 (para um trade de $10 com 5% de entrada) ou mais, dependendo do saldo real e requisitos da Bybit.",
+        "justificativa": "Ordens muito pequenas ($5 com a configuração atual) podem ser rejeitadas pela exchange ou serem ineficientes em termos de taxas, contribuindo para a baixa conversão de sinais em ordens."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Investigar por que 'resistance_block_rate' e 'volume_block_rate' são 0.0. Verificar se os filtros estão ativos e se a contagem de bloqueios está funcionando corretamente.",
+        "parametro": null,
+        "valor_atual": "0.0",
+        "valor_sugerido": "N/A (espera-se um valor > 0 se os filtros estiverem funcionando)",
+        "justificativa": "Esses filtros são importantes para a qualidade dos sinais. Se não estiverem funcionando, o bot pode estar considerando sinais de baixa qualidade que deveriam ser descartados."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar 'max_open_positions' para permitir mais trades simultâneos, se o capital e a estratégia permitirem.",
+        "parametro": "risk.max_open_positions",
+        "valor_atual": "3",
+        "valor_sugerido": "5 ou 7",
+        "justificativa": "Aumentar o número de posições abertas pode melhorar a taxa de conversão de sinais em ordens, especialmente se houver muitos sinais aprovados pelo MCP."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Considerar adicionar 'APTUSDT' e 'WIFUSDT' à lista de símbolos monitorados, dado seus altos 'avg_scores'.",
+        "parametro": "system.symbols",
+        "valor_atual": "[\"DOGEUSDT\", \"NOTUSDT\", \"ETHUSDT\", \"SOLUSDT\", \"XRPUSDT\", \"LINKUSDT\"]",
+        "valor_sugerido": "[\"DOGEUSDT\", \"NOTUSDT\", \"ETHUSDT\", \"SOLUSDT\", \"XRPUSDT\", \"LINKUSDT\", \"APTUSDT\", \"WIFUSDT\"]",
+        "justificativa": "Potencial de encontrar mais sinais de alta qualidade e diversificar as oportunidades de trading."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Monitorar a performance do bot especificamente durante a hora UTC 9, que apresenta alta qualidade de sinal (avg_score: 71.2) e alta taxa de aprovação do MCP (93.5%), mas não gerou ordens.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Identificar se há algum bloqueio adicional específico para este período que impeça a execução de ordens, apesar da alta qualidade dos sinais, para otimizar a janela de operação."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot está em 'dry_run' e não está realizando trades reais. Nenhuma avaliação de PnL ou win rate é possível.",
+      "A discrepância entre sinais aprovados pelo MCP (270) e ordens registradas (9) é crítica e precisa ser investigada após desativar o 'dry_run'."
+    ]
+  },
+  "applied_adjustments": []
+}

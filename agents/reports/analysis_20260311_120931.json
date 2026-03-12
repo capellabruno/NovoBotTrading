@@ -1,0 +1,279 @@
+{
+  "timestamp": "20260311_120931",
+  "diagnosis": {
+    "cycles": 146,
+    "total_signals": 278,
+    "total_blocked_score": 23,
+    "total_blocked_mcp": 38,
+    "total_orders": 6,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "ETHUSDT": 74.32,
+      "SOLUSDT": 67.8,
+      "XRPUSDT": 75.63636363636364,
+      "ADAUSDT": 67.47619047619048,
+      "DOGEUSDT": 78.14285714285714,
+      "AVAXUSDT": 67.23076923076923,
+      "DOTUSDT": 66.25,
+      "TONUSDT": 66.0,
+      "NOTUSDT": 72.18181818181819,
+      "NEARUSDT": 69.6,
+      "WIFUSDT": 71.25,
+      "SUIUSDT": 67.6086956521739,
+      "1000PEPEUSDT": 80.0,
+      "LINKUSDT": 75.0,
+      "APTUSDT": 75.5,
+      "BNBUSDT": 64.36363636363636
+    },
+    "avg_rsi": {
+      "ETHUSDT": 59.85837837837837,
+      "SOLUSDT": 55.21242424242424,
+      "XRPUSDT": 60.170277777777784,
+      "ADAUSDT": 64.6775,
+      "DOGEUSDT": 59.24648648648648,
+      "AVAXUSDT": 60.01594594594595,
+      "DOTUSDT": 68.77675675675677,
+      "1000PEPEUSDT": 62.269999999999996,
+      "WIFUSDT": 68.15702702702703,
+      "NOTUSDT": 62.931891891891894,
+      "LINKUSDT": 61.47702702702703,
+      "BNBUSDT": 58.72270270270271,
+      "SUIUSDT": 64.71054054054053,
+      "NEARUSDT": 63.226216216216216,
+      "APTUSDT": 64.51567567567568,
+      "TONUSDT": 56.709189189189196
+    },
+    "top_sessions": [
+      [
+        "OVERLAP",
+        220
+      ],
+      [
+        "LONDON",
+        58
+      ]
+    ],
+    "mcp_approval_rate": 83.47826086956522,
+    "avg_mcp_confidence": 0.7456521739130435,
+    "mcp_total": 230,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "TONUSDT",
+        35
+      ],
+      [
+        "DOGEUSDT",
+        30
+      ],
+      [
+        "SOLUSDT",
+        18
+      ],
+      [
+        "1000PEPEUSDT",
+        17
+      ],
+      [
+        "APTUSDT",
+        17
+      ]
+    ],
+    "most_blocked": [
+      [
+        "SUIUSDT",
+        12
+      ],
+      [
+        "DOTUSDT",
+        11
+      ],
+      [
+        "ADAUSDT",
+        11
+      ],
+      [
+        "WIFUSDT",
+        7
+      ],
+      [
+        "BNBUSDT",
+        5
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "9": {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      "10": {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      "11": {
+        "hour_utc": 11,
+        "signals": 119,
+        "avg_score": 70.0,
+        "mcp_approval_rate": 84.9,
+        "orders": 0
+      },
+      "12": {
+        "hour_utc": 12,
+        "signals": 19,
+        "avg_score": 68.7,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 11,
+        "signals": 119,
+        "avg_score": 70.0,
+        "mcp_approval_rate": 84.9,
+        "orders": 0
+      },
+      {
+        "hour_utc": 10,
+        "signals": 82,
+        "avg_score": 71.6,
+        "mcp_approval_rate": 73.4,
+        "orders": 6
+      },
+      {
+        "hour_utc": 9,
+        "signals": 58,
+        "avg_score": 71.2,
+        "mcp_approval_rate": 93.5,
+        "orders": 0
+      },
+      {
+        "hour_utc": 12,
+        "signals": 19,
+        "avg_score": 68.7,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando um número considerável de sinais (278) e aplicando filtros de qualidade e IA (MCP) de forma consistente. No entanto, a taxa de conversão para ordens é extremamente baixa (6 ordens) e, mais criticamente, nenhuma operação foi fechada, resultando em PnL zero. Isso indica um gargalo severo na execução ou gestão de trades, impedindo qualquer avaliação de performance ou otimização.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Nenhuma operação foi fechada (total_closes: 0), resultando em PnL, vitórias e perdas zerados.",
+        "causa": "As 6 ordens abertas podem estar presas, os níveis de Stop Loss/Take Profit podem ser inadequados para o timeframe/volatilidade, ou há um problema na gestão/rastreamento de posições abertas pelo bot. Sem trades fechados, o módulo adaptativo também está inoperante.",
+        "impacto": "O bot não está gerando resultados financeiros, impedindo qualquer avaliação de performance ou otimização."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Baixíssima taxa de conversão de sinais para ordens (apenas 6 ordens de 278 sinais, ~2.15%).",
+        "causa": "Múltiplos filtros (score, MCP, sessão, padrões de vela, ATR stops, gestão de risco como max_open_positions) estão bloqueando a maioria dos sinais. A taxa de bloqueio por score (23) e MCP (38) é notável, mas ainda deixa muitos sinais não convertidos por outras razões.",
+        "impacto": "O bot está perdendo muitas oportunidades de entrada, subutilizando a estratégia e o tempo de execução."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "resistance_block_rate e volume_block_rate são 0.0, o que é incomum para filtros que deveriam estar ativos.",
+        "causa": "Pode ser um erro de relatório, ou os filtros não estão configurados corretamente, ou as condições de mercado não os ativaram no período observado.",
+        "impacto": "Potencial para o bot abrir trades sem a validação adequada de resistência/suporte ou volume, aumentando o risco."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Verificar o status das 6 ordens abertas diretamente na Bybit. Confirmar se estão ativas, quais são seus SL/TP e o preço atual. Analisar os logs do bot para mensagens relacionadas ao fechamento de trades.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "É crucial entender por que essas ordens não foram fechadas para diagnosticar o problema principal e permitir que o bot comece a gerar PnL."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar o min_score para 60 (de 65) para permitir que mais sinais passem pelo filtro de qualidade.",
+        "parametro": "quality.min_score",
+        "valor_atual": 65,
+        "valor_sugerido": 60,
+        "justificativa": "Com uma taxa de conversão tão baixa, flexibilizar o score pode aumentar o número de entradas. Monitorar a qualidade dos novos trades é essencial."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Revisar os símbolos configurados. Remover DOTUSDT, ADAUSDT, AVAXUSDT (mais bloqueados ou com scores médios mais baixos) e adicionar ETHUSDT, XRPUSDT, LINKUSDT (altos avg_scores, menos bloqueados).",
+        "parametro": "system.symbols",
+        "valor_atual": [
+          "DOTUSDT",
+          "DOGEUSDT",
+          "NOTUSDT",
+          "ADAUSDT",
+          "NEARUSDT",
+          "AVAXUSDT"
+        ],
+        "valor_sugerido": [
+          "DOGEUSDT",
+          "NOTUSDT",
+          "NEARUSDT",
+          "ETHUSDT",
+          "XRPUSDT",
+          "LINKUSDT"
+        ],
+        "justificativa": "Priorizar ativos com histórico de sinais de maior qualidade e menor taxa de bloqueio pode melhorar a eficácia da estratégia e a frequência de sinais acionáveis."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Investigar a discrepância entre as horas 10 UTC (6 ordens) e 11 UTC (0 ordens, mas mais sinais e maior aprovação MCP). Verificar se max_open_positions (3) ou entry_percent (10%) estão limitando as entradas em outras horas.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Entender os fatores que permitiram ordens em 10 UTC e as bloquearam em 11 UTC é crucial para otimizar o timing de entrada e a gestão de risco."
+      },
+      {
+        "tipo": "CODIGO/MONITORAR",
+        "descricao": "Confirmar a funcionalidade e o relatório dos filtros resistance_block_rate e volume_block_rate. Se estiverem ativos e bloqueando 0, verificar os thresholds.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Garantir que todos os filtros de qualidade estão operando como esperado e que os dados de diagnóstico são precisos para evitar entradas subótimas."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Se as ordens abertas persistirem sem fechamento após monitoramento, considerar ajustar stop_loss_percent e take_profit_percent. Por exemplo, para um SL mais apertado (0.01) ou TP mais conservador (0.025) para ver se os trades fecham mais rapidamente.",
+        "parametro": "risk.stop_loss_percent, risk.take_profit_percent",
+        "valor_atual": "0.015, 0.04",
+        "valor_sugerido": "0.01, 0.025 (Exemplo, a ser ajustado após monitoramento)",
+        "justificativa": "Se as ordens não estão fechando, os níveis atuais podem ser inadequados para o ambiente de mercado ou timeframe, impedindo a realização de PnL."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": 60
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "A prioridade máxima é resolver a ausência de trades fechados. Sem isso, o bot não pode ser avaliado ou otimizado.",
+      "Monitorar de perto o impacto de qualquer alteração no min_score na qualidade dos trades e na taxa de conversão.",
+      "Verificar se o max_open_positions (3) está limitando o número de ordens, especialmente se as 6 ordens foram abertas e 3 ainda estão ativas."
+    ]
+  },
+  "applied_adjustments": [
+    "quality.min_score: 65 → 60"
+  ]
+}

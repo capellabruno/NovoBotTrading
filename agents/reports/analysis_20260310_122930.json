@@ -1,0 +1,436 @@
+{
+  "timestamp": "20260310_122930",
+  "diagnosis": {
+    "cycles": 143,
+    "total_signals": 322,
+    "total_blocked_score": 5,
+    "total_blocked_mcp": 21,
+    "total_orders": 297,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 54.037267080745345,
+    "volume_block_rate": 14.906832298136646,
+    "avg_scores": {
+      "BNBUSDT": 72.3529411764706,
+      "SUIUSDT": 68.14285714285714,
+      "NEARUSDT": 71.88,
+      "APTUSDT": 69.68181818181819,
+      "TONUSDT": 69.95454545454545,
+      "ETHUSDT": 73.0,
+      "SOLUSDT": 71.26666666666667,
+      "ADAUSDT": 70.54545454545455,
+      "DOGEUSDT": 74.52941176470588,
+      "AVAXUSDT": 72.38461538461539,
+      "1000PEPEUSDT": 67.52,
+      "WIFUSDT": 67.38709677419355,
+      "LINKUSDT": 80.38461538461539,
+      "XRPUSDT": 74.16666666666667,
+      "DOTUSDT": 75.0,
+      "NOTUSDT": 71.66666666666667
+    },
+    "avg_rsi": {
+      "SUIUSDT": 58.350212765957444,
+      "NEARUSDT": 59.06913043478261,
+      "APTUSDT": 53.52760869565218,
+      "TONUSDT": 49.88347826086956,
+      "ETHUSDT": 47.23304347826087,
+      "SOLUSDT": 48.924186046511636,
+      "XRPUSDT": 50.47869565217391,
+      "ADAUSDT": 54.905,
+      "DOGEUSDT": 64.0304347826087,
+      "AVAXUSDT": 49.709782608695654,
+      "DOTUSDT": 45.296086956521734,
+      "1000PEPEUSDT": 59.897608695652174,
+      "WIFUSDT": 42.56956521739131,
+      "NOTUSDT": 50.54478260869565,
+      "LINKUSDT": 46.39652173913044,
+      "BNBUSDT": 50.128913043478256
+    },
+    "top_sessions": [
+      [
+        "OVERLAP",
+        238
+      ],
+      [
+        "LONDON",
+        85
+      ]
+    ],
+    "mcp_approval_rate": 93.39622641509435,
+    "avg_mcp_confidence": 0.7622641509433963,
+    "mcp_total": 318,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NOTUSDT",
+        37
+      ],
+      [
+        "ETHUSDT",
+        36
+      ],
+      [
+        "DOTUSDT",
+        34
+      ],
+      [
+        "LINKUSDT",
+        33
+      ],
+      [
+        "AVAXUSDT",
+        33
+      ]
+    ],
+    "most_blocked": [
+      [
+        "DOGEUSDT",
+        9
+      ],
+      [
+        "SUIUSDT",
+        6
+      ],
+      [
+        "LINKUSDT",
+        3
+      ],
+      [
+        "XRPUSDT",
+        3
+      ],
+      [
+        "AVAXUSDT",
+        3
+      ]
+    ],
+    "warnings_summary": {
+      "BNBUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          11
+        ],
+        [
+          "Volatilidade muito baixa (ATR 0.3%)",
+          5
+        ]
+      ],
+      "SUIUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          29
+        ],
+        [
+          "Volume baixo (0.63x média)",
+          3
+        ]
+      ],
+      "NEARUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          22
+        ],
+        [
+          "Volume baixo (0.62x média)",
+          3
+        ]
+      ],
+      "APTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          17
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          3
+        ]
+      ],
+      "TONUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          14
+        ],
+        [
+          "Volume baixo (0.61x média)",
+          3
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          7
+        ],
+        [
+          "Volume baixo (0.63x média)",
+          3
+        ]
+      ],
+      "SOLUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          12
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          11
+        ],
+        [
+          "Volume baixo (0.61x média)",
+          3
+        ]
+      ],
+      "AVAXUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          7
+        ]
+      ],
+      "1000PEPEUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          16
+        ],
+        [
+          "Volume baixo (0.62x média)",
+          3
+        ]
+      ],
+      "WIFUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          31
+        ],
+        [
+          "Volume baixo (0.62x média)",
+          3
+        ]
+      ],
+      "LINKUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          7
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          9
+        ],
+        [
+          "Volume baixo (0.63x média)",
+          3
+        ]
+      ],
+      "XRPUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          9
+        ]
+      ],
+      "DOTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          6
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          3
+        ]
+      ],
+      "NOTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          9
+        ]
+      ]
+    },
+    "hourly_stats": {
+      "8": {
+        "hour_utc": 8,
+        "signals": 38,
+        "avg_score": 65.4,
+        "mcp_approval_rate": 100.0,
+        "orders": 37
+      },
+      "9": {
+        "hour_utc": 9,
+        "signals": 46,
+        "avg_score": 64.0,
+        "mcp_approval_rate": 100.0,
+        "orders": 43
+      },
+      "10": {
+        "hour_utc": 10,
+        "signals": 74,
+        "avg_score": 69.9,
+        "mcp_approval_rate": 91.9,
+        "orders": 68
+      },
+      "11": {
+        "hour_utc": 11,
+        "signals": 81,
+        "avg_score": 72.8,
+        "mcp_approval_rate": 96.3,
+        "orders": 78
+      },
+      "12": {
+        "hour_utc": 12,
+        "signals": 83,
+        "avg_score": 77.7,
+        "mcp_approval_rate": 85.5,
+        "orders": 71
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 12,
+        "signals": 83,
+        "avg_score": 77.7,
+        "mcp_approval_rate": 85.5,
+        "orders": 71
+      },
+      {
+        "hour_utc": 11,
+        "signals": 81,
+        "avg_score": 72.8,
+        "mcp_approval_rate": 96.3,
+        "orders": 78
+      },
+      {
+        "hour_utc": 10,
+        "signals": 74,
+        "avg_score": 69.9,
+        "mcp_approval_rate": 91.9,
+        "orders": 68
+      },
+      {
+        "hour_utc": 9,
+        "signals": 46,
+        "avg_score": 64.0,
+        "mcp_approval_rate": 100.0,
+        "orders": 43
+      },
+      {
+        "hour_utc": 8,
+        "signals": 38,
+        "avg_score": 65.4,
+        "mcp_approval_rate": 100.0,
+        "orders": 37
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está ativo, gerando e executando ordens, mas falha criticamente em fechar qualquer posição, resultando em PnL zero. Mais da metade dos sinais são bloqueados por proximidade a níveis de resistência/suporte, e uma parcela significativa por baixo volume, indicando que a estratégia base pode estar gerando muitos sinais de baixa qualidade ou alto risco.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Bot não está fechando nenhuma posição (total_closes: 0).",
+        "causa": "Falha na execução de ordens de Take Profit/Stop Loss, problema de comunicação com a Bybit, ou erro na lógica de gerenciamento de posições. O período de diagnóstico pode ser muito curto, mas é improvável para 143 ciclos.",
+        "impacto": "PnL zero, capital preso em posições abertas indefinidamente, risco de perdas não gerenciadas e inviabilidade operacional do bot."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Alta taxa de bloqueio por resistência/suporte (54.037%).",
+        "causa": "A estratégia (EMA 20/50 + RSI + Volume) gera muitos sinais quando o preço está muito próximo a níveis críticos de resistência ou suporte, que são então filtrados pelo módulo de qualidade.",
+        "impacto": "Redução drástica de oportunidades de trading válidas, desperdício de recursos na geração de sinais de alto risco e potencial perda de capital se os filtros falhassem."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "Bloqueios significativos por baixo volume (14.906%).",
+        "causa": "A estratégia gera sinais em ativos com liquidez insuficiente ou em momentos de baixa atividade, conforme indicado por 'Volume baixo' em várias moedas no warnings_summary.",
+        "impacto": "Redução de oportunidades de trading e aumento do risco de slippage em trades executados em mercados ilíquidos."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "Alguns símbolos geram muitos sinais bloqueados.",
+        "causa": "Símbolos como DOGEUSDT e SUIUSDT estão frequentemente na lista de 'most_blocked' e 'warnings_summary' por resistência/volume, apesar de DOGEUSDT ter um score médio alto.",
+        "impacto": "Desperdício de recursos computacionais e foco em ativos que não convertem sinais em trades executáveis de qualidade."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO/MONITORAR",
+        "descricao": "Investigar e corrigir imediatamente a falha no fechamento de posições. Verificar logs de ordens, status na Bybit e a lógica de TP/SL.",
+        "parametro": null,
+        "valor_atual": "total_closes: 0",
+        "valor_sugerido": "N/A (Correção de bug)",
+        "justificativa": "Este é o problema mais crítico que impede o bot de ser funcional e rentável."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar a lógica da estratégia ou os filtros de qualidade para evitar a geração de sinais muito próximos a níveis de resistência/suporte.",
+        "parametro": "quality.use_atr_stops ou lógica de sinal",
+        "valor_atual": "resistance_block_rate: 54.037%",
+        "valor_sugerido": "Reduzir a taxa de bloqueio para < 20-30%",
+        "justificativa": "A alta taxa de bloqueio indica que a estratégia está gerando muitos sinais de baixa probabilidade. Refinar a entrada pode melhorar a qualidade geral dos trades."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Revisar a lista de símbolos ativos, removendo ou despriorizando aqueles com alto bloqueio por volume ou resistência/suporte.",
+        "parametro": "system.symbols",
+        "valor_atual": "Lista atual de 17 símbolos",
+        "valor_sugerido": "Remover SUIUSDT, WIFUSDT. Despriorizar DOGEUSDT. Focar em ETHUSDT, LINKUSDT, DOTUSDT, XRPUSDT.",
+        "justificativa": "Focar em ativos com melhor histórico de sinais e menor taxa de bloqueio otimiza o desempenho e o uso de recursos."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Considerar aumentar o `min_score` para filtrar sinais de qualidade marginal, otimizando o uso do MCP.",
+        "parametro": "quality.min_score",
+        "valor_atual": "55",
+        "valor_sugerido": "65",
+        "justificativa": "Embora poucos sinais sejam bloqueados por score, um limiar mais alto pode pré-filtrar sinais que seriam posteriormente bloqueados por outros motivos (S/R, volume), melhorando a eficiência."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Otimizar os horários de operação do bot para focar nas janelas de maior qualidade e aprovação MCP.",
+        "parametro": "system.session_filter (se disponível) ou agendamento externo",
+        "valor_atual": "Operação contínua (implícito)",
+        "valor_sugerido": "Focar nas horas 11 UTC e 12 UTC, ou 8-11 UTC para maior aprovação MCP.",
+        "justificativa": "As horas 11 e 12 UTC mostram os maiores scores médios, e 11 UTC mantém uma alta taxa de aprovação MCP. Operar durante períodos de maior liquidez e qualidade de sinal pode melhorar a performance."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ativar o módulo `adaptive` para permitir que o bot otimize timeframes e parâmetros automaticamente.",
+        "parametro": "adaptive.enabled",
+        "valor_atual": "false",
+        "valor_sugerido": "true",
+        "justificativa": "A otimização adaptativa pode ajudar a encontrar configurações mais eficazes para a estratégia e os timeframes, especialmente considerando os problemas de bloqueio e a falta de PnL."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Revisar a gestão de risco, especialmente o `entry_percent` de 10% do saldo por trade.",
+        "parametro": "risk.entry_percent",
+        "valor_atual": "0.1",
+        "valor_sugerido": "0.02",
+        "justificativa": "10% do saldo por trade é um valor muito agressivo, especialmente para um bot que não está fechando posições. Reduzir o risco por trade é crucial para a sustentabilidade do capital."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": 65
+      },
+      "risk": {
+        "entry_percent": 0.02,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot não está fechando nenhuma posição. Isso é um problema crítico que exige investigação e correção imediatas.",
+      "A alta taxa de bloqueio por resistência/suporte (54%) indica que a estratégia atual gera muitos sinais de baixa qualidade ou alto risco, necessitando de refinamento.",
+      "Apesar de não haver erros explícitos, a falta de PnL e trades fechados sugere um problema fundamental na execução ou gerenciamento de trades.",
+      "O `entry_percent` de 10% do saldo por trade é extremamente agressivo e deve ser revisado, especialmente dado o problema de não fechamento de posições."
+    ]
+  },
+  "applied_adjustments": [
+    "quality.min_score: 55 → 65",
+    "risk.entry_percent: 0.1 → 0.02"
+  ]
+}

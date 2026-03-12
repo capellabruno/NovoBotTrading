@@ -1,0 +1,302 @@
+{
+  "timestamp": "20260311_083420",
+  "diagnosis": {
+    "cycles": 105,
+    "total_signals": 453,
+    "total_blocked_score": 48,
+    "total_blocked_mcp": 12,
+    "total_orders": 1,
+    "total_closes": 1,
+    "total_pnl": -0.06,
+    "wins": 0,
+    "losses": 1,
+    "win_rate": 0.0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "DOGEUSDT": 72.45454545454545,
+      "NOTUSDT": 66.68,
+      "NEARUSDT": 68.47058823529412,
+      "APTUSDT": 59.87755102040816,
+      "TONUSDT": 64.83720930232558,
+      "1000PEPEUSDT": 61.214285714285715,
+      "AVAXUSDT": 67.19047619047619,
+      "ETHUSDT": 62.25,
+      "SOLUSDT": 65.02325581395348,
+      "XRPUSDT": 60.38095238095238,
+      "ADAUSDT": 67.44736842105263,
+      "LINKUSDT": 58.0,
+      "SUIUSDT": 60.0,
+      "DOTUSDT": 69.33333333333333
+    },
+    "avg_rsi": {
+      "ETHUSDT": 46.70292682926829,
+      "SOLUSDT": 46.0351282051282,
+      "ADAUSDT": 43.8509756097561,
+      "DOGEUSDT": 39.33792682926829,
+      "AVAXUSDT": 50.478658536585364,
+      "DOTUSDT": 52.88566265060241,
+      "1000PEPEUSDT": 45.38277108433735,
+      "WIFUSDT": 48.53349397590362,
+      "NOTUSDT": 55.38530120481927,
+      "LINKUSDT": 46.44024096385542,
+      "BNBUSDT": 49.26156626506024,
+      "SUIUSDT": 46.50987951807229,
+      "NEARUSDT": 47.36734939759037,
+      "APTUSDT": 43.472771084337346,
+      "TONUSDT": 44.66,
+      "XRPUSDT": 44.84765432098765
+    },
+    "top_sessions": [
+      [
+        "LONDON",
+        234
+      ],
+      [
+        "ASIAN",
+        219
+      ]
+    ],
+    "mcp_approval_rate": 96.79144385026738,
+    "avg_mcp_confidence": 0.7465240641711229,
+    "mcp_total": 374,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NOTUSDT",
+        58
+      ],
+      [
+        "ETHUSDT",
+        50
+      ],
+      [
+        "NEARUSDT",
+        49
+      ],
+      [
+        "ADAUSDT",
+        44
+      ],
+      [
+        "1000PEPEUSDT",
+        41
+      ]
+    ],
+    "most_blocked": [
+      [
+        "APTUSDT",
+        12
+      ],
+      [
+        "XRPUSDT",
+        9
+      ],
+      [
+        "DOGEUSDT",
+        9
+      ],
+      [
+        "1000PEPEUSDT",
+        6
+      ],
+      [
+        "AVAXUSDT",
+        6
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "1": {
+        "hour_utc": 1,
+        "signals": 11,
+        "avg_score": 67.7,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "2": {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      "3": {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      "4": {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "5": {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "6": {
+        "hour_utc": 6,
+        "signals": 60,
+        "avg_score": 61.2,
+        "mcp_approval_rate": 93.3,
+        "orders": 0
+      },
+      "7": {
+        "hour_utc": 7,
+        "signals": 56,
+        "avg_score": 65.3,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "8": {
+        "hour_utc": 8,
+        "signals": 20,
+        "avg_score": 63.8,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 6,
+        "signals": 60,
+        "avg_score": 61.2,
+        "mcp_approval_rate": 93.3,
+        "orders": 0
+      },
+      {
+        "hour_utc": 7,
+        "signals": 56,
+        "avg_score": 65.3,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot gerou um número considerável de sinais de alta qualidade, com uma boa taxa de aprovação do MCP. No entanto, a execução de ordens é extremamente baixa (apenas 1 trade simulado com perda), impedindo qualquer avaliação significativa de performance ou otimização da estratégia, principalmente devido ao modo 'dry_run' ativo.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Ausência de operações reais e dados de performance insuficientes.",
+        "causa": "O bot está configurado em 'dry_run: true', o que impede a execução de ordens reais. A única ordem registrada é provavelmente simulada ou de um período anterior, resultando em PnL insignificante.",
+        "impacto": "Impossibilidade de avaliar a rentabilidade real da estratégia, otimizar parâmetros ou identificar símbolos/horas de melhor desempenho."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "Baixa taxa de execução de ordens em relação aos sinais gerados (1 ordem para 453 sinais), mesmo considerando o 'dry_run'.",
+        "causa": "Além do 'dry_run', o 'max_open_positions' em 1 é muito restritivo. Pode haver outros filtros implícitos (e.g., liquidez, spread, slippage simulado) que impedem a execução de ordens simuladas, ou a lógica de contagem de 'total_orders' é específica.",
+        "impacto": "Limita a capacidade do bot de capitalizar múltiplas oportunidades, mesmo em simulação, e atrasa a coleta de dados."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Métricas de bloqueio de resistência e volume em 0.0, apesar de filtros relacionados ('use_atr_stops', 'use_candle_patterns') estarem ativos.",
+        "causa": "Possível falha no registro ou na ativação desses bloqueios, ou os critérios nunca foram atendidos. Há 31 sinais bloqueados entre o filtro de score e o MCP que não são explicitamente contabilizados.",
+        "impacto": "Falta de visibilidade completa sobre todos os fatores que impedem a execução de sinais."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CONFIG",
+        "descricao": "Desativar o modo 'dry_run' para iniciar operações reais ou, alternativamente, ativar o backtest para simulações robustas.",
+        "parametro": "system.dry_run",
+        "valor_atual": "true",
+        "valor_sugerido": "false",
+        "justificativa": "É fundamental para coletar dados de performance reais e validar a estratégia. Sem isso, todas as outras análises são especulativas."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ativar e configurar o módulo de backtest para validar a estratégia com dados históricos antes de operar em tempo real.",
+        "parametro": "backtest.enabled",
+        "valor_atual": "false",
+        "valor_sugerido": "true",
+        "justificativa": "Permite testar a estratégia em diferentes cenários de mercado, otimizar parâmetros (como 'min_score', 'stop_loss_percent', 'take_profit_percent') e identificar os melhores símbolos/timeframes sem risco financeiro."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Aumentar o número máximo de posições abertas simultaneamente.",
+        "parametro": "risk.max_open_positions",
+        "valor_atual": "1",
+        "valor_sugerido": "2 ou 3",
+        "justificativa": "Permite que o bot aproveite mais oportunidades de trading e colete dados de performance de forma mais rápida e diversificada."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Após a execução de mais trades (reais ou em backtest), reavaliar o 'min_score' e outros filtros de qualidade.",
+        "parametro": "quality.min_score",
+        "valor_atual": "40",
+        "valor_sugerido": "null",
+        "justificativa": "O 'min_score' atual não é muito restritivo, mas pode ser otimizado para melhorar a taxa de vitórias e o fator de lucro após a coleta de dados suficientes."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Analisar os resultados do backtest para identificar os símbolos com melhor desempenho e ajustar a lista de 'system.symbols'.",
+        "parametro": "system.symbols",
+        "valor_atual": "[\"DOTUSDT\", \"DOGEUSDT\", \"NOTUSDT\", \"ADAUSDT\", \"NEARUSDT\", \"AVAXUSDT\"]",
+        "valor_sugerido": "null",
+        "justificativa": "Focar nos ativos que geram sinais mais lucrativos e com menor bloqueio."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Investigar por que 'resistance_block_rate' e 'volume_block_rate' são 0.0, garantindo que esses filtros estão funcionando e sendo registrados corretamente.",
+        "parametro": "N/A",
+        "valor_atual": "N/A",
+        "valor_sugerido": "N/A",
+        "justificativa": "Assegurar que todos os filtros estão operacionais e que o diagnóstico reflete a realidade dos bloqueios, especialmente os 31 sinais bloqueados não explicitamente contabilizados."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot está em modo 'dry_run'. Nenhuma operação real está sendo executada, e a única ordem registrada é provavelmente simulada.",
+      "Com apenas 1 trade e 0% de win rate, é impossível avaliar a eficácia da estratégia. Aumente a atividade de trading (via backtest ou live) para coletar dados significativos."
+    ]
+  },
+  "applied_adjustments": []
+}

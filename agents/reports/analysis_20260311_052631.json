@@ -1,0 +1,411 @@
+{
+  "timestamp": "20260311_052631",
+  "diagnosis": {
+    "cycles": 68,
+    "total_signals": 449,
+    "total_blocked_score": 76,
+    "total_blocked_mcp": 23,
+    "total_orders": 14,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 2.0044543429844097,
+    "avg_scores": {
+      "APTUSDT": 59.06896551724138,
+      "TONUSDT": 61.6875,
+      "DOGEUSDT": 69.79661016949153,
+      "AVAXUSDT": 68.12121212121212,
+      "DOTUSDT": 55.0,
+      "1000PEPEUSDT": 62.666666666666664,
+      "WIFUSDT": 60.0,
+      "ADAUSDT": 68.94444444444444,
+      "ETHUSDT": 63.479166666666664,
+      "NOTUSDT": 69.44117647058823,
+      "NEARUSDT": 68.03030303030303,
+      "XRPUSDT": 60.297872340425535,
+      "SOLUSDT": 65.9047619047619,
+      "LINKUSDT": 58.0,
+      "SUIUSDT": 60.0
+    },
+    "avg_rsi": {
+      "LINKUSDT": 46.67367816091954,
+      "BNBUSDT": 48.30942528735632,
+      "SUIUSDT": 44.16172413793104,
+      "NEARUSDT": 49.0264367816092,
+      "APTUSDT": 39.18724137931034,
+      "TONUSDT": 37.398372093023255,
+      "ETHUSDT": 43.82302325581396,
+      "SOLUSDT": 48.53604938271605,
+      "XRPUSDT": 44.08542168674699,
+      "ADAUSDT": 41.70569767441861,
+      "DOGEUSDT": 34.28383720930233,
+      "AVAXUSDT": 49.87488372093023,
+      "DOTUSDT": 47.33058139534884,
+      "1000PEPEUSDT": 43.690000000000005,
+      "WIFUSDT": 45.76860465116279,
+      "NOTUSDT": 44.48593023255814
+    },
+    "top_sessions": [
+      [
+        "ASIAN",
+        405
+      ],
+      [
+        "LONDON",
+        44
+      ]
+    ],
+    "mcp_approval_rate": 93.11377245508982,
+    "avg_mcp_confidence": 0.7416167664670659,
+    "mcp_total": 334,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NEARUSDT",
+        54
+      ],
+      [
+        "NOTUSDT",
+        53
+      ],
+      [
+        "AVAXUSDT",
+        53
+      ],
+      [
+        "1000PEPEUSDT",
+        47
+      ],
+      [
+        "TONUSDT",
+        39
+      ]
+    ],
+    "most_blocked": [
+      [
+        "APTUSDT",
+        32
+      ],
+      [
+        "DOGEUSDT",
+        17
+      ],
+      [
+        "XRPUSDT",
+        14
+      ],
+      [
+        "ETHUSDT",
+        9
+      ],
+      [
+        "TONUSDT",
+        8
+      ]
+    ],
+    "warnings_summary": {
+      "APTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          3
+        ]
+      ],
+      "TONUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          7
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          3
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          4
+        ],
+        [
+          "Volume baixo (0.67x média)",
+          2
+        ]
+      ],
+      "AVAXUSDT": [
+        [
+          "Volume baixo (0.66x média)",
+          2
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          2
+        ]
+      ],
+      "DOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          5
+        ],
+        [
+          "Volume baixo (0.79x média)",
+          3
+        ]
+      ],
+      "WIFUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          2
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "Volume baixo (0.68x média)",
+          2
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          2
+        ]
+      ],
+      "NOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          2
+        ]
+      ],
+      "NEARUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          2
+        ]
+      ]
+    },
+    "hourly_stats": {
+      "0": {
+        "hour_utc": 0,
+        "signals": 58,
+        "avg_score": 63.1,
+        "mcp_approval_rate": 84.8,
+        "orders": 0
+      },
+      "1": {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      },
+      "2": {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      "3": {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      "4": {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "5": {
+        "hour_utc": 5,
+        "signals": 44,
+        "avg_score": 65.7,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "22": {
+        "hour_utc": 22,
+        "signals": 53,
+        "avg_score": 64.2,
+        "mcp_approval_rate": 100.0,
+        "orders": 13
+      },
+      "23": {
+        "hour_utc": 23,
+        "signals": 35,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 86.4,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 0,
+        "signals": 58,
+        "avg_score": 63.1,
+        "mcp_approval_rate": 84.8,
+        "orders": 0
+      },
+      {
+        "hour_utc": 22,
+        "signals": 53,
+        "avg_score": 64.2,
+        "mcp_approval_rate": 100.0,
+        "orders": 13
+      },
+      {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot de trading está gerando um número significativo de sinais (449), mas falha criticamente na execução e gestão de trades, com apenas 14 ordens abertas e 0 fechamentos, resultando em 0 PnL. A maioria dos sinais é bloqueada por filtros de qualidade e risco, especialmente alertas de 'PUT próximo ao suporte', e há uma dependência excessiva da sessão asiática.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "O bot não está fechando posições (total_closes: 0).",
+        "causa": "Lógica de Stop Loss/Take Profit ineficaz, ausente ou com erro, ou parâmetros de SL/TP inatingíveis. As 14 ordens abertas não estão sendo gerenciadas.",
+        "impacto": "Posições ficam abertas indefinidamente, expondo o capital ao risco sem realizar lucros ou cortar perdas. O bot é inoperante para gerar PnL."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Falha em gerar PnL (total_pnl: 0, wins: 0, losses: 0).",
+        "causa": "Consequência direta da falta de fechamento de posições e da baixíssima taxa de conversão de sinais em ordens.",
+        "impacto": "O objetivo principal do bot (gerar lucro) não está sendo atingido, tornando-o inútil para trading."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Baixíssima taxa de conversão de sinais em ordens (14 ordens de 449 sinais).",
+        "causa": "Filtros de qualidade e risco excessivamente restritivos, como o 'min_score' e, principalmente, o alerta 'PUT próximo ao suporte - risco alto' que bloqueia muitos sinais.",
+        "impacto": "Oportunidades de trading são perdidas, resultando em baixa atividade e ineficiência do bot."
+      },
+      {
+        "prioridade": "MÉDIA",
+        "problema": "Alta frequência de alertas 'PUT próximo ao suporte - risco alto' para vários símbolos.",
+        "causa": "A estratégia de sinalização gera muitos sinais de venda (PUT) em áreas de suporte, ou o filtro de suporte é muito sensível, rejeitando sinais potencialmente válidos.",
+        "impacto": "Reduz drasticamente o número de trades válidos, contribuindo para a baixa taxa de conversão de sinais."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Concentração de todas as ordens em uma única sessão/hora (Asiática, UTC 22).",
+        "causa": "A estratégia pode ser otimizada ou restrita a certas condições de mercado predominantes nessa sessão, ou os filtros são muito rigorosos em outras sessões.",
+        "impacto": "Limita o potencial de lucro e a diversificação temporal das operações do bot."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO",
+        "descricao": "Investigar a lógica de fechamento de posições. Verificar por que 'total_closes' é 0. As ordens de Stop Loss e Take Profit estão sendo enviadas e executadas corretamente na Bybit? Qual o status das 14 ordens abertas?",
+        "parametro": null,
+        "valor_atual": "0 closes",
+        "valor_sugerido": "Lógica de fechamento funcional",
+        "justificativa": "A incapacidade de fechar trades é o problema mais crítico, impedindo qualquer realização de PnL e expondo o capital."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Analisar logs detalhados das 14 posições abertas. Qual o PnL atual dessas posições? Quais foram os sinais que as geraram? Por que não foram fechadas automaticamente?",
+        "parametro": null,
+        "valor_atual": "14 ordens abertas, 0 closes",
+        "valor_sugerido": "Análise de trades abertos",
+        "justificativa": "Entender o comportamento das poucas posições que foram abertas é crucial para diagnosticar a falha na gestão de saída."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Revisar os parâmetros de 'risk.stop_loss_percent' e 'risk.take_profit_percent'. Podem ser muito apertados/largos para o timeframe de 15m ou para a volatilidade dos ativos, impedindo o fechamento automático.",
+        "parametro": "risk.stop_loss_percent, risk.take_profit_percent",
+        "valor_atual": "1.5%, 4.5%",
+        "valor_sugerido": "Testar 1.0%/3.0% ou 2.0%/6.0%",
+        "justificativa": "Se as posições não fecham, esses parâmetros podem ser a causa. Testar valores mais realistas ou usar 'use_atr_stops' de forma mais eficaz."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Considerar reduzir 'quality.min_score' para 45 ou 40 (para teste), monitorando a qualidade dos sinais resultantes.",
+        "parametro": "quality.min_score",
+        "valor_atual": "50",
+        "valor_sugerido": "45",
+        "justificativa": "Aumentar o volume de sinais que chegam ao MCP, mas com cautela, para ver se mais oportunidades válidas são perdidas devido a um filtro de score muito alto."
+      },
+      {
+        "tipo": "CODIGO",
+        "descricao": "Aprimorar o sistema de log para registrar o *motivo exato* de cada bloqueio de sinal (e não apenas a contagem total), incluindo detalhes dos alertas de risco como 'PUT próximo ao suporte'.",
+        "parametro": null,
+        "valor_atual": "Logs genéricos de bloqueio",
+        "valor_sugerido": "Logs detalhados de bloqueio",
+        "justificativa": "Melhorar a visibilidade sobre qual filtro é o principal gargalo e por que, permitindo ajustes mais precisos."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ativar 'backtest' com 'use_mcp: true' e 'compare_timeframes: true' para os símbolos mais promissores e para o timeframe de 15m, focando na lógica de fechamento de posições.",
+        "parametro": "backtest.enabled, backtest.use_mcp, backtest.compare_timeframes",
+        "valor_atual": "false, false, true",
+        "valor_sugerido": "true, true, true",
+        "justificativa": "Validar a estratégia, especialmente a gestão de saída, com dados históricos e validação do MCP antes de operar em tempo real."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Desabilitar 'quality.use_session_filter' temporariamente ou ajustar as sessões para incluir outras, como a de Londres, para ver se há mais oportunidades de trades.",
+        "parametro": "quality.use_session_filter",
+        "valor_atual": "true",
+        "valor_sugerido": "false (para teste)",
+        "justificativa": "A concentração na sessão asiática limita o potencial de lucro e a diversificação. Testar outras sessões pode revelar novas oportunidades."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ativar 'adaptive.enabled' para permitir que o bot otimize timeframes e parâmetros automaticamente, uma vez que a lógica de fechamento de posições esteja funcional.",
+        "parametro": "adaptive.enabled",
+        "valor_atual": "false",
+        "valor_sugerido": "true",
+        "justificativa": "Pode ajudar a encontrar configurações mais eficazes a longo prazo, mas só deve ser ativado após a resolução dos problemas fundamentais de execução e fechamento."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": 45
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot está completamente ineficaz na geração de lucro, com 0 trades fechados e 0 PnL, indicando um problema crítico na lógica de gestão de posições.",
+      "A alta frequência de alertas 'PUT próximo ao suporte - risco alto' e a baixa conversão de sinais em ordens sugerem que a estratégia é excessivamente cautelosa ou mal alinhada com as condições de mercado.",
+      "Todas as ordens foram executadas em uma única hora UTC (22), o que limita severamente as oportunidades de trading e a diversificação."
+    ]
+  },
+  "applied_adjustments": [
+    "quality.min_score: 50 → 45"
+  ]
+}

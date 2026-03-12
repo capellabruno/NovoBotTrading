@@ -1,0 +1,302 @@
+{
+  "timestamp": "20260311_071547",
+  "diagnosis": {
+    "cycles": 90,
+    "total_signals": 482,
+    "total_blocked_score": 77,
+    "total_blocked_mcp": 21,
+    "total_orders": 1,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 0.0,
+    "avg_scores": {
+      "APTUSDT": 59.473684210526315,
+      "XRPUSDT": 59.431372549019606,
+      "DOGEUSDT": 71.85245901639344,
+      "NOTUSDT": 68.55172413793103,
+      "ETHUSDT": 61.31707317073171,
+      "ADAUSDT": 67.45454545454545,
+      "NEARUSDT": 67.57142857142857,
+      "TONUSDT": 66.38461538461539,
+      "1000PEPEUSDT": 61.23076923076923,
+      "AVAXUSDT": 67.21951219512195,
+      "SOLUSDT": 65.52777777777777,
+      "LINKUSDT": 58.0,
+      "SUIUSDT": 60.0
+    },
+    "avg_rsi": {
+      "APTUSDT": 41.47142857142857,
+      "TONUSDT": 41.285000000000004,
+      "ETHUSDT": 44.0310843373494,
+      "SOLUSDT": 46.30025641025641,
+      "XRPUSDT": 43.140375,
+      "ADAUSDT": 41.96731707317073,
+      "DOGEUSDT": 36.29512195121951,
+      "AVAXUSDT": 50.1070731707317,
+      "DOTUSDT": 50.668192771084335,
+      "1000PEPEUSDT": 44.40831325301205,
+      "WIFUSDT": 47.38578313253012,
+      "NOTUSDT": 52.00578313253013,
+      "LINKUSDT": 45.14795180722892,
+      "BNBUSDT": 48.01,
+      "SUIUSDT": 44.50578313253012,
+      "NEARUSDT": 46.77289156626506
+    },
+    "top_sessions": [
+      [
+        "ASIAN",
+        297
+      ],
+      [
+        "LONDON",
+        185
+      ]
+    ],
+    "mcp_approval_rate": 94.33962264150944,
+    "avg_mcp_confidence": 0.7423180592991914,
+    "mcp_total": 371,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NOTUSDT",
+        54
+      ],
+      [
+        "TONUSDT",
+        45
+      ],
+      [
+        "1000PEPEUSDT",
+        44
+      ],
+      [
+        "NEARUSDT",
+        42
+      ],
+      [
+        "ETHUSDT",
+        42
+      ]
+    ],
+    "most_blocked": [
+      [
+        "APTUSDT",
+        18
+      ],
+      [
+        "XRPUSDT",
+        17
+      ],
+      [
+        "DOGEUSDT",
+        15
+      ],
+      [
+        "ETHUSDT",
+        9
+      ],
+      [
+        "NOTUSDT",
+        6
+      ]
+    ],
+    "warnings_summary": {},
+    "hourly_stats": {
+      "0": {
+        "hour_utc": 0,
+        "signals": 38,
+        "avg_score": 61.9,
+        "mcp_approval_rate": 85.7,
+        "orders": 0
+      },
+      "1": {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      },
+      "2": {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      "3": {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      "4": {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "5": {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "6": {
+        "hour_utc": 6,
+        "signals": 60,
+        "avg_score": 61.2,
+        "mcp_approval_rate": 93.3,
+        "orders": 0
+      },
+      "7": {
+        "hour_utc": 7,
+        "signals": 27,
+        "avg_score": 65.7,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 5,
+        "signals": 98,
+        "avg_score": 68.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      {
+        "hour_utc": 4,
+        "signals": 60,
+        "avg_score": 65.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      {
+        "hour_utc": 6,
+        "signals": 60,
+        "avg_score": 61.2,
+        "mcp_approval_rate": 93.3,
+        "orders": 0
+      },
+      {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está gerando um volume considerável de sinais de trading com boa qualidade e alta aprovação do MCP. No entanto, a falha crítica reside na execução: apenas 1 ordem foi colocada e nenhuma fechada, indicando um bloqueio severo na fase de envio de ordens à Bybit, impedindo qualquer avaliação de performance.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Taxa de colocação de ordens extremamente baixa (1 ordem em 482 sinais).",
+        "causa": "A causa exata não é clara no diagnóstico, mas sugere um problema na lógica de execução de ordens, validação final antes do envio à Bybit, ou requisitos mínimos da corretora (e.g., tamanho mínimo de ordem). Não há erros explícitos no log.",
+        "impacto": "O bot está inoperante, incapaz de realizar trades e gerar PNL, tornando impossível avaliar a eficácia da estratégia."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Filtros de bloqueio por resistência e volume reportam 0.0% de bloqueio.",
+        "causa": "Pode indicar que esses filtros não estão ativos, não estão sendo corretamente rastreados no diagnóstico, ou as condições para bloqueio nunca foram atendidas.",
+        "impacto": "Potencialmente, sinais de baixa qualidade que deveriam ser filtrados estão passando, ou o diagnóstico está incompleto, não fornecendo uma visão completa dos bloqueios."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Módulo adaptativo desabilitado.",
+        "causa": "A configuração atual desabilita a otimização dinâmica de timeframes e outros parâmetros.",
+        "impacto": "O bot não se beneficia de ajustes automáticos de parâmetros para otimizar a performance em diferentes condições de mercado, limitando seu potencial de melhoria."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO",
+        "descricao": "Implementar logging extensivo na fase de pré-execução e execução de ordens para identificar o motivo exato pelo qual os sinais aprovados não se convertem em ordens. Registrar valores de saldo, tamanho de ordem calculado, e qualquer resposta da API da Bybit.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "É a etapa mais crítica para desbloquear a funcionalidade do bot e permitir que ele opere. Sem isso, todas as outras análises são teóricas."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Verificar os requisitos de tamanho mínimo de ordem e valor mínimo de trade na Bybit para os pares de criptomoedas configurados. Ajustar 'risk.entry_percent' ou 'risk.account_balance_fixed' se o valor calculado da ordem for inferior ao mínimo da corretora (e.g., 5% de $100 = $5, que pode ser muito baixo para muitos pares).",
+        "parametro": "risk.entry_percent",
+        "valor_atual": "0.05",
+        "valor_sugerido": "Manter 0.05, mas garantir que o valor monetário resultante seja suficiente para a Bybit. Considerar aumentar 'risk.account_balance_fixed' para testes.",
+        "justificativa": "Ordens abaixo do mínimo da corretora são rejeitadas, o que pode ser a causa da falta de execução."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Para fins de teste e depuração (em 'dry_run'), considerar temporariamente aumentar 'risk.max_open_positions' para 5 e/ou ajustar 'risk.stop_loss_percent' e 'risk.take_profit_percent' para ranges mais amplos (e.g., SL 0.02, TP 0.06) para ver se a lógica de cálculo de SL/TP está causando rejeições ou inviabilizando a entrada.",
+        "parametro": "risk.max_open_positions",
+        "valor_atual": "3",
+        "valor_sugerido": "5 (para teste em dry_run)",
+        "justificativa": "Eliminar a possibilidade de que as regras de risco estejam inadvertidamente bloqueando a colocação de ordens ou tornando-as inviáveis."
+      },
+      {
+        "tipo": "MONITORAR",
+        "descricao": "Após resolver o problema de colocação de ordens, monitorar de perto os filtros de resistência e volume para garantir que estão funcionando e reportando bloqueios conforme esperado, e que o diagnóstico os está registrando.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Assegurar a integridade dos filtros de qualidade da estratégia e a precisão do diagnóstico."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Uma vez que o bot esteja operando e gerando dados de performance, habilitar o módulo 'adaptive' para permitir que o bot otimize seus parâmetros (e.g., timeframes) com base em resultados históricos.",
+        "parametro": "adaptive.enabled",
+        "valor_atual": "false",
+        "valor_sugerido": "true (após depuração e com dados de performance)",
+        "justificativa": "Melhorar a resiliência e a performance do bot em diferentes cenários de mercado através da otimização contínua."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Clarificar qual modelo de IA deve ser usado para o MCP. Se a intenção é usar o Gemini, garantir que a configuração reflita isso e que o 'ollama_url' não esteja sendo usado ou esteja configurado como fallback. Se Ollama é o preferido, garantir que 'gemini_model' não está causando confusão.",
+        "parametro": "mcp.mode",
+        "valor_atual": "ollama",
+        "valor_sugerido": "gemini (se for a intenção principal)",
+        "justificativa": "Assegurar que o modelo de IA mais eficaz e desejado está sendo utilizado para a validação de sinais, evitando redundâncias ou configurações ambíguas."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O bot está em um estado de 'quase-operação', gerando sinais, mas falhando na execução. Isso é um problema crítico que exige atenção imediata.",
+      "A ausência de erros no 'error_counter' pode ser enganosa; o problema pode estar em uma lógica de validação interna que impede a ordem sem gerar um erro formal ou em uma falha de comunicação silenciosa com a Bybit.",
+      "Apesar da alta taxa de aprovação do MCP (94.3%), a falta de ordens executadas impede a validação real da eficácia do modelo de IA."
+    ]
+  },
+  "applied_adjustments": []
+}

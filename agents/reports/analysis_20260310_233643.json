@@ -1,0 +1,474 @@
+{
+  "timestamp": "20260310_233643",
+  "diagnosis": {
+    "cycles": 40,
+    "total_signals": 393,
+    "total_blocked_score": 62,
+    "total_blocked_mcp": 15,
+    "total_orders": 122,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 21.119592875318066,
+    "avg_scores": {
+      "WIFUSDT": 59.62068965517241,
+      "LINKUSDT": 64.05,
+      "SOLUSDT": 62.45454545454545,
+      "ETHUSDT": 63.30769230769231,
+      "XRPUSDT": 65.07692307692308,
+      "ADAUSDT": 68.43333333333334,
+      "DOTUSDT": 56.642857142857146,
+      "1000PEPEUSDT": 61.5625,
+      "BNBUSDT": 70.4,
+      "SUIUSDT": 64.44444444444444,
+      "NEARUSDT": 73.17647058823529,
+      "APTUSDT": 64.60714285714286,
+      "TONUSDT": 57.56,
+      "DOGEUSDT": 59.0,
+      "NOTUSDT": 60.3,
+      "AVAXUSDT": 73.42857142857143
+    },
+    "avg_rsi": {
+      "1000PEPEUSDT": 36.64983050847458,
+      "WIFUSDT": 38.730677966101695,
+      "NOTUSDT": 40.46745762711864,
+      "LINKUSDT": 45.30406779661017,
+      "BNBUSDT": 46.14084745762712,
+      "SUIUSDT": 39.67423728813559,
+      "NEARUSDT": 46.342542372881354,
+      "APTUSDT": 34.77440677966102,
+      "TONUSDT": 37.605000000000004,
+      "ETHUSDT": 42.9305,
+      "SOLUSDT": 42.57224137931035,
+      "XRPUSDT": 41.18983050847457,
+      "ADAUSDT": 38.93796610169492,
+      "DOGEUSDT": 37.103793103448275,
+      "AVAXUSDT": 41.91275862068966,
+      "DOTUSDT": 35.293103448275865
+    },
+    "top_sessions": [
+      [
+        "OFF_HOURS",
+        213
+      ],
+      [
+        "ASIAN",
+        180
+      ]
+    ],
+    "mcp_approval_rate": 95.41284403669725,
+    "avg_mcp_confidence": 0.7379204892966361,
+    "mcp_total": 327,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "XRPUSDT",
+        46
+      ],
+      [
+        "NEARUSDT",
+        42
+      ],
+      [
+        "NOTUSDT",
+        39
+      ],
+      [
+        "AVAXUSDT",
+        37
+      ],
+      [
+        "BNBUSDT",
+        34
+      ]
+    ],
+    "most_blocked": [
+      [
+        "DOTUSDT",
+        16
+      ],
+      [
+        "APTUSDT",
+        13
+      ],
+      [
+        "1000PEPEUSDT",
+        11
+      ],
+      [
+        "ADAUSDT",
+        7
+      ],
+      [
+        "WIFUSDT",
+        6
+      ]
+    ],
+    "warnings_summary": {
+      "WIFUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          20
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          17
+        ]
+      ],
+      "LINKUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          14
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          12
+        ]
+      ],
+      "SOLUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          17
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          16
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          17
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          10
+        ]
+      ],
+      "XRPUSDT": [
+        [
+          "Volume baixo (0.74x média)",
+          3
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          3
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          16
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          8
+        ]
+      ],
+      "DOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          39
+        ],
+        [
+          "Sessão de baixa liquidez",
+          27
+        ]
+      ],
+      "1000PEPEUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          18
+        ],
+        [
+          "Sessão de baixa liquidez",
+          15
+        ]
+      ],
+      "BNBUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          15
+        ],
+        [
+          "Padrão HAMMER contrário ao sinal PUT",
+          3
+        ]
+      ],
+      "SUIUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          15
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          12
+        ]
+      ],
+      "NEARUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          12
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          5
+        ]
+      ],
+      "APTUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          9
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          6
+        ]
+      ],
+      "TONUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          22
+        ],
+        [
+          "Sessão de baixa liquidez",
+          12
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          23
+        ],
+        [
+          "Sessão de baixa liquidez",
+          12
+        ]
+      ],
+      "NOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          14
+        ],
+        [
+          "Sessão de baixa liquidez",
+          3
+        ]
+      ],
+      "AVAXUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          6
+        ],
+        [
+          "Volume baixo (0.66x média)",
+          3
+        ]
+      ]
+    },
+    "hourly_stats": {
+      "18": {
+        "hour_utc": 18,
+        "signals": 44,
+        "avg_score": 66.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 26
+      },
+      "19": {
+        "hour_utc": 19,
+        "signals": 112,
+        "avg_score": 62.5,
+        "mcp_approval_rate": 86.4,
+        "orders": 27
+      },
+      "20": {
+        "hour_utc": 20,
+        "signals": 57,
+        "avg_score": 60.4,
+        "mcp_approval_rate": 100.0,
+        "orders": 12
+      },
+      "21": {
+        "hour_utc": 21,
+        "signals": 107,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 97.1,
+        "orders": 42
+      },
+      "22": {
+        "hour_utc": 22,
+        "signals": 58,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 15
+      },
+      "23": {
+        "hour_utc": 23,
+        "signals": 15,
+        "avg_score": 62.1,
+        "mcp_approval_rate": 87.5,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 19,
+        "signals": 112,
+        "avg_score": 62.5,
+        "mcp_approval_rate": 86.4,
+        "orders": 27
+      },
+      {
+        "hour_utc": 21,
+        "signals": 107,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 97.1,
+        "orders": 42
+      },
+      {
+        "hour_utc": 22,
+        "signals": 58,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 15
+      },
+      {
+        "hour_utc": 20,
+        "signals": 57,
+        "avg_score": 60.4,
+        "mcp_approval_rate": 100.0,
+        "orders": 12
+      },
+      {
+        "hour_utc": 18,
+        "signals": 44,
+        "avg_score": 66.5,
+        "mcp_approval_rate": 100.0,
+        "orders": 26
+      },
+      {
+        "hour_utc": 23,
+        "signals": 15,
+        "avg_score": 62.1,
+        "mcp_approval_rate": 87.5,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot de trading está gerando um número significativo de sinais (393) e abrindo ordens (122), mas falha criticamente em fechar qualquer posição, resultando em PnL, vitórias e perdas zerados. Isso indica um problema operacional grave que impede a avaliação de desempenho. Muitos sinais são bloqueados por volume (21%) e score (16%), e há uma preocupação recorrente com sinais 'PUT próximo ao suporte' em sessões de baixa liquidez.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Bot não fecha posições e PnL não é registrado.",
+        "causa": "122 ordens foram abertas, mas 'total_closes', 'total_pnl', 'wins' e 'losses' são todos 0. Isso sugere um bug no módulo de fechamento de posições, configurações de Take Profit/Stop Loss inadequadas, ou um período de diagnóstico insuficiente para trades de 15m.",
+        "impacto": "O bot não gera resultados financeiros, impossibilitando a avaliação de sua eficácia e mantendo capital preso em posições abertas. É o problema mais crítico que impede qualquer análise de performance."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Sinais PUT de alto risco e falta de filtro de suporte.",
+        "causa": "A 'warnings_summary' mostra uma alta frequência de 'PUT próximo ao suporte - risco alto' para diversos símbolos (ex: DOTUSDT 39x, DOGEUSDT 23x, TONUSDT 22x). O 'resistance_block_rate' é 0.0, indicando que não há um filtro explícito para PUTs em suporte, ou ele não está funcionando/sendo contabilizado.",
+        "impacto": "Aumenta o risco de perdas significativas se esses trades fossem executados e fechados, ou leva a bloqueios implícitos de sinais potencialmente bons devido ao risco percebido, reduzindo oportunidades de trading de qualidade."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Operação predominante em sessões de baixa liquidez.",
+        "causa": "As sessões 'OFF_HOURS' e 'ASIAN' dominam a geração de sinais ('top_sessions'), e 'Sessão de baixa liquidez' é a warning mais comum para quase todos os símbolos. Embora 'quality.use_session_filter' esteja ativo, ele não impede a geração de warnings, sugerindo que o filtro não é suficientemente restritivo ou a definição de 'baixa liquidez' precisa ser ajustada.",
+        "impacto": "Aumenta o risco de slippage, dificulta a execução de ordens a preços desejados e pode levar a resultados inconsistentes ou perdas devido à volatilidade e spreads maiores."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Alta taxa de bloqueio de sinais por volume e score.",
+        "causa": "Aproximadamente 21% dos sinais são bloqueados por volume ('volume_block_rate') e 62 sinais (16%) são bloqueados por score ('total_blocked_score').",
+        "impacto": "Reduz o número de oportunidades de trading. Embora filtros sejam importantes, é necessário avaliar se estão excessivamente restritivos ou se a qualidade dos sinais gerados é intrinsecamente baixa, necessitando de ajustes na estratégia base."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CODIGO/MONITORAR",
+        "descricao": "Investigar e corrigir o problema de fechamento de posições.",
+        "parametro": null,
+        "valor_atual": "0 closes para 122 ordens",
+        "valor_sugerido": "Fechamento de posições funcional",
+        "justificativa": "Este é o problema mais crítico. O bot deve ser capaz de fechar trades para realizar lucros ou limitar perdas. Verificar logs de execução, configurações de TP/SL e a integração com a Bybit."
+      },
+      {
+        "tipo": "CONFIG/CODIGO",
+        "descricao": "Revisar e aprimorar a lógica de sinais PUT e gestão de risco para suportes.",
+        "parametro": "Lógica de sinal/filtro de suporte",
+        "valor_atual": "Gera 'PUT próximo ao suporte'",
+        "valor_sugerido": "Adicionar filtro explícito para evitar PUTs em suportes fortes ou ajustar a lógica de sinal para PUTs.",
+        "justificativa": "Reduzir o risco de trades desfavoráveis e melhorar a qualidade dos sinais de venda, evitando 'falling knife' ou reversões em suportes."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar o filtro de sessão de mercado para evitar baixa liquidez.",
+        "parametro": "quality.use_session_filter",
+        "valor_atual": "true (mas com muitas warnings)",
+        "valor_sugerido": "Manter 'true', mas revisar a implementação do filtro ou adicionar um filtro de horário explícito para operar apenas em sessões de alta liquidez (ex: Londres/Nova York).",
+        "justificativa": "Melhorar a qualidade da execução das ordens, reduzir slippage e operar em condições de mercado mais favoráveis."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Otimizar o score mínimo e o timeframe da estratégia.",
+        "parametro": "quality.min_score, system.timeframe",
+        "valor_atual": "60, '15m'",
+        "valor_sugerido": "Realizar backtests com 'min_score' entre 55-65 e timeframes como 5m, 30m, 60m para identificar a combinação ideal após a correção do problema de fechamento.",
+        "justificativa": "Encontrar o equilíbrio ideal entre o número de oportunidades e a qualidade dos sinais, maximizando o PnL potencial."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Restringir a operação do bot a janelas UTC de maior qualidade.",
+        "parametro": "Filtro de horário de operação (se disponível na config, senão, via código)",
+        "valor_atual": "Operação contínua (implícito)",
+        "valor_sugerido": "Restringir a operação para 18-22 UTC, que apresentam a melhor combinação de 'avg_score' e 'mcp_approval_rate' com maior número de ordens.",
+        "justificativa": "Concentrar os recursos do bot nos períodos com maior probabilidade de sucesso e melhor qualidade de sinal/aprovação."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Revisar e otimizar os parâmetros de Stop Loss e Take Profit.",
+        "parametro": "risk.stop_loss_percent, risk.take_profit_percent",
+        "valor_atual": "0.01, 0.03",
+        "valor_sugerido": "Testar valores ligeiramente mais amplos para SL (ex: 0.015-0.02) e TP (ex: 0.04-0.06) ou garantir que 'use_atr_stops' esteja configurado e funcionando corretamente para permitir que os trades se desenvolvam e fechem.",
+        "justificativa": "Ajustar a gestão de risco para permitir que os trades atinjam seus objetivos ou sejam encerrados de forma eficiente, contribuindo para a resolução do problema de fechamento."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ativar e configurar o módulo adaptativo.",
+        "parametro": "adaptive.enabled",
+        "valor_atual": "false",
+        "valor_sugerido": "true",
+        "justificativa": "Permite que o bot otimize automaticamente os timeframes e outros parâmetros com base no desempenho histórico, melhorando a adaptabilidade e a performance a longo prazo, uma vez que os problemas fundamentais sejam resolvidos."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Configurar backtest para análise relevante.",
+        "parametro": "backtest.start_date, backtest.end_date, backtest.symbols",
+        "valor_atual": "2025-01-10, 2026-01-20, ['XRPUSDT', 'DOGEUSDT']",
+        "valor_sugerido": "Definir 'start_date' e 'end_date' para um período histórico recente e relevante (ex: últimos 3-6 meses) e incluir todos os símbolos ativos ('system.symbols').",
+        "justificativa": "O backtest atual não fornece dados úteis para a otimização da estratégia. Um backtest adequado é crucial para testar as recomendações e validar a estratégia."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": null
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      }
+    },
+    "alertas": [
+      "O problema mais crítico é a ausência de fechamento de posições (0 closes para 122 ordens abertas). O bot não está funcionando como esperado e o capital pode estar preso. Priorize a investigação e correção deste ponto.",
+      "A alta frequência de sinais 'PUT próximo ao suporte - risco alto' indica uma falha na lógica de risco para operações de venda. Isso precisa ser corrigido para evitar trades desfavoráveis.",
+      "A operação predominante em 'OFF_HOURS' e 'ASIAN' sessions, combinada com warnings de 'baixa liquidez', sugere que o filtro de sessão não é eficaz ou precisa ser mais restritivo para garantir execuções de melhor qualidade."
+    ]
+  },
+  "applied_adjustments": []
+}

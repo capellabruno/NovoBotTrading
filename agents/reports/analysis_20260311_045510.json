@@ -1,0 +1,432 @@
+{
+  "timestamp": "20260311_045510",
+  "diagnosis": {
+    "cycles": 61,
+    "total_signals": 440,
+    "total_blocked_score": 79,
+    "total_blocked_mcp": 26,
+    "total_orders": 30,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 4.318181818181818,
+    "avg_scores": {
+      "DOTUSDT": 58.0,
+      "WIFUSDT": 58.75,
+      "NOTUSDT": 67.92105263157895,
+      "LINKUSDT": 59.0,
+      "SUIUSDT": 69.0,
+      "APTUSDT": 59.30357142857143,
+      "ETHUSDT": 64.02272727272727,
+      "XRPUSDT": 61.604651162790695,
+      "ADAUSDT": 67.94285714285714,
+      "DOGEUSDT": 68.48214285714286,
+      "AVAXUSDT": 67.0,
+      "1000PEPEUSDT": 63.46153846153846,
+      "TONUSDT": 59.878787878787875,
+      "NEARUSDT": 68.51851851851852,
+      "SOLUSDT": 65.4
+    },
+    "avg_rsi": {
+      "1000PEPEUSDT": 43.287058823529414,
+      "WIFUSDT": 45.48294117647059,
+      "NOTUSDT": 43.47329411764706,
+      "LINKUSDT": 46.85235294117647,
+      "BNBUSDT": 48.26776470588236,
+      "SUIUSDT": 44.027647058823526,
+      "NEARUSDT": 49.39223529411765,
+      "APTUSDT": 38.62623529411765,
+      "TONUSDT": 36.64261904761905,
+      "ETHUSDT": 44.27843373493976,
+      "SOLUSDT": 48.97101265822785,
+      "XRPUSDT": 44.066250000000004,
+      "ADAUSDT": 41.86638554216867,
+      "DOGEUSDT": 34.10421686746988,
+      "AVAXUSDT": 49.9722891566265,
+      "DOTUSDT": 46.520476190476195
+    },
+    "top_sessions": [
+      [
+        "ASIAN",
+        440
+      ]
+    ],
+    "mcp_approval_rate": 92.09726443768997,
+    "avg_mcp_confidence": 0.7404255319148936,
+    "mcp_total": 329,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NEARUSDT",
+        58
+      ],
+      [
+        "AVAXUSDT",
+        53
+      ],
+      [
+        "NOTUSDT",
+        47
+      ],
+      [
+        "1000PEPEUSDT",
+        46
+      ],
+      [
+        "ETHUSDT",
+        39
+      ]
+    ],
+    "most_blocked": [
+      [
+        "APTUSDT",
+        32
+      ],
+      [
+        "DOGEUSDT",
+        17
+      ],
+      [
+        "XRPUSDT",
+        14
+      ],
+      [
+        "TONUSDT",
+        11
+      ],
+      [
+        "ETHUSDT",
+        9
+      ]
+    ],
+    "warnings_summary": {
+      "WIFUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          4
+        ],
+        [
+          "Volume baixo (0.73x média)",
+          1
+        ]
+      ],
+      "NOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          6
+        ],
+        [
+          "Volume baixo (0.64x média)",
+          3
+        ]
+      ],
+      "LINKUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          4
+        ]
+      ],
+      "SUIUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          1
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          3
+        ],
+        [
+          "Volume baixo (0.68x média)",
+          2
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          5
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          8
+        ],
+        [
+          "Volume baixo (0.67x média)",
+          3
+        ]
+      ],
+      "DOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          9
+        ],
+        [
+          "Volume baixo (0.79x média)",
+          3
+        ]
+      ],
+      "1000PEPEUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          3
+        ]
+      ],
+      "TONUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          10
+        ],
+        [
+          "Volume baixo (0.71x média)",
+          3
+        ]
+      ],
+      "AVAXUSDT": [
+        [
+          "Volume baixo (0.66x média)",
+          3
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          3
+        ]
+      ],
+      "APTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          3
+        ]
+      ],
+      "NEARUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          2
+        ]
+      ]
+    },
+    "hourly_stats": {
+      "0": {
+        "hour_utc": 0,
+        "signals": 58,
+        "avg_score": 63.1,
+        "mcp_approval_rate": 84.8,
+        "orders": 0
+      },
+      "1": {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      },
+      "2": {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      "3": {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      "4": {
+        "hour_utc": 4,
+        "signals": 51,
+        "avg_score": 65.1,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      },
+      "21": {
+        "hour_utc": 21,
+        "signals": 39,
+        "avg_score": 62.7,
+        "mcp_approval_rate": 91.7,
+        "orders": 14
+      },
+      "22": {
+        "hour_utc": 22,
+        "signals": 58,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 15
+      },
+      "23": {
+        "hour_utc": 23,
+        "signals": 35,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 86.4,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 3,
+        "signals": 76,
+        "avg_score": 62.2,
+        "mcp_approval_rate": 89.5,
+        "orders": 1
+      },
+      {
+        "hour_utc": 2,
+        "signals": 72,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 94.1,
+        "orders": 0
+      },
+      {
+        "hour_utc": 22,
+        "signals": 58,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 15
+      },
+      {
+        "hour_utc": 0,
+        "signals": 58,
+        "avg_score": 63.1,
+        "mcp_approval_rate": 84.8,
+        "orders": 0
+      },
+      {
+        "hour_utc": 1,
+        "signals": 51,
+        "avg_score": 65.9,
+        "mcp_approval_rate": 83.3,
+        "orders": 0
+      },
+      {
+        "hour_utc": 4,
+        "signals": 51,
+        "avg_score": 65.1,
+        "mcp_approval_rate": 100.0,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "O bot está configurado para rodar em modo de backtest, o que impede qualquer operação real e explica a ausência de PnL, wins ou losses. Além disso, mesmo que estivesse operando ao vivo, a taxa de execução de trades é extremamente baixa, e há inconsistências na filtragem de sessões e sinais de venda de alto risco.",
+    "problemas": [
+      {
+        "prioridade": "CRITICA",
+        "problema": "Configuração de Backtest Ativa em Ambiente de Produção",
+        "causa": "O parâmetro 'backtest.enabled' está definido como 'true' com datas futuras, enquanto 'system.dry_run' é 'false'. Isso faz com que o bot execute um backtest em vez de operar ao vivo no mercado real.",
+        "impacto": "O bot não está realizando trades reais, resultando em 0 PnL, 0 wins, 0 losses e 0 closes. Todas as métricas de 'performance' são irrelevantes para um ambiente de trading real."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Baixa Taxa de Execução de Trades",
+        "causa": "Apenas 30 'ordens' foram registradas a partir de 440 sinais. Isso se deve a uma combinação de bloqueios por score (17.95%), MCP (5.9%), volume (4.32%), e possivelmente outros filtros implícitos (e.g., 'max_open_positions', 'daily_loss_percent', 'max_consecutive_losses') ou sinais de baixa qualidade que não chegam a ser ordens. A discrepância entre 'resistance_block_rate' (0.0) e os warnings de 'PUT próximo ao suporte' também sugere que sinais arriscados não estão sendo formalmente bloqueados por resistência, mas podem estar sendo filtrados por outros meios ou simplesmente não atingindo os critérios de entrada.",
+        "impacto": "Mesmo que o bot estivesse configurado corretamente para live trading, a baixa taxa de execução de trades impediria a capitalização de oportunidades e a geração de PnL."
+      },
+      {
+        "prioridade": "ALTA",
+        "problema": "Inconsistência na Filtragem de Sessão/Horário",
+        "causa": "Todos os sinais são gerados na sessão ASIAN, mas a maioria das ordens é executada nas horas UTC 21-22 (sessão de Nova York). Isso indica uma desconexão entre a sessão de geração de sinais e a sessão de execução de ordens, sugerindo que os sinais ASIAN podem estar 'stale' ou que o filtro de sessão não está funcionando como esperado.",
+        "impacto": "Sinais podem estar sendo usados fora de seu contexto de mercado ideal, levando a oportunidades perdidas ou trades de baixa qualidade."
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Sinais de PUT com Risco Elevado",
+        "causa": "Muitos warnings de 'PUT próximo ao suporte - risco alto' e RSI baixo para vários pares indicam que a estratégia está gerando sinais de venda (PUT) em condições de mercado que apontam para suporte próximo ou sobrevenda, o que é contra-intuitivo para vendas. A 'resistance_block_rate' de 0.0 é inconsistente com a quantidade de warnings.",
+        "impacto": "Geração de sinais de baixa qualidade ou de alto risco que são posteriormente bloqueados ou resultam em trades desfavoráveis (se executados)."
+      },
+      {
+        "prioridade": "BAIXA",
+        "problema": "Símbolos com Alta Taxa de Bloqueio/Warnings",
+        "causa": "Símbolos como APTUSDT, DOGEUSDT, XRPUSDT, TONUSDT, ETHUSDT e DOTUSDT são frequentemente bloqueados ou geram warnings, indicando que a estratégia pode não ser adequada para suas características ou condições de mercado.",
+        "impacto": "Recursos computacionais e tempo são gastos gerando sinais para ativos que raramente resultam em trades, diminuindo a eficiência."
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CONFIG",
+        "descricao": "Desativar o modo de backtest para permitir que o bot opere ao vivo.",
+        "parametro": "backtest.enabled",
+        "valor_atual": "true",
+        "valor_sugerido": "false",
+        "justificativa": "Esta é a causa raiz do bot não estar operando ao vivo e não ter PnL. O bot está rodando um backtest em vez de operar no mercado real."
+      },
+      {
+        "tipo": "CONFIG/MONITORAR",
+        "descricao": "Após ativar o modo live, investigar e otimizar os filtros de entrada para aumentar a taxa de execução de trades.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": null,
+        "justificativa": "Uma vez que o bot esteja operando ao vivo, a baixa taxa de execução de trades (30 de 440 sinais) ainda será um problema. É crucial entender quais filtros (além de score, MCP, volume) estão impedindo a execução de ordens. Verificar logs detalhados para cada sinal não executado."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Ajustar o 'min_score' para permitir mais sinais de entrada, mas com cautela.",
+        "parametro": "quality.min_score",
+        "valor_atual": 55,
+        "valor_sugerido": 50,
+        "justificativa": "17.95% dos sinais são bloqueados por score. Reduzir ligeiramente o 'min_score' pode aumentar o volume de trades. No entanto, isso deve ser feito em conjunto com a análise da qualidade dos sinais e um backtest rigoroso, pois pode introduzir sinais de menor qualidade."
+      },
+      {
+        "tipo": "CONFIG/CODIGO",
+        "descricao": "Revisar a lógica do 'quality.use_session_filter' e a interpretação das sessões de mercado.",
+        "parametro": "quality.use_session_filter",
+        "valor_atual": "true",
+        "valor_sugerido": "Investigar e possivelmente ajustar a configuração ou a lógica de filtragem de sessão. Considerar desativar temporariamente para ver o impacto, ou alinhar a geração de sinais com as horas de trading mais ativas (UTC 21-22)."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Otimizar os parâmetros de RSI para sinais de PUT.",
+        "parametro": "indicators.rsi_oversold",
+        "valor_atual": 30,
+        "valor_sugerido": "35-40 para PUTs, ou ajustar a lógica para evitar PUTs próximos ao suporte.",
+        "justificativa": "Muitos warnings de 'PUT próximo ao suporte' e RSIs baixos indicam que a estratégia está tentando vender em condições de sobrevenda ou suporte. Ajustar o RSI oversold ou adicionar um filtro de suporte/resistência mais robusto para PUTs pode melhorar a qualidade dos sinais."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Focar a operação nas horas de maior sucesso.",
+        "parametro": null,
+        "valor_atual": null,
+        "valor_sugerido": "Restringir a operação às horas UTC 21-22, que mostraram a maior taxa de ordens e aprovação MCP.",
+        "justificativa": "As horas UTC 21-22 são as únicas que geraram um número significativo de ordens e tiveram 100% de aprovação MCP (às 22h). Focar nessas horas pode otimizar a eficiência do bot."
+      },
+      {
+        "tipo": "CONFIG",
+        "descricao": "Revisar a lista de símbolos.",
+        "parametro": "system.symbols",
+        "valor_atual": "ETHUSDT, SOLUSDT, XRPUSDT, ADAUSDT, DOGEUSDT, AVAXUSDT, DOTUSDT, MATICUSDT, 1000PEPEUSDT, WIFUSDT, NOTUSDT, LINKUSDT, BNBUSDT, SUIUSDT, NEARUSDT, APTUSDT, TONUSDT",
+        "valor_sugerido": "Remover ou dar menor prioridade a símbolos como APTUSDT, DOGEUSDT, XRPUSDT, TONUSDT, ETHUSDT, DOTUSDT que são frequentemente bloqueados ou geram warnings. Priorizar SUIUSDT, NEARUSDT, DOGEUSDT, ADAUSDT, NOTUSDT, AVAXUSDT que têm scores médios mais altos (mas ainda precisam de validação de performance)."
+      }
+    ],
+    "ajustes_config": {
+      "quality": {
+        "min_score": 50
+      },
+      "risk": {
+        "entry_percent": null,
+        "stop_loss_percent": null
+      },
+      "mcp": {
+        "mode": null
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    "alertas": [
+      "**ALERTA CRÍTICO:** O bot está configurado para rodar em modo de backtest (`backtest.enabled: true` com datas futuras) enquanto `system.dry_run` é `false`. Isso significa que o bot não está operando ao vivo no mercado real, o que explica o 0 PnL, 0 wins, 0 losses e 0 closes. A configuração de `backtest.enabled` deve ser alterada para `false` para permitir a operação real.",
+      "O bot não realizou nenhum fechamento de posição (`total_closes`: 0), nem registrou PnL, wins ou losses. Isso é uma consequência direta da configuração de backtest ativa.",
+      "Discrepância entre `resistance_block_rate` (0.0) e os warnings de 'PUT próximo ao suporte - risco alto'. Investigar se o filtro de resistência está ativo e funcionando corretamente para sinais de venda.",
+      "Apesar de todos os sinais serem gerados na sessão ASIAN, a maioria das ordens é executada nas horas UTC 21-22 (sessão de Nova York). Isso pode indicar sinais 'stale' ou um problema com a lógica de filtragem de sessão."
+    ]
+  },
+  "applied_adjustments": [
+    "quality.min_score: 55 → 50",
+    "backtest.enabled: True → False"
+  ]
+}

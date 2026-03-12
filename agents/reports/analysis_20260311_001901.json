@@ -1,0 +1,376 @@
+{
+  "timestamp": "20260311_001901",
+  "diagnosis": {
+    "cycles": 40,
+    "total_signals": 397,
+    "total_blocked_score": 52,
+    "total_blocked_mcp": 19,
+    "total_orders": 103,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 0.0,
+    "volume_block_rate": 18.639798488664987,
+    "avg_scores": {
+      "WIFUSDT": 58.68,
+      "LINKUSDT": 61.4375,
+      "BNBUSDT": 69.6923076923077,
+      "SUIUSDT": 63.84,
+      "NEARUSDT": 71.76470588235294,
+      "APTUSDT": 63.05882352941177,
+      "TONUSDT": 56.36,
+      "ETHUSDT": 66.03333333333333,
+      "ADAUSDT": 69.0,
+      "DOGEUSDT": 59.275862068965516,
+      "DOTUSDT": 56.23076923076923,
+      "1000PEPEUSDT": 63.516129032258064,
+      "SOLUSDT": 60.888888888888886,
+      "NOTUSDT": 64.07692307692308,
+      "AVAXUSDT": 73.82608695652173,
+      "XRPUSDT": 68.0
+    },
+    "avg_rsi": {
+      "WIFUSDT": 38.98761904761904,
+      "NOTUSDT": 40.12396825396825,
+      "LINKUSDT": 45.75253968253968,
+      "BNBUSDT": 46.04936507936508,
+      "SUIUSDT": 40.01888888888889,
+      "NEARUSDT": 47.26698412698413,
+      "APTUSDT": 34.94714285714286,
+      "TONUSDT": 35.42,
+      "ETHUSDT": 42.97203125,
+      "SOLUSDT": 43.593387096774194,
+      "XRPUSDT": 41.486935483870965,
+      "ADAUSDT": 39.06936507936508,
+      "DOGEUSDT": 36.12935483870968,
+      "AVAXUSDT": 42.75290322580645,
+      "DOTUSDT": 36.560483870967744,
+      "1000PEPEUSDT": 37.47516129032258
+    },
+    "top_sessions": [
+      [
+        "ASIAN",
+        221
+      ],
+      [
+        "OFF_HOURS",
+        176
+      ]
+    ],
+    "mcp_approval_rate": 94.32835820895522,
+    "avg_mcp_confidence": 0.7355223880597015,
+    "mcp_total": 335,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "NEARUSDT",
+        46
+      ],
+      [
+        "XRPUSDT",
+        45
+      ],
+      [
+        "AVAXUSDT",
+        39
+      ],
+      [
+        "NOTUSDT",
+        37
+      ],
+      [
+        "ETHUSDT",
+        34
+      ]
+    ],
+    "most_blocked": [
+      [
+        "APTUSDT",
+        20
+      ],
+      [
+        "DOTUSDT",
+        13
+      ],
+      [
+        "1000PEPEUSDT",
+        9
+      ],
+      [
+        "TONUSDT",
+        8
+      ],
+      [
+        "DOGEUSDT",
+        5
+      ]
+    ],
+    "warnings_summary": {
+      "1000PEPEUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          16
+        ],
+        [
+          "Sessão de baixa liquidez",
+          13
+        ]
+      ],
+      "WIFUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          16
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          15
+        ]
+      ],
+      "LINKUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          12
+        ],
+        [
+          "Sessão de baixa liquidez",
+          10
+        ]
+      ],
+      "BNBUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          13
+        ],
+        [
+          "Padrão HAMMER contrário ao sinal PUT",
+          3
+        ]
+      ],
+      "SUIUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          13
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          12
+        ]
+      ],
+      "NEARUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          10
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          5
+        ]
+      ],
+      "APTUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          7
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          6
+        ]
+      ],
+      "TONUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          22
+        ],
+        [
+          "Sessão de baixa liquidez",
+          10
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          14
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          7
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          13
+        ],
+        [
+          "PUT próximo ao suporte - risco alto",
+          8
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          23
+        ],
+        [
+          "Sessão de baixa liquidez",
+          12
+        ]
+      ],
+      "DOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          36
+        ],
+        [
+          "Sessão de baixa liquidez",
+          24
+        ]
+      ],
+      "SOLUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          15
+        ],
+        [
+          "Sessão de baixa liquidez",
+          13
+        ]
+      ],
+      "NOTUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          14
+        ],
+        [
+          "Sessão de baixa liquidez",
+          3
+        ]
+      ],
+      "AVAXUSDT": [
+        [
+          "Sessão de baixa liquidez",
+          6
+        ],
+        [
+          "Volume baixo (0.66x média)",
+          3
+        ]
+      ],
+      "XRPUSDT": [
+        [
+          "Padrão DOJI indica indecisão",
+          3
+        ]
+      ]
+    },
+    "hourly_stats": {
+      "0": {
+        "hour_utc": 0,
+        "signals": 21,
+        "avg_score": 65.2,
+        "mcp_approval_rate": 84.6,
+        "orders": 0
+      },
+      "18": {
+        "hour_utc": 18,
+        "signals": 7,
+        "avg_score": 74.6,
+        "mcp_approval_rate": 100.0,
+        "orders": 7
+      },
+      "19": {
+        "hour_utc": 19,
+        "signals": 112,
+        "avg_score": 62.5,
+        "mcp_approval_rate": 86.4,
+        "orders": 27
+      },
+      "20": {
+        "hour_utc": 20,
+        "signals": 57,
+        "avg_score": 60.4,
+        "mcp_approval_rate": 100.0,
+        "orders": 12
+      },
+      "21": {
+        "hour_utc": 21,
+        "signals": 107,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 97.1,
+        "orders": 42
+      },
+      "22": {
+        "hour_utc": 22,
+        "signals": 58,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 15
+      },
+      "23": {
+        "hour_utc": 23,
+        "signals": 35,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 86.4,
+        "orders": 0
+      }
+    },
+    "best_hours": [
+      {
+        "hour_utc": 19,
+        "signals": 112,
+        "avg_score": 62.5,
+        "mcp_approval_rate": 86.4,
+        "orders": 27
+      },
+      {
+        "hour_utc": 21,
+        "signals": 107,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 97.1,
+        "orders": 42
+      },
+      {
+        "hour_utc": 22,
+        "signals": 58,
+        "avg_score": 63.9,
+        "mcp_approval_rate": 100.0,
+        "orders": 15
+      },
+      {
+        "hour_utc": 20,
+        "signals": 57,
+        "avg_score": 60.4,
+        "mcp_approval_rate": 100.0,
+        "orders": 12
+      },
+      {
+        "hour_utc": 23,
+        "signals": 35,
+        "avg_score": 66.4,
+        "mcp_approval_rate": 86.4,
+        "orders": 0
+      },
+      {
+        "hour_utc": 0,
+        "signals": 21,
+        "avg_score": 65.2,
+        "mcp_approval_rate": 84.6,
+        "orders": 0
+      }
+    ]
+  },
+  "recommendations": {
+    "resumo": "Bot analisou 40 ciclos. Gerou 397 sinais, 103 ordens executadas. MCP aprovou 94% dos sinais enviados.",
+    "problemas": [],
+    "recomendacoes": [],
+    "ajustes_config": {
+      "quality": {},
+      "risk": {},
+      "mcp": {}
+    },
+    "alertas": []
+  },
+  "applied_adjustments": []
+}

@@ -1,0 +1,293 @@
+{
+  "timestamp": "20260310_092202",
+  "diagnosis": {
+    "cycles": 121,
+    "total_signals": 349,
+    "total_blocked_score": 15,
+    "total_blocked_mcp": 59,
+    "total_orders": 276,
+    "total_closes": 0,
+    "total_pnl": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "resistance_block_rate": 51.28939828080229,
+    "volume_block_rate": 30.945558739255013,
+    "avg_scores": {
+      "SUIUSDT": 62.67567567567568,
+      "NEARUSDT": 68.61290322580645,
+      "ETHUSDT": 67.3157894736842,
+      "SOLUSDT": 74.42857142857143,
+      "XRPUSDT": 69.25,
+      "ADAUSDT": 70.28125,
+      "DOGEUSDT": 65.71428571428571,
+      "AVAXUSDT": 68.0,
+      "DOTUSDT": 68.0,
+      "1000PEPEUSDT": 63.91428571428571,
+      "NOTUSDT": 65.0,
+      "LINKUSDT": 61.125,
+      "BNBUSDT": 69.78947368421052,
+      "APTUSDT": 63.68421052631579,
+      "TONUSDT": 60.5,
+      "WIFUSDT": 65.27272727272727
+    },
+    "avg_rsi": {
+      "SUIUSDT": 67.55605263157895,
+      "NEARUSDT": 65.77263157894737,
+      "APTUSDT": 59.83736842105264,
+      "TONUSDT": 47.86526315789474,
+      "ETHUSDT": 59.54447368421053,
+      "SOLUSDT": 56.245135135135136,
+      "XRPUSDT": 60.898421052631576,
+      "ADAUSDT": 65.55054054054054,
+      "DOGEUSDT": 70.63135135135136,
+      "AVAXUSDT": 62.32973684210527,
+      "DOTUSDT": 51.495789473684205,
+      "1000PEPEUSDT": 64.41078947368422,
+      "WIFUSDT": 53.64763157894737,
+      "NOTUSDT": 53.403684210526315,
+      "LINKUSDT": 55.66972972972974,
+      "BNBUSDT": 56.056216216216214
+    },
+    "top_sessions": [
+      [
+        "LONDON",
+        349
+      ]
+    ],
+    "mcp_approval_rate": 82.33532934131736,
+    "avg_mcp_confidence": 0.7173652694610778,
+    "mcp_total": 334,
+    "error_counter": {},
+    "no_signal_syms": [
+      [
+        "DOTUSDT",
+        29
+      ],
+      [
+        "WIFUSDT",
+        27
+      ],
+      [
+        "XRPUSDT",
+        26
+      ],
+      [
+        "SOLUSDT",
+        23
+      ],
+      [
+        "NOTUSDT",
+        23
+      ]
+    ],
+    "most_blocked": [
+      [
+        "SUIUSDT",
+        18
+      ],
+      [
+        "DOGEUSDT",
+        15
+      ],
+      [
+        "1000PEPEUSDT",
+        9
+      ],
+      [
+        "NEARUSDT",
+        9
+      ],
+      [
+        "ADAUSDT",
+        8
+      ]
+    ],
+    "warnings_summary": {
+      "NEARUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          9
+        ],
+        [
+          "Volume baixo (0.71x média)",
+          3
+        ]
+      ],
+      "ETHUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          10
+        ],
+        [
+          "Volume baixo (0.67x média)",
+          3
+        ]
+      ],
+      "SOLUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          6
+        ],
+        [
+          "Volume baixo (0.62x média)",
+          3
+        ]
+      ],
+      "AVAXUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          15
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          6
+        ]
+      ],
+      "DOTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          6
+        ],
+        [
+          "Volume baixo (0.67x média)",
+          3
+        ]
+      ],
+      "1000PEPEUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          29
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          6
+        ]
+      ],
+      "NOTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          15
+        ],
+        [
+          "Volume baixo (0.74x média)",
+          3
+        ]
+      ],
+      "LINKUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          24
+        ],
+        [
+          "Volume baixo (0.71x média)",
+          3
+        ]
+      ],
+      "BNBUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          13
+        ],
+        [
+          "Volatilidade muito baixa (ATR 0.3%)",
+          4
+        ]
+      ],
+      "APTUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          19
+        ],
+        [
+          "Volume baixo (0.61x média)",
+          3
+        ]
+      ],
+      "SUIUSDT": [
+        [
+          "CALL próximo à resistência - risco alto",
+          33
+        ],
+        [
+          "Padrão DOJI indica indecisão",
+          3
+        ]
+      ],
+      "TONUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          12
+        ],
+        [
+          "Volume baixo (0.79x média)",
+          3
+        ]
+      ],
+      "ADAUSDT": [
+        [
+          "Padrão DOJI indica indecisão",
+          8
+        ],
+        [
+          "Volume baixo (0.63x média)",
+          3
+        ]
+      ],
+      "DOGEUSDT": [
+        [
+          "Volume baixo (0.67x média)",
+          3
+        ],
+        [
+          "Volume baixo (0.76x média)",
+          3
+        ]
+      ],
+      "WIFUSDT": [
+        [
+          "PUT próximo ao suporte - risco alto",
+          11
+        ],
+        [
+          "Volume baixo (0.62x média)",
+          3
+        ]
+      ]
+    }
+  },
+  "recommendations": {
+    "resumo": "Bot analisou 121 ciclos. Gerou 349 sinais, 276 ordens executadas. MCP aprovou 82% dos sinais enviados.",
+    "problemas": [
+      {
+        "prioridade": "ALTA",
+        "problema": "Muitos sinais bloqueados por resistência próxima",
+        "causa": "51% dos sinais gerados perto de resistência",
+        "impacto": "Bot perde oportunidades de breakout válidas"
+      },
+      {
+        "prioridade": "MEDIA",
+        "problema": "Volume baixo bloqueando muitos sinais",
+        "causa": "31% dos sinais com volume insuficiente",
+        "impacto": "Sessão ASIAN naturalmente tem volume menor"
+      }
+    ],
+    "recomendacoes": [
+      {
+        "tipo": "CONFIG",
+        "descricao": "Aumentar threshold de S/R para 3%",
+        "parametro": "NEAR_THRESHOLD em indicators.py",
+        "valor_atual": "2.0%",
+        "valor_sugerido": "3.0%",
+        "justificativa": "Resistências próximas em cripto nem sempre bloqueiam"
+      }
+    ],
+    "ajustes_config": {
+      "quality": {},
+      "risk": {},
+      "mcp": {}
+    },
+    "alertas": []
+  },
+  "applied_adjustments": []
+}
