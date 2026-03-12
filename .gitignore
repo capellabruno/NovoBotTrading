@@ -14,6 +14,7 @@ backtest.log
 # Dados de cache
 data/
 backtest_reports/
+agents/reports/
 
 # Python
 __pycache__/
