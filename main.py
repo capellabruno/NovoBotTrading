@@ -9,9 +9,13 @@ from core.engine import TradingEngine
 from core.scheduler import Scheduler
 from config.config_loader import load_config
 
-# Configurar stdout para UTF-8
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+# Configurar stdout para UTF-8 (apenas quando necessário)
+if hasattr(sys.stdout, 'buffer'):
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+    except Exception:
+        pass
 
 logging.basicConfig(
     level=logging.INFO,
