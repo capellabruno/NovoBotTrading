@@ -1,3 +1,4 @@
+import time
 import requests
 import json
 import logging
@@ -7,10 +8,11 @@ from .prompts import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
 
 logger = logging.getLogger(__name__)
 
+
 class MCPServer:
-    def __init__(self, config: Dict[str, Any]):
+    def __init__(self, config: Dict[str, Any], db_manager=None):
         self.config = config
-        self.mode = config.get("mode", "gemini")  # gemini é o padrão
+        self.mode = config.get("mode", "gemini")
 
         # Gemini Config
         self.gemini_api_key = config.get("gemini_api_key")
@@ -25,8 +27,14 @@ class MCPServer:
         self.ollama_url = config.get("ollama_url", "http://localhost:11434/api/generate")
         self.ollama_model = config.get("model", "deepseek-r1:32b")
 
+        # DatabaseManager para persistir uso de tokens
+        self.db = db_manager
+
+    def set_db(self, db_manager):
+        """Injeta o DatabaseManager após a inicialização."""
+        self.db = db_manager
+
     def _get_gemini_client(self):
-        """Lazy initialization do cliente Gemini"""
         if self._gemini_client is None and self.gemini_api_key:
             try:
                 import google.generativeai as genai
@@ -34,10 +42,35 @@ class MCPServer:
                 self._gemini_client = genai.GenerativeModel(self.gemini_model)
                 logger.info(f"Cliente Gemini inicializado com modelo: {self.gemini_model}")
             except ImportError:
-                logger.error("Biblioteca google-generativeai não instalada. Execute: pip install google-generativeai")
+                logger.error("Biblioteca google-generativeai não instalada.")
             except Exception as e:
                 logger.error(f"Erro ao inicializar Gemini: {e}")
         return self._gemini_client
+
+    def _record_usage(self, provider: str, model: str, symbol: str,
+                      prompt_tokens: int, completion_tokens: int,
+                      approved: bool, confidence: float, latency_ms: int):
+        """Persiste o uso de tokens no banco e loga no console."""
+        total = prompt_tokens + completion_tokens
+        logger.info(
+            f"[{symbol}] LLM usage | provider={provider} model={model} "
+            f"tokens={total} (prompt={prompt_tokens} completion={completion_tokens}) "
+            f"approved={approved} confidence={confidence:.2f} latency={latency_ms}ms"
+        )
+        if self.db:
+            try:
+                self.db.save_llm_usage(
+                    provider=provider,
+                    model=model,
+                    symbol=symbol,
+                    prompt_tokens=prompt_tokens,
+                    completion_tokens=completion_tokens,
+                    approved=approved,
+                    confidence=confidence,
+                    latency_ms=latency_ms,
+                )
+            except Exception as e:
+                logger.warning(f"Falha ao persistir LLM usage: {e}")
 
     def validate_signal(self, data: MarketDataInput) -> ValidationResult:
         """
@@ -45,56 +78,45 @@ class MCPServer:
         1. Gemini  (principal)
         2. Groq    (fallback - rate limit do Gemini)
         3. Ollama  (último recurso local)
-        4. Mock    (somente se TUDO falhar - nunca aprova automaticamente)
+        4. Mock    (somente se TUDO falhar)
         """
         logger.info(f"[{data.symbol}] Validando sinal via MCP (modo={self.mode})")
 
         if self.mode == "mock":
             return self._mock_validation(data)
 
-        # Tentativa 1: Gemini
         if self.gemini_api_key:
             result = self._gemini_validation(data)
             if result is not None:
                 return result
             logger.warning(f"[{data.symbol}] Gemini falhou. Tentando Groq...")
 
-        # Tentativa 2: Groq
         if self.groq_api_key:
             result = self._groq_validation(data)
             if result is not None:
                 return result
             logger.warning(f"[{data.symbol}] Groq falhou. Tentando Ollama...")
 
-        # Tentativa 3: Ollama
         result = self._ollama_validation(data)
         if result is not None:
             return result
         logger.warning(f"[{data.symbol}] Ollama falhou. Usando mock como último recurso.")
 
-        # Fallback final: mock (não aprova automaticamente)
         return self._mock_validation(data)
 
     def _mock_validation(self, data: MarketDataInput) -> ValidationResult:
-        """
-        Simula uma validação baseada em regras simples (para testes sem LLM).
-        """
-        logger.info("Executando validação MOCK no MCP.")
-        
-        score = 0.0 # Começa com zero para ser estrito
+        score = 0.0
         reasons = []
 
-        # Regra de Tendência (Obrigatória para ganhar pontos base altos)
         trend_ok = False
         if data.signal_type == "CALL":
             if data.close_price > data.ema_20 > data.ema_50:
-                score += 0.5 # Peso alto para tendência
+                score += 0.5
                 reasons.append("Tendência de alta confirmada.")
                 trend_ok = True
             if 50 <= data.rsi <= 70:
                 score += 0.2
                 reasons.append("RSI favorável para compra.")
-        
         elif data.signal_type == "PUT":
             if data.close_price < data.ema_20 < data.ema_50:
                 score += 0.5
@@ -107,13 +129,11 @@ class MCPServer:
         if not trend_ok:
             reasons.append("Tendência não confirma o sinal.")
 
-        # Volume
         if data.volume_ratio > 1.0:
             score += 0.1
             reasons.append("Volume acima da média.")
 
         approved = score >= 0.7
-        
         return ValidationResult(
             approved=approved,
             confidence=round(min(score, 0.99), 2),
@@ -122,7 +142,6 @@ class MCPServer:
         )
 
     def _build_prompt(self, data: MarketDataInput) -> str:
-        """Constrói o prompt completo com todos os campos, tratando None."""
         def fmt(v, decimals=2, suffix=""):
             if v is None:
                 return "N/A"
@@ -156,39 +175,15 @@ class MCPServer:
             entry_context_3m=data.entry_context_3m or "N/A",
         )
 
-    def _ollama_validation(self, data: MarketDataInput) -> Optional[ValidationResult]:
-        """Envia o prompt para o Ollama (LLM local - último recurso)."""
-        prompt = self._build_prompt(data)
-        payload = {
-            "model": self.ollama_model,
-            "prompt": f"{SYSTEM_PROMPT}\n\n{prompt}",
-            "stream": False,
-            "format": "json",
-        }
-        try:
-            response = requests.post(self.ollama_url, json=payload, timeout=120)
-            response.raise_for_status()
-            llm_text = response.json().get("response", "")
-            parsed = json.loads(llm_text)
-            result_data = self._extract_validation_fields(parsed)
-            logger.info(f"Ollama respondeu com sucesso.")
-            return ValidationResult(**result_data)
-        except json.JSONDecodeError:
-            logger.error("Ollama: falha ao decodificar JSON da resposta.")
-            return None
-        except Exception as e:
-            logger.error(f"Ollama: erro de conexão: {e}")
-            return None
-
     def _gemini_validation(self, data: MarketDataInput) -> Optional[ValidationResult]:
-        """Envia o prompt para o Google Gemini API (provider principal)."""
         client = self._get_gemini_client()
         if not client:
-            logger.warning("Cliente Gemini não disponível (chave ausente ou erro de init).")
+            logger.warning("Cliente Gemini não disponível.")
             return None
 
         prompt = self._build_prompt(data)
         full_prompt = f"{SYSTEM_PROMPT}\n\n{prompt}"
+        t0 = time.time()
 
         try:
             response = client.generate_content(
@@ -198,11 +193,29 @@ class MCPServer:
                     "temperature": 0.1,
                 }
             )
+            latency_ms = int((time.time() - t0) * 1000)
             llm_text = response.text
-            logger.debug(f"Resposta Gemini: {llm_text[:200]}...")
+
+            prompt_tokens = 0
+            completion_tokens = 0
+            try:
+                usage = response.usage_metadata
+                prompt_tokens = getattr(usage, "prompt_token_count", 0) or 0
+                completion_tokens = getattr(usage, "candidates_token_count", 0) or 0
+            except Exception:
+                pass
+
             parsed = json.loads(llm_text)
             result_data = self._extract_validation_fields(parsed)
-            return ValidationResult(**result_data)
+            result = ValidationResult(**result_data)
+
+            self._record_usage(
+                provider="gemini", model=self.gemini_model, symbol=data.symbol,
+                prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
+                approved=result.approved, confidence=result.confidence,
+                latency_ms=latency_ms,
+            )
+            return result
 
         except json.JSONDecodeError as e:
             logger.error(f"Gemini: falha ao decodificar JSON: {e}")
@@ -210,18 +223,18 @@ class MCPServer:
         except Exception as e:
             err = str(e)
             if "429" in err or "quota" in err.lower() or "rate" in err.lower():
-                logger.warning(f"Gemini: rate limit atingido. Passando para Groq.")
+                logger.warning("Gemini: rate limit atingido. Passando para Groq.")
             else:
                 logger.error(f"Gemini: erro na chamada API: {e}")
             return None
 
     def _groq_validation(self, data: MarketDataInput) -> Optional[ValidationResult]:
-        """Envia o prompt para a API Groq (fallback do Gemini)."""
         if not self.groq_api_key:
             return None
 
         prompt = self._build_prompt(data)
         full_prompt = f"{SYSTEM_PROMPT}\n\n{prompt}"
+        t0 = time.time()
 
         try:
             response = requests.post(
@@ -238,12 +251,27 @@ class MCPServer:
                 },
                 timeout=60,
             )
+            latency_ms = int((time.time() - t0) * 1000)
             response.raise_for_status()
-            llm_text = response.json()["choices"][0]["message"]["content"]
+            resp_json = response.json()
+
+            usage = resp_json.get("usage", {})
+            prompt_tokens = usage.get("prompt_tokens", 0)
+            completion_tokens = usage.get("completion_tokens", 0)
+
+            llm_text = resp_json["choices"][0]["message"]["content"]
             parsed = json.loads(llm_text)
             result_data = self._extract_validation_fields(parsed)
+            result = ValidationResult(**result_data)
+
+            self._record_usage(
+                provider="groq", model=self.groq_model, symbol=data.symbol,
+                prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
+                approved=result.approved, confidence=result.confidence,
+                latency_ms=latency_ms,
+            )
             logger.info(f"Groq respondeu com sucesso (modelo={self.groq_model}).")
-            return ValidationResult(**result_data)
+            return result
 
         except json.JSONDecodeError as e:
             logger.error(f"Groq: falha ao decodificar JSON: {e}")
@@ -251,53 +279,82 @@ class MCPServer:
         except Exception as e:
             err = str(e)
             if "429" in err or "rate" in err.lower():
-                logger.warning(f"Groq: rate limit atingido.")
+                logger.warning("Groq: rate limit atingido.")
             else:
                 logger.error(f"Groq: erro na chamada API: {e}")
             return None
 
+    def _ollama_validation(self, data: MarketDataInput) -> Optional[ValidationResult]:
+        prompt = self._build_prompt(data)
+        payload = {
+            "model": self.ollama_model,
+            "prompt": f"{SYSTEM_PROMPT}\n\n{prompt}",
+            "stream": False,
+            "format": "json",
+        }
+        t0 = time.time()
+        try:
+            response = requests.post(self.ollama_url, json=payload, timeout=120)
+            latency_ms = int((time.time() - t0) * 1000)
+            response.raise_for_status()
+            resp_json = response.json()
+            llm_text = resp_json.get("response", "")
+
+            prompt_tokens = resp_json.get("prompt_eval_count", 0) or 0
+            completion_tokens = resp_json.get("eval_count", 0) or 0
+
+            parsed = json.loads(llm_text)
+            result_data = self._extract_validation_fields(parsed)
+            result = ValidationResult(**result_data)
+
+            self._record_usage(
+                provider="ollama", model=self.ollama_model, symbol=data.symbol,
+                prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
+                approved=result.approved, confidence=result.confidence,
+                latency_ms=latency_ms,
+            )
+            return result
+
+        except json.JSONDecodeError:
+            logger.error("Ollama: falha ao decodificar JSON da resposta.")
+            return None
+        except Exception as e:
+            logger.error(f"Ollama: erro de conexão: {e}")
+            return None
+
     def _extract_validation_fields(self, parsed: Dict) -> Dict[str, Any]:
-        """
-        Extrai os campos esperados do JSON retornado pelo LLM,
-        lidando com possíveis variações na estrutura da resposta.
-        """
-        # Mapeamento de possíveis nomes de campos (português/inglês)
-        approved_keys = ['approved', 'aprovado', 'approve', 'is_approved']
-        confidence_keys = ['confidence', 'confianca', 'confiança', 'score']
-        reasoning_keys = ['reasoning', 'raciocinio', 'raciocínio', 'reason', 'justificativa', 'analise', 'análise']
+        approved_keys        = ['approved', 'aprovado', 'approve', 'is_approved']
+        confidence_keys      = ['confidence', 'confianca', 'confiança', 'score']
+        reasoning_keys       = ['reasoning', 'raciocinio', 'raciocínio', 'reason', 'justificativa', 'analise', 'análise']
         suggested_action_keys = ['suggested_action', 'acao_sugerida', 'ação_sugerida', 'action', 'acao', 'ação']
-        
+
         def find_value(data: Dict, keys: list, default=None):
-            """Busca um valor em um dicionário usando múltiplas chaves possíveis."""
             for key in keys:
                 if key in data:
                     return data[key]
-            # Tenta buscar em estruturas aninhadas
             for value in data.values():
                 if isinstance(value, dict):
                     result = find_value(value, keys, None)
                     if result is not None:
                         return result
             return default
-        
-        approved = find_value(parsed, approved_keys, False)
-        confidence = find_value(parsed, confidence_keys, 0.5)
-        reasoning = find_value(parsed, reasoning_keys, "Sem justificativa fornecida.")
+
+        approved         = find_value(parsed, approved_keys, False)
+        confidence       = find_value(parsed, confidence_keys, 0.5)
+        reasoning        = find_value(parsed, reasoning_keys, "Sem justificativa fornecida.")
         suggested_action = find_value(parsed, suggested_action_keys, "WAIT")
-        
-        # Normaliza os valores
+
         if isinstance(approved, str):
             approved = approved.lower() in ['true', 'sim', 'yes', '1', 'aprovado']
-        
+
         if isinstance(confidence, str):
             try:
                 confidence = float(confidence.replace(',', '.'))
-            except:
+            except Exception:
                 confidence = 0.5
-        
+
         confidence = max(0.0, min(1.0, float(confidence)))
-        
-        # Normaliza suggested_action
+
         action_upper = str(suggested_action).upper()
         if action_upper in ['EXECUTE', 'EXECUTAR', 'BUY', 'SELL', 'COMPRAR', 'VENDER']:
             suggested_action = 'EXECUTE'
@@ -305,11 +362,10 @@ class MCPServer:
             suggested_action = 'ABORT'
         else:
             suggested_action = 'WAIT'
-        
+
         return {
             'approved': approved,
             'confidence': round(confidence, 2),
             'reasoning': str(reasoning),
-            'suggested_action': suggested_action
+            'suggested_action': suggested_action,
         }
-

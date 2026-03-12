@@ -12,7 +12,7 @@ from typing import Optional, List, Dict, Any
 from sqlalchemy import create_engine, func, desc
 from sqlalchemy.orm import sessionmaker, Session
 
-from .models import Base, Trade, SystemEvent, CycleSnapshot
+from .models import Base, Trade, SystemEvent, CycleSnapshot, LLMUsage
 
 logger = logging.getLogger(__name__)
 
@@ -288,3 +288,81 @@ class DatabaseManager:
                 )
                 sess.add(snap)
                 sess.commit()
+
+    # -------------------------------------------------------------------------
+    # LLM Usage
+    # -------------------------------------------------------------------------
+
+    def save_llm_usage(self, provider: str, model: str, symbol: str,
+                       prompt_tokens: int, completion_tokens: int,
+                       approved: bool, confidence: float, latency_ms: int):
+        with self._lock:
+            with self._session() as sess:
+                entry = LLMUsage(
+                    provider=provider,
+                    model=model,
+                    symbol=symbol,
+                    prompt_tokens=prompt_tokens,
+                    completion_tokens=completion_tokens,
+                    total_tokens=prompt_tokens + completion_tokens,
+                    approved=approved,
+                    confidence=confidence,
+                    latency_ms=latency_ms,
+                )
+                sess.add(entry)
+                sess.commit()
+
+    def get_llm_usage(self, since_days: int = 7, provider: str = None) -> List[Dict]:
+        cutoff = datetime.utcnow() - timedelta(days=since_days)
+        with self._session() as sess:
+            q = sess.query(LLMUsage).filter(LLMUsage.timestamp >= cutoff)
+            if provider:
+                q = q.filter(LLMUsage.provider == provider)
+            rows = q.order_by(desc(LLMUsage.timestamp)).all()
+            return [
+                {
+                    "timestamp":          r.timestamp.isoformat(),
+                    "provider":           r.provider,
+                    "model":              r.model,
+                    "symbol":             r.symbol,
+                    "prompt_tokens":      r.prompt_tokens,
+                    "completion_tokens":  r.completion_tokens,
+                    "total_tokens":       r.total_tokens,
+                    "approved":           r.approved,
+                    "confidence":         r.confidence,
+                    "latency_ms":         r.latency_ms,
+                }
+                for r in rows
+            ]
+
+    def get_llm_usage_summary(self, since_days: int = 7) -> Dict[str, Any]:
+        cutoff = datetime.utcnow() - timedelta(days=since_days)
+        with self._session() as sess:
+            rows = sess.query(LLMUsage).filter(LLMUsage.timestamp >= cutoff).all()
+
+        if not rows:
+            return {}
+
+        from collections import defaultdict
+        summary = defaultdict(lambda: {
+            "calls": 0, "prompt_tokens": 0,
+            "completion_tokens": 0, "total_tokens": 0,
+            "approved": 0, "avg_latency_ms": 0,
+        })
+        latencies = defaultdict(list)
+
+        for r in rows:
+            p = r.provider
+            summary[p]["calls"] += 1
+            summary[p]["prompt_tokens"] += r.prompt_tokens or 0
+            summary[p]["completion_tokens"] += r.completion_tokens or 0
+            summary[p]["total_tokens"] += r.total_tokens or 0
+            summary[p]["approved"] += 1 if r.approved else 0
+            if r.latency_ms:
+                latencies[p].append(r.latency_ms)
+
+        for p in summary:
+            lats = latencies[p]
+            summary[p]["avg_latency_ms"] = int(sum(lats) / len(lats)) if lats else 0
+
+        return dict(summary)

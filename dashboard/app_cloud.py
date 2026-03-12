@@ -365,6 +365,115 @@ def _render_performance(db):
     st.plotly_chart(fig_hist, use_container_width=True)
 
 
+def _render_llm_usage(db):
+    st.subheader("Uso de Tokens LLM")
+
+    days = st.selectbox("Período", [1, 3, 7, 14, 30], index=2, key="llm_days")
+
+    summary = db.get_llm_usage_summary(since_days=days)
+    if not summary:
+        st.info("Nenhum dado de uso LLM registrado ainda.")
+        return
+
+    # --- KPIs por provider ---
+    providers = list(summary.keys())
+    cols = st.columns(len(providers))
+    for i, prov in enumerate(providers):
+        s = summary[prov]
+        with cols[i]:
+            st.markdown(f"**{prov.upper()}**")
+            st.metric("Chamadas",          s["calls"])
+            st.metric("Total tokens",      f"{s['total_tokens']:,}")
+            st.metric("Prompt tokens",     f"{s['prompt_tokens']:,}")
+            st.metric("Completion tokens", f"{s['completion_tokens']:,}")
+            st.metric("Aprovações",        s["approved"])
+            st.metric("Latência média",    f"{s['avg_latency_ms']} ms")
+
+    st.divider()
+
+    # --- Gráficos ---
+    rows = db.get_llm_usage(since_days=days)
+    if not rows:
+        return
+
+    df = pd.DataFrame(rows)
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        # Tokens por provider (donut)
+        prov_tokens = df.groupby("provider")["total_tokens"].sum()
+        fig_pie = go.Figure(go.Pie(
+            labels=prov_tokens.index,
+            values=prov_tokens.values,
+            hole=0.5,
+            marker_colors=["#00cc88", "#4488ff", "#ffaa00", "#aa88ff"],
+            hovertemplate="%{label}: %{value:,} tokens (%{percent})<extra></extra>"
+        ))
+        fig_pie.update_layout(
+            title="Tokens por Provider",
+            template="plotly_dark", height=280,
+            margin=dict(l=20, r=20, t=40, b=20),
+            paper_bgcolor="#0d0e14",
+        )
+        st.plotly_chart(fig_pie, use_container_width=True)
+
+    with col2:
+        # Latência ao longo do tempo por provider
+        fig_lat = go.Figure()
+        colors_map = {"gemini": "#00cc88", "groq": "#4488ff", "ollama": "#ffaa00", "mock": "#888888"}
+        for prov in df["provider"].unique():
+            df_p = df[df["provider"] == prov].sort_values("timestamp")
+            fig_lat.add_trace(go.Scatter(
+                x=df_p["timestamp"], y=df_p["latency_ms"],
+                mode="lines+markers", name=prov,
+                line=dict(color=colors_map.get(prov, "#ffffff"), width=1.5),
+                marker=dict(size=4),
+                hovertemplate=f"{prov}: %{{y}} ms<extra></extra>"
+            ))
+        fig_lat.update_layout(
+            title="Latência por Requisição (ms)",
+            template="plotly_dark", height=280,
+            margin=dict(l=40, r=20, t=40, b=30),
+            yaxis=dict(title="ms", gridcolor="#1e2030"),
+            xaxis=dict(gridcolor="#1e2030"),
+            paper_bgcolor="#0d0e14", plot_bgcolor="#0d0e14",
+        )
+        st.plotly_chart(fig_lat, use_container_width=True)
+
+    # Tokens acumulados no tempo
+    df_sorted = df.sort_values("timestamp")
+    df_sorted["cum_tokens"] = df_sorted["total_tokens"].cumsum()
+    fig_cum = go.Figure(go.Scatter(
+        x=df_sorted["timestamp"], y=df_sorted["cum_tokens"],
+        mode="lines", fill="tozeroy",
+        line=dict(color="#4488ff", width=2),
+        fillcolor="rgba(68,136,255,0.08)",
+        hovertemplate="%{x|%d/%m %H:%M}<br>Total acumulado: %{y:,} tokens<extra></extra>"
+    ))
+    fig_cum.update_layout(
+        title="Tokens Acumulados no Período",
+        template="plotly_dark", height=220,
+        margin=dict(l=40, r=20, t=40, b=30),
+        yaxis=dict(gridcolor="#1e2030"),
+        xaxis=dict(gridcolor="#1e2030"),
+        paper_bgcolor="#0d0e14", plot_bgcolor="#0d0e14",
+    )
+    st.plotly_chart(fig_cum, use_container_width=True)
+
+    st.divider()
+
+    # Tabela detalhada (últimas 100 chamadas)
+    with st.expander("Detalhamento das chamadas", expanded=False):
+        df_show = df[["timestamp", "provider", "model", "symbol",
+                       "prompt_tokens", "completion_tokens", "total_tokens",
+                       "approved", "confidence", "latency_ms"]].copy()
+        df_show["timestamp"] = df_show["timestamp"].dt.strftime("%d/%m %H:%M:%S")
+        df_show["approved"] = df_show["approved"].map({True: "✅", False: "❌", None: "—"})
+        st.dataframe(df_show.head(100), use_container_width=True, hide_index=True)
+
+
 # ---------------------------------------------------------------------------
 # App principal
 # ---------------------------------------------------------------------------
@@ -407,7 +516,7 @@ if auto_refresh:
 
 db_perf = db.get_performance_summary(since_days=30)
 
-tabs = st.tabs(["📊  Visão Geral", "📋  Histórico", "📈  Performance"])
+tabs = st.tabs(["📊  Visão Geral", "📋  Histórico", "📈  Performance", "🤖  Tokens LLM"])
 
 with tabs[0]:
     _render_overview(db, db_perf)
@@ -417,3 +526,6 @@ with tabs[1]:
 
 with tabs[2]:
     _render_performance(db)
+
+with tabs[3]:
+    _render_llm_usage(db)

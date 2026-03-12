@@ -62,3 +62,20 @@ class CycleSnapshot(Base):
     open_positions_count = Column(Integer, default=0)
     symbols_analyzed = Column(Integer, default=0)
     cycle_number = Column(Integer, default=0)
+
+
+class LLMUsage(Base):
+    """Registro de uso de tokens por chamada LLM (Gemini / Groq)."""
+    __tablename__ = "llm_usage"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    timestamp = Column(DateTime, default=datetime.utcnow, index=True)
+    provider = Column(String(20), nullable=False)       # gemini / groq / ollama / mock
+    model = Column(String(60), nullable=True)
+    symbol = Column(String(20), nullable=True)
+    prompt_tokens = Column(Integer, default=0)
+    completion_tokens = Column(Integer, default=0)
+    total_tokens = Column(Integer, default=0)
+    approved = Column(Boolean, nullable=True)
+    confidence = Column(Float, nullable=True)
+    latency_ms = Column(Integer, nullable=True)         # tempo de resposta em ms

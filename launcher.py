@@ -92,15 +92,21 @@ def main():
     from database.manager import DatabaseManager
 
     state = StateManager.get_instance()
-    # Se DATABASE_URL estiver no .env, usa PostgreSQL (Supabase); senão SQLite local
+    # Se DATABASE_URL estiver no ambiente, usa PostgreSQL (Supabase); senão SQLite local
     db = DatabaseManager(db_path=str(ROOT / "trading.db"))
 
     # --- Configurar logging com integração ao state ---
     logger = setup_logging(db_manager=db, state_manager=state)
+
+    system_conf = config.get("system", {})
+    use_all_symbols = system_conf.get("use_all_symbols", False)
+    symbols_info = "todos os símbolos USDT (dinâmico)" if use_all_symbols else str(system_conf.get("symbols", []))
+
     logger.info("=" * 60)
     logger.info("NovoBotTrading v2.0 - Inicializando...")
-    logger.info(f"Modo: {'DRY RUN' if config['system']['dry_run'] else 'LIVE'}")
-    logger.info(f"Símbolos: {config['system']['symbols']}")
+    logger.info(f"Modo: {'DRY RUN' if system_conf.get('dry_run', False) else 'LIVE'}")
+    logger.info(f"Símbolos: {symbols_info}")
+    logger.info(f"Banco: {'PostgreSQL (Supabase)' if os.environ.get('DATABASE_URL') else 'SQLite local'}")
     logger.info("=" * 60)
 
     # --- Iniciar State API (Flask) ---

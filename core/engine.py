@@ -25,7 +25,7 @@ class TradingEngine:
                  db_manager=None):
         self.config = config
         self.strategy = Strategy(config)
-        self.mcp = MCPServer(config.get("mcp", {}))
+        self.mcp = MCPServer(config.get("mcp", {}), db_manager=db_manager)
         self.bybit = BybitClient(config)
         self.telegram = TelegramNotifier(config)
         self.optimizer = AdaptiveOptimizer(config)
