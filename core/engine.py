@@ -156,7 +156,7 @@ class TradingEngine:
         (não pelo código de reversão de tendência) e registra o PnL real no DB.
         """
         try:
-            open_db_trades = self.db.get_open_trades()
+            open_db_trades = self.db.get_open_trades(mode="live")
             if not open_db_trades:
                 return
 
@@ -417,7 +417,7 @@ class TradingEngine:
 
         # Verificar se já existe trade aberto para este símbolo
         if self.db:
-            open_for_symbol = [t for t in self.db.get_open_trades() if t["symbol"] == symbol]
+            open_for_symbol = [t for t in self.db.get_open_trades(mode="live") if t["symbol"] == symbol]
             if open_for_symbol:
                 logger.info(f"[{symbol}] Já existe trade aberto no DB. Pulando.")
                 return None

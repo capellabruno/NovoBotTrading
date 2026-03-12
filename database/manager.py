@@ -139,14 +139,19 @@ class DatabaseManager:
             trades = q.order_by(desc(Trade.entry_time)).limit(limit).all()
             return [self._trade_to_dict(t) for t in trades]
 
-    def get_open_trades(self) -> List[Dict]:
+    def get_symbols(self) -> List[str]:
+        """Retorna lista de símbolos únicos com trades registrados."""
         with self._session() as sess:
-            trades = (
-                sess.query(Trade)
-                .filter(Trade.exit_time.is_(None))
-                .order_by(desc(Trade.entry_time))
-                .all()
-            )
+            rows = sess.query(Trade.symbol).distinct().order_by(Trade.symbol).all()
+            return [r[0] for r in rows]
+
+    def get_open_trades(self, mode: str = None) -> List[Dict]:
+        """Retorna trades sem exit_time. Se mode='live', exclui dry_run."""
+        with self._session() as sess:
+            q = sess.query(Trade).filter(Trade.exit_time.is_(None))
+            if mode:
+                q = q.filter(Trade.mode == mode)
+            trades = q.order_by(desc(Trade.entry_time)).all()
             return [self._trade_to_dict(t) for t in trades]
 
     def get_performance_summary(self, since_days: int = 30) -> Dict[str, Any]:

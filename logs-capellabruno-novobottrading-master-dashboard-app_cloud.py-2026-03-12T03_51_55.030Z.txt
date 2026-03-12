@@ -1,0 +1,422 @@
+
+[     UTC     ] Logs for novobottrading-njnhvoqxymxygz7hjfqjhe.streamlit.app/
+────────────────────────────────────────────────────────────────────────────────────────
+[03:45:59] 🚀 Starting up repository: 'novobottrading', branch: 'master', main module: 'dashboard/app_cloud.py'
+[03:45:59] 🐙 Cloning repository...
+[03:45:59] 🐙 Cloning into '/mount/src/novobottrading'...
+
+[03:45:59] 🐙 Cloned repository!
+[03:45:59] 🐙 Pulling code changes from Github...
+[03:46:00] 📦 Processing dependencies...
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+Using uv pip install.
+Using Python 3.13.12 environment at /home/adminuser/venv
+Resolved 95 packages in 2.17s
+Prepared 95 packages in 2.68s
+Installed 95 packages in 261ms
+ + altair==6.0.0
+ + annotated-types==0.7.0
+ + anyio==4.12.1
+ + attrs==25.4.0
+ + blinker==1.9.0
+ + cachetools==7.0.5
+ + certifi==2026.2.25
+ + cffi==2.0.0
+ + charset-normalizer==3.4.5
+ + click==8.3.1
+ + cryptography==46.0.5
+ + flask==3.1.3
+ + gitdb==4.0.12
+ + gitpython==3.1.46
+ + google-ai-generativelanguage[2026-03-12 03:46:05.580984] ==0.6.15
+ + google-api-core==1.34.1
+ + google-api-python-client==2.192.0
+ + google-auth==2.49.0
+ + google-auth-httplib2==0.3.0
+ + google-generativeai==0.8.6
+ + googleapis-common-protos==1.73.0
+ + greenlet==3.3.2
+ + grpcio==1.78.0
+ + grpcio-status==1.48.2
+ + h11==0.16.0
+ + httpcore[2026-03-12 03:46:05.581208] ==1.0.9
+ + httplib2==0.31.2
+ + httpx==0.28.1
+ + httpx-sse==0.4.3
+ + idna==3.11
+ + importlib-metadata==8.7.1
+ + itsdangerous==2.2.0[2026-03-12 03:46:05.581475] 
+ + jinja2==3.1.6
+ + jsonschema==4.26.0
+ + jsonschema-specifications==2025.9.1
+ + markdown-it-py==4.0.0
+ + markupsafe==3.0.3
+ + mcp==1.26.0
+ + mdurl==0.1.2
+ + narwhals==2.18.0
+ + numpy==2.4.3
+ + packaging==26.0
+ + pandas==3.0.1
+ + pillow==12.1.1[2026-03-12 03:46:05.582056] 
+ + plotly==6.6.0
+ + proto-plus==1.27.1
+ + protobuf==3.20.3
+ + pyarrow==23.0.1
+ + [2026-03-12 03:46:05.582320] pyasn1==0.6.2
+ + pyasn1-modules==0.4.2
+ + pybit==5.14.0
+ + pycparser==3.0
+ + pycryptodome==3.23.0
+ + pydantic==2.12.5
+ + pydantic-core[2026-03-12 03:46:05.582513] ==2.41.5
+ + pydantic-settings==2.13.1
+ + pydeck==0.9.1
+ + pygments==2.19.2
+ + pyjwt==2.11.0
+ + pympler==1.1[2026-03-12 03:46:05.582697] 
+ + pyparsing==3.3.2
+ + python-dateutil==2.9.0.post0
+ + python-dotenv==1.2.2
+ + python-multipart==0.0.22
+ + python-telegram-bot==22.6[2026-03-12 03:46:05.582872] 
+ + pyyaml==6.0.3
+ + referencing==0.37.0
+ + requests==2.32.5
+ + rich==14.3.3
+ + rpds-py==0.30.0
+ + rsa==4.9.1
+ + schedule==1.2.2
+ + semver==3.0.4
+ + six==1.17.0
+ + smmap==5.0.3
+ [2026-03-12 03:46:05.583486] + sqlalchemy==2.0.48
+ + sse-starlette==3.3.2
+ + starlette==0.52.1
+ + streamlit==1.19.0
+ + streamlit-autorefresh==1.0.1
+ + ta==0.11.0[2026-03-12 03:46:05.583677] 
+ + toml==0.10.2
+ + tornado==6.5.5
+ + tqdm==4.67.3
+ + typing-extensions==4.15.0
+ + typing-inspection==0.4.2
+ + tzlocal==5.3.1
+ + uritemplate==4.2.0[2026-03-12 03:46:05.583852] 
+ + urllib3==2.6.3
+ + uvicorn==0.41.0
+ + validators==0.35.0
+ + watchdog==6.0.0
+ + websocket-client==1.9.0
+ + werkzeug==3.1.6
+ +[2026-03-12 03:46:05.584065]  zipp==3.23.0
+Checking if Streamlit is installed
+Traceback (most recent call last):
+  File "/home/adminuser/venv/bin/streamlit", line 5, in <module>
+    from streamlit.web.cli import main
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/__init__.py", line 55, in <module>
+    from streamlit.delta_generator import DeltaGenerator as _DeltaGenerator
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/delta_generator.py", line 43, in <module>
+    from streamlit.elements.arrow_altair import ArrowAltairMixin
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/elements/arrow_altair.py", line 36, in <module>
+    from altair.vegalite.v4.api import Chart
+ModuleNotFoundError: No module named 'altair.vegalite.v4'
+WARNING: Package(s) not found: streamlit-nightly
+Couldn't find Streamlit version.
+Installing rich for an improved exception logging
+Using uv pip install.
+Using Python 3.13.12 environment at /home/adminuser/venv
+Audited 1 package in 4ms
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[03:46:10] 🐍 Python dependencies were installed from /mount/src/novobottrading/requirements.txt using uv.
+Check if streamlit is installed
+Streamlit is already installed
+[03:46:11] 📦 Processed dependencies!
+Traceback (most recent call last):
+  File "/home/adminuser/venv/bin/streamlit", line 5, in <module>
+    from streamlit.web.cli import main
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/__init__.py", line 55, in <module>
+    from streamlit.delta_generator import DeltaGenerator as _DeltaGenerator
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/delta_generator.py", line 43, in <module>
+    from streamlit.elements.arrow_altair import ArrowAltairMixin
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/elements/arrow_altair.py", line 36, in <module>
+    from altair.vegalite.v4.api import Chart
+ModuleNotFoundError: No module named 'altair.vegalite.v4'
+[03:47:34] 🐙 Pulling code changes from Github...
+[03:47:35] 📦 Processing dependencies...
+[03:47:35] 📦 Processed dependencies!
+[03:47:37] 🔄 Updated app!
+[03:48:55] 🖥 Provisioning machine...
+[03:49:00] 🎛 Preparing system...
+[03:48:58] 🚀 Starting up repository: 'novobottrading', branch: 'master', main module: 'dashboard/app_cloud.py'
+[03:48:58] 🐙 Cloning repository...
+[03:48:59] 🐙 Cloning into '/mount/src/novobottrading'...
+
+[03:48:59] 🐙 Cloned repository!
+[03:48:59] 🐙 Pulling code changes from Github...
+[03:48:59] 📦 Processing dependencies...
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+Using uv pip install.
+Using Python 3.13.12 environment at /home/adminuser/venv
+Resolved 95 packages in 1.92s
+[03:49:02] ⛓ Spinning up manager process...
+Prepared 95 packages in 2.80s
+Installed 95 packages in 151ms
+ + altair==6.0.0
+ + annotated-types==0.7.0
+ + anyio==4.12.1
+ + attrs==25.4.0
+ + blinker==1.9.0[2026-03-12 03:49:04.481625] 
+ + cachetools==7.0.5
+ + certifi==2026.2.25
+ + cffi==2.0.0
+ + charset-normalizer==3.4.5
+ + click==8.3.1
+ + cryptography==46.0.5
+ + [2026-03-12 03:49:04.481810] flask==3.1.3
+ + gitdb==4.0.12
+ + gitpython==3.1.46
+ + google-ai-generativelanguage==0.6.15
+ + google-api-core==1.34.1
+ [2026-03-12 03:49:04.482037] + google-api-python-client==2.192.0
+ + google-auth==2.49.0
+ + google-auth-httplib2==0.3.0
+ + google-generativeai==0.8.6
+ + googleapis-common-protos==1.73.0
+ + greenlet==3.3.2[2026-03-12 03:49:04.482226] 
+ + grpcio==1.78.0
+ + grpcio-status==1.48.2
+ + h11==0.16.0
+ + [2026-03-12 03:49:04.482427] httpcore==1.0.9
+ + httplib2==0.31.2
+ + httpx==0.28.1
+ + httpx-sse==0.4.3
+ + idna==3.11
+ +[2026-03-12 03:49:04.482660]  importlib-metadata==8.7.1
+ + itsdangerous==2.2.0
+ + jinja2==3.1.6
+ + jsonschema==4.26.0
+ [2026-03-12 03:49:04.482879] + jsonschema-specifications==2025.9.1
+ + markdown-it-py==4.0.0
+ + markupsafe==3.0.3
+ + mcp==1.26.0
+ + mdurl==[2026-03-12 03:49:04.483095] 0.1.2
+ + narwhals==2.18.0
+ + numpy==2.4.3
+ + packaging==26.0
+ + [2026-03-12 03:49:04.483331] pandas==3.0.1
+ + pillow==12.1.1
+ + plotly==6.6.0
+ + proto-plus==1.27.1
+ +[2026-03-12 03:49:04.483541]  protobuf==3.20.3
+ + pyarrow==23.0.1
+ + pyasn1==0.6.2
+ + pyasn1-modules==[2026-03-12 03:49:04.483702] 0.4.2
+ + pybit==5.14.0
+ + pycparser==3.0
+ + pycryptodome==3.23.0
+ + pydantic==2.12.5
+ + [2026-03-12 03:49:04.483835] pydantic-core==2.41.5
+ + pydantic-settings==2.13.1
+ + pydeck==0.9.1
+ + pygments==2.19.2
+ + [2026-03-12 03:49:04.484332] pyjwt==2.11.0
+ + pympler==1.1
+ + pyparsing==3.3.2
+ + python-dateutil==2.9.0.post0
+ + python-dotenv==1.2.2[2026-03-12 03:49:04.484477] 
+ + python-multipart==0.0.22
+ + python-telegram-bot==22.6
+ + pyyaml==6.0.3
+ + referencing==0.37.0
+ +[2026-03-12 03:49:04.484606]  requests==2.32.5
+ + rich==14.3.3
+ + rpds-py==0.30.0
+ + rsa==4.9.1
+ + schedule==1.2.2
+ [2026-03-12 03:49:04.484742] + semver==3.0.4
+ + six==1.17.0
+ + smmap==5.0.3
+ + sqlalchemy==2.0.48
+ [2026-03-12 03:49:04.484864] + sse-starlette==3.3.2
+ + starlette==0.52.1
+ + streamlit==1.19.0
+ + streamlit-autorefresh==1.0.1
+ + ta==[2026-03-12 03:49:04.484985] 0.11.0
+ + toml==0.10.2
+ + tornado==6.5.5
+ + tqdm==4.67.3[2026-03-12 03:49:04.485107] 
+ + typing-extensions==4.15.0
+ + typing-inspection==0.4.2
+ + tzlocal==5.3.1
+ + uritemplate==4.2.0
+ +[2026-03-12 03:49:04.485285]  urllib3==2.6.3
+ + uvicorn==0.41.0
+ + validators==0.35.0
+ + watchdog==6.0.0[2026-03-12 03:49:04.485416] 
+ + websocket-client==1.9.0
+ + werkzeug==3.1.6
+ + zipp==3.23.0
+Checking if Streamlit is installed
+Traceback (most recent call last):
+  File "/home/adminuser/venv/bin/streamlit", line 5, in <module>
+    from streamlit.web.cli import main
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/__init__.py", line 55, in <module>
+    from streamlit.delta_generator import DeltaGenerator as _DeltaGenerator
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/delta_generator.py", line 43, in <module>
+    from streamlit.elements.arrow_altair import ArrowAltairMixin
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/elements/arrow_altair.py", line 36, in <module>
+    from altair.vegalite.v4.api import Chart
+ModuleNotFoundError: No module named 'altair.vegalite.v4'
+WARNING: Package(s) not found: streamlit-nightly
+Couldn't find Streamlit version.
+Installing rich for an improved exception logging
+Using uv pip install.
+Using Python 3.13.12 environment at /home/adminuser/venv
+Audited 1 package in 3ms
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[03:49:09] 🐍 Python dependencies were installed from /mount/src/novobottrading/requirements.txt using uv.
+Check if streamlit is installed
+Streamlit is already installed
+[03:49:11] 📦 Processed dependencies!
+Traceback (most recent call last):
+  File "/home/adminuser/venv/bin/streamlit", line 5, in <module>
+    from streamlit.web.cli import main
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/__init__.py", line 55, in <module>
+    from streamlit.delta_generator import DeltaGenerator as _DeltaGenerator
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/delta_generator.py", line 43, in <module>
+    from streamlit.elements.arrow_altair import ArrowAltairMixin
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/elements/arrow_altair.py", line 36, in <module>
+    from altair.vegalite.v4.api import Chart
+ModuleNotFoundError: No module named 'altair.vegalite.v4'
+[03:51:06] 🐙 Pulling code changes from Github...
+[03:51:06] 📦 Processing dependencies...
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+Using uv pip install.
+Using Python 3.13.12 environment at /home/adminuser/venv
+Resolved 88 packages in 309ms
+Prepared 8 packages in 608ms
+Uninstalled 5 packages in 89ms
+Installed 8 packages in 77ms
+ - google-api-core==[2026-03-12 03:51:08.062002] 1.34.1
+ + google-api-core==2.30.0
+ - grpcio-status==1.48.2
+ + grpcio-status==1.71.2
+ - pandas==3.0.1
+ + pandas==2.3.3
+ - protobuf==3.20.3
+ + protobuf==5.29.6
+ + pytz==2026.1[2026-03-12 03:51:08.062152] .post1
+ - streamlit==1.19.0
+ + streamlit==1.55.0
+ + tenacity==9.1.4
+ + tzdata==2025.3
+Checking if Streamlit is installed
+Found Streamlit version 1.55.0 in the environment
+Installing rich for an improved exception logging
+Using uv pip install.
+Using Python 3.13.12 environment at /home/adminuser/venv
+Audited 1 package in 2ms
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[03:51:10] 🐍 Python dependencies were installed from /mount/src/novobottrading/requirements.txt using uv.
+[03:51:10] 📦 Processed dependencies!
+
+
+
+[03:51:12] 🔄 Updated app!
+[03:51:17] 🐙 Pulling code changes from Github...
+[03:51:18] 📦 Processing dependencies...
+[03:51:18] 📦 Processed dependencies!
+[03:51:19] 🔄 Updated app!
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptru  
+  nner/exec_code.py:129 in exec_func_with_error_handling                        
+                                                                                
+  /home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:689 in code_to_exec                                     
+                                                                                
+  /mount/src/novobottrading/dashboard/app_cloud.py:100 in <module>              
+                                                                                
+     97                                                                         
+     98                                                                         
+     99 # --- App principal ---                                                 
+  ❱ 100 db = get_db()                                                           
+    101                                                                         
+    102 with st.sidebar:                                                        
+    103 │   st.title("NovoBotTrading")                                          
+                                                                                
+  /home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/caching/  
+  cache_utils.py:281 in __call__                                                
+                                                                                
+  /home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/caching/  
+  cache_utils.py:326 in _get_or_create_cached_value                             
+                                                                                
+  /home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/caching/  
+  cache_utils.py:385 in _handle_cache_miss                                      
+                                                                                
+  /mount/src/novobottrading/dashboard/app_cloud.py:47 in get_db                 
+                                                                                
+     44 │   except Exception:                                                   
+     45 │   │   pass  # fallback para env var DATABASE_URL ou SQLite            
+     46 │                                                                       
+  ❱  47 │   return DatabaseManager(database_url=db_url)                         
+     48                                                                         
+     49                                                                         
+     50 def _render_overview(db, db_perf):                                      
+                                                                                
+  /mount/src/novobottrading/database/manager.py:35 in __init__                  
+                                                                                
+     32 │   │   │   # Supabase retorna "postgres://..." mas SQLAlchemy requer   
+     33 │   │   │   if url.startswith("postgres://"):                           
+     34 │   │   │   │   url = url.replace("postgres://", "postgresql://", 1)    
+  ❱  35 │   │   │   engine = create_engine(                                     
+     36 │   │   │   │   url,                                                    
+     37 │   │   │   │   pool_pre_ping=True,                                     
+     38 │   │   │   │   pool_size=5,                                            
+  in create_engine:2                                                            
+                                                                                
+  /home/adminuser/venv/lib/python3.13/site-packages/sqlalchemy/util/deprecatio  
+  ns.py:281 in warned                                                           
+                                                                                
+    278 │   │   │   │   │   │   version_warnings[m],                            
+    279 │   │   │   │   │   │   stacklevel=3,                                   
+    280 │   │   │   │   │   )                                                   
+  ❱ 281 │   │   │   return fn(*args, **kwargs)  # type: ignore[no-any-return]   
+    282 │   │                                                                   
+    283 │   │   doc = fn.__doc__ is not None and fn.__doc__ or ""               
+    284 │   │   if doc:                                                         
+                                                                                
+  /home/adminuser/venv/lib/python3.13/site-packages/sqlalchemy/engine/create.p  
+  y:617 in create_engine                                                        
+                                                                                
+    614 │   │   for k in util.get_func_kwargs(dbapi_meth):                      
+    615 │   │   │   if k in kwargs:                                             
+    616 │   │   │   │   dbapi_args[k] = pop_kwarg(k)                            
+  ❱ 617 │   │   dbapi = dbapi_meth(**dbapi_args)                                
+    618 │                                                                       
+    619 │   dialect_args["dbapi"] = dbapi                                       
+    620                                                                         
+                                                                                
+  /home/adminuser/venv/lib/python3.13/site-packages/sqlalchemy/dialects/postgr  
+  esql/psycopg2.py:696 in import_dbapi                                          
+                                                                                
+    693 │                                                                       
+    694 │   @classmethod                                                        
+    695 │   def import_dbapi(cls):                                              
+  ❱ 696 │   │   import psycopg2                                                 
+    697 │   │                                                                   
+    698 │   │   return psycopg2                                                 
+    699                                                                         
+────────────────────────────────────────────────────────────────────────────────
+ModuleNotFoundError: No module named 'psycopg2'

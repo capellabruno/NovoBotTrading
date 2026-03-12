@@ -24,11 +24,32 @@ st.set_page_config(
 # CSS customizado
 st.markdown("""
 <style>
-    .stMetric label { font-size: 0.85rem; }
-    .stMetric [data-testid="metric-container"] { background: #1e1e2e; padding: 12px; border-radius: 8px; }
-    .block-container { padding-top: 1rem; }
-    div[data-testid="stExpander"] { background: #1a1a2e; border-radius: 8px; }
-    .stDataFrame { font-size: 0.8rem; }
+    .block-container { padding-top: 1.2rem; padding-bottom: 1rem; }
+    .stMetric label { font-size: 0.78rem; color: #8b8fa8; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stMetric [data-testid="metric-container"] {
+        background: #12131a;
+        border: 1px solid #1e2030;
+        padding: 14px 16px;
+        border-radius: 10px;
+    }
+    .stMetric [data-testid="stMetricValue"] { font-size: 1.4rem; font-weight: 700; }
+    .stTabs [data-baseweb="tab-list"] { gap: 4px; }
+    .stTabs [data-baseweb="tab"] {
+        background: #12131a;
+        border-radius: 8px;
+        padding: 6px 18px;
+        color: #8b8fa8;
+        font-size: 0.85rem;
+    }
+    .stTabs [aria-selected="true"] {
+        background: #1e2030 !important;
+        color: #e2e8f0 !important;
+        border-bottom: 2px solid #00cc88;
+    }
+    div[data-testid="stExpander"] { background: #12131a; border: 1px solid #1e2030; border-radius: 10px; }
+    .stDataFrame { font-size: 0.82rem; }
+    section[data-testid="stSidebar"] { background: #0d0e14; }
+    hr { border-color: #1e2030; margin: 0.8rem 0; }
 </style>
 """, unsafe_allow_html=True)
 
