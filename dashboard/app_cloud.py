@@ -370,7 +370,13 @@ def _render_llm_usage(db):
 
     days = st.selectbox("Período", [1, 3, 7, 14, 30], index=2, key="llm_days")
 
-    summary = db.get_llm_usage_summary(since_days=days)
+    try:
+        summary = db.get_llm_usage_summary(since_days=days)
+    except Exception as e:
+        st.info("Dados de uso LLM ainda não disponíveis. Aguarde o próximo ciclo do bot.")
+        st.caption(f"Detalhe: {e}")
+        return
+
     if not summary:
         st.info("Nenhum dado de uso LLM registrado ainda.")
         return
@@ -392,7 +398,10 @@ def _render_llm_usage(db):
     st.divider()
 
     # --- Gráficos ---
-    rows = db.get_llm_usage(since_days=days)
+    try:
+        rows = db.get_llm_usage(since_days=days)
+    except Exception:
+        return
     if not rows:
         return
 
