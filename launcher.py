@@ -92,8 +92,8 @@ def main():
     from database.manager import DatabaseManager
 
     state = StateManager.get_instance()
-    # Se DATABASE_URL estiver no ambiente, usa PostgreSQL (Supabase); senão SQLite local
-    db = DatabaseManager(db_path=str(ROOT / "trading.db"))
+    # DATABASE_URL no ambiente → PostgreSQL (Railway/Supabase); senão SQLite local
+    db = DatabaseManager(db_path=str(ROOT / "trading.db"), database_url=os.environ.get("DATABASE_URL"))
 
     # --- Configurar logging com integração ao state ---
     logger = setup_logging(db_manager=db, state_manager=state)
