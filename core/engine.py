@@ -1,3 +1,4 @@
+import json
 import logging
 import pandas as pd
 import time
@@ -189,6 +190,9 @@ class TradingEngine:
                         exit_reason="SL_TP"
                     )
                     self.telegram.notify_close(sym, real_pnl, 0.0, "SL/TP atingido")
+                    # Cooldown 24h se fechou no stop-loss (perda)
+                    if real_pnl < 0:
+                        self.db.set_symbol_cooldown(sym, hours=24.0, reason=f"LOSS via SL/TP | PnL={sign}${real_pnl:.4f}")
 
         except Exception as e:
             logger.error(f"Erro na reconciliação de trades: {e}")
@@ -264,81 +268,110 @@ class TradingEngine:
 
     def analyze_symbol(self, symbol: str, current_position: Dict[str, Any] = None) -> Optional[Dict[str, Any]]:
         """
-        Analisa um símbolo e retorna um candidato para execução, ou None.
-        Se houver posição aberta, cuida da lógica de saída por reversão de tendência.
+        Analisa um símbolo usando estratégia multi-timeframe:
+          - 4h: tendência de longo prazo (direção macro)
+          - 1h: confirmação de tendência intermediária
+          - 3m/5m: timing de entrada (pullback concluído, retomada)
+        Cooldown de 24h após loss é verificado antes de qualquer análise.
         """
-        logger.debug(f"[{symbol}] Iniciando análise...")
+        logger.debug(f"[{symbol}] Iniciando análise multi-timeframe...")
 
-        interval = 15
+        # --- 0. Cooldown após loss ---
+        if self.db and not current_position:
+            cooldown = self.db.get_symbol_cooldown_info(symbol)
+            if cooldown:
+                logger.debug(f"[{symbol}] Em cooldown por {cooldown['remaining_hours']}h ({cooldown['reason']}). Pulando.")
+                if self.state:
+                    self.state.update_signal(symbol, {"signal": None, "blocked": f"cooldown_{cooldown['remaining_hours']}h"})
+                return None
 
-        # 1. Busca dados
-        candles = self.bybit.fetch_candles(symbol=symbol, interval=interval, limit=200)
-        if not candles:
-            logger.debug(f"[{symbol}] Nenhum dado recebido. Pulando.")
+        # --- 1. Busca candles 4h (com cache de 4h) ---
+        candles_4h = self._fetch_candles_cached(symbol, interval=240, limit=200, cache_minutes=240)
+        if not candles_4h:
+            logger.debug(f"[{symbol}] Sem dados 4h. Pulando.")
+            return None
+
+        # --- 2. Busca candles 1h (com cache de 1h) ---
+        candles_1h = self._fetch_candles_cached(symbol, interval=60, limit=200, cache_minutes=60)
+        if not candles_1h:
+            logger.debug(f"[{symbol}] Sem dados 1h. Pulando.")
             return None
 
         try:
-            cols = ['timestamp', 'open', 'high', 'low', 'close', 'volume', 'turnover']
-            df = pd.DataFrame(candles, columns=cols)
-            df['timestamp'] = pd.to_numeric(df['timestamp'])
-            df['open'] = pd.to_numeric(df['open'])
-            df['high'] = pd.to_numeric(df['high'])
-            df['low'] = pd.to_numeric(df['low'])
-            df['close'] = pd.to_numeric(df['close'])
-            df['volume'] = pd.to_numeric(df['volume'])
-            df = df.sort_values('timestamp').reset_index(drop=True)
+            df_4h = self._build_df(candles_4h)
+            df_1h = self._build_df(candles_1h)
         except Exception as e:
-            logger.error(f"[{symbol}] Erro ao processar DataFrame: {e}")
-            self.telegram.notify_error(f"DataProc_{symbol}", str(e))
+            logger.error(f"[{symbol}] Erro ao processar DataFrames: {e}")
             return None
 
-        # 2. Calcula Indicadores
-        df = TechnicalIndicators.calculate_all(df)
-        latest_metrics = TechnicalIndicators.get_latest(df)
+        # --- 3. Indicadores em ambos os timeframes ---
+        df_4h = TechnicalIndicators.calculate_all(df_4h)
+        metrics_4h = TechnicalIndicators.get_latest(df_4h)
 
-        close = latest_metrics.get('close')
+        df_1h = TechnicalIndicators.calculate_all(df_1h)
+        metrics_1h = TechnicalIndicators.get_latest(df_1h)
 
+        close = metrics_1h.get('close')  # preço atual = candle 1h mais recente
         if self.state and close:
             self.state.update_price(symbol, close)
 
-        # 3. Tendência
-        ema20 = latest_metrics.get('ema_20')
-        ema50 = latest_metrics.get('ema_50')
+        # --- 4. Tendência macro (4h) ---
+        ema20_4h = metrics_4h.get('ema_20')
+        ema50_4h = metrics_4h.get('ema_50')
+        trend_4h = "SIDEWAYS"
+        if ema20_4h and ema50_4h:
+            close_4h = metrics_4h.get('close')
+            if ema20_4h > ema50_4h and close_4h > ema20_4h:
+                trend_4h = "UP"
+            elif ema20_4h < ema50_4h and close_4h < ema20_4h:
+                trend_4h = "DOWN"
 
-        trend = "SIDEWAYS"
-        if ema20 > ema50 and close > ema20:
-            trend = "UP"
-        elif ema20 < ema50 and close < ema20:
-            trend = "DOWN"
+        # --- 5. Tendência intermediária (1h) ---
+        ema20_1h = metrics_1h.get('ema_20')
+        ema50_1h = metrics_1h.get('ema_50')
+        trend_1h = "SIDEWAYS"
+        if ema20_1h and ema50_1h:
+            if ema20_1h > ema50_1h and close > ema20_1h:
+                trend_1h = "UP"
+            elif ema20_1h < ema50_1h and close < ema20_1h:
+                trend_1h = "DOWN"
+
+        # Tendência consolidada: ambos devem concordar
+        if trend_4h == trend_1h and trend_4h != "SIDEWAYS":
+            trend = trend_4h
+        else:
+            trend = "SIDEWAYS"
+
+        logger.debug(f"[{symbol}] Tendência 4h={trend_4h} | 1h={trend_1h} | Consolidada={trend}")
 
         # --- Lógica de Saída por Tendência (posição existente) ---
         if current_position:
             side = current_position.get("side")
             pnl = float(current_position.get("unrealisedPnl", 0))
-            rsi = latest_metrics.get('rsi', 50)
+            rsi = metrics_1h.get('rsi', 50)
 
             should_close = False
             close_reason = ""
 
-            if side == "Buy" and trend == "DOWN":
-                close_reason = "Reversão de Tendência (UP -> DOWN)"
+            if side == "Buy" and trend_4h == "DOWN":
+                close_reason = "Reversão 4h (UP -> DOWN)"
                 if pnl >= 0:
                     should_close = True
                     close_reason += " | Lucro garantido"
                 elif rsi < 40:
                     should_close = True
-                    close_reason += f" | RSI Confirmado ({rsi:.1f} < 40)"
+                    close_reason += f" | RSI 1h confirmado ({rsi:.1f} < 40)"
                 else:
                     logger.debug(f"[{symbol}] Saída adiada: PnL={pnl:.2f} RSI={rsi:.1f}")
 
-            elif side == "Sell" and trend == "UP":
-                close_reason = "Reversão de Tendência (DOWN -> UP)"
+            elif side == "Sell" and trend_4h == "UP":
+                close_reason = "Reversão 4h (DOWN -> UP)"
                 if pnl >= 0:
                     should_close = True
                     close_reason += " | Lucro garantido"
                 elif rsi > 60:
                     should_close = True
-                    close_reason += f" | RSI Confirmado ({rsi:.1f} > 60)"
+                    close_reason += f" | RSI 1h confirmado ({rsi:.1f} > 60)"
                 else:
                     logger.debug(f"[{symbol}] Saída adiada: PnL={pnl:.2f} RSI={rsi:.1f}")
 
@@ -363,25 +396,36 @@ class TradingEngine:
                             symbol=symbol, exit_price=close,
                             pnl=real_pnl, exit_reason="TREND_REVERSAL"
                         )
-            # Posição aberta: não entrar em nova posição para este símbolo
+                        # Cooldown 24h se saída com perda
+                        if real_pnl < 0:
+                            self.db.set_symbol_cooldown(symbol, hours=24.0, reason=f"LOSS via reversão | PnL={real_pnl:.4f}")
             return None
 
-        # 4. Estratégia Determinística (Entrada)
-        signal = self.strategy.analyze(latest_metrics)
+        # Sem tendência clara nos dois timeframes → não entrar
+        if trend == "SIDEWAYS":
+            if self.state:
+                self.state.update_signal(symbol, {"signal": None, "trend": trend, "trend_4h": trend_4h, "trend_1h": trend_1h})
+            return None
 
+        # --- 6. Estratégia no 1h (métricas intermediárias) ---
+        signal = self.strategy.analyze(metrics_1h)
         if not signal:
             if self.state:
                 self.state.update_signal(symbol, {"signal": None, "trend": trend})
             return None
 
-        # 5. Sessão de Mercado
+        # Validar alinhamento do sinal com tendência macro
+        if (signal.action == "CALL" and trend != "UP") or (signal.action == "PUT" and trend != "DOWN"):
+            logger.debug(f"[{symbol}] Sinal {signal.action} contra tendência {trend}. Ignorando.")
+            return None
+
+        # --- 7. Sessão de Mercado ---
         session_info = SessionFilter.get_session_info()
-        latest_metrics['current_session'] = session_info['current_session']
-        latest_metrics['session_score'] = session_info['session_score']
+        metrics_1h['current_session'] = session_info['current_session']
+        metrics_1h['session_score'] = session_info['session_score']
 
-        # 6. Score de Qualidade
-        quality_result = QualityScorer.calculate_score(latest_metrics, signal.action)
-
+        # --- 8. Score de Qualidade ---
+        quality_result = QualityScorer.calculate_score(metrics_1h, signal.action)
         min_score = self.config.get("quality", {}).get("min_score", 70)
         if quality_result.score < min_score:
             logger.debug(f"[{symbol}] Score {quality_result.score} < {min_score}. Bloqueado.")
@@ -392,51 +436,58 @@ class TradingEngine:
                 })
             return None
 
-        # Verificar se já existe trade aberto para este símbolo
+        # Verificar trade já aberto no DB
         if self.db:
             open_for_symbol = [t for t in self.db.get_open_trades(mode="live") if t["symbol"] == symbol]
             if open_for_symbol:
                 return None
 
-        # 7. Refinamento de Entrada (3m)
-        candles_3m = self.bybit.fetch_candles(symbol=symbol, interval=3, limit=50)
-        entry_context_3m = self._analyze_3m_entry(symbol, candles_3m, signal.action)
+        # --- 9. Timing de Entrada — 3m ou 5m ---
+        entry_ok, entry_context = self._check_entry_timing(symbol, signal.action)
+        if not entry_ok:
+            logger.debug(f"[{symbol}] Timing de entrada desfavorável (3m/5m): {entry_context}")
+            if self.state:
+                self.state.update_signal(symbol, {
+                    "signal": signal.action, "trend": trend,
+                    "quality_score": quality_result.score, "blocked": "entry_timing"
+                })
+            return None
 
-        # 8. Validação MCP
-        volume_ma = latest_metrics.get('volume_ma')
-        volume = latest_metrics.get('volume')
+        # --- 10. Validação MCP ---
+        volume_ma = metrics_1h.get('volume_ma')
+        volume = metrics_1h.get('volume')
         volume_ratio = (volume / volume_ma) if (volume_ma and volume_ma > 0) else 1.0
 
         mcp_input = MarketDataInput(
-            symbol=symbol, timeframe="15m", close_price=close,
-            ema_20=ema20, ema_50=ema50, rsi=latest_metrics.get('rsi'),
+            symbol=symbol, timeframe="1h+4h", close_price=close,
+            ema_20=ema20_1h, ema_50=ema50_1h, rsi=metrics_1h.get('rsi'),
             volume_ratio=volume_ratio, trend=trend, signal_type=signal.action,
-            support_level=latest_metrics.get('support_level'),
-            resistance_level=latest_metrics.get('resistance_level'),
-            distance_to_support_pct=latest_metrics.get('distance_to_support_pct'),
-            distance_to_resistance_pct=latest_metrics.get('distance_to_resistance_pct'),
-            price_position=latest_metrics.get('price_position'),
-            candle_pattern=latest_metrics.get('candle_pattern'),
-            candle_pattern_type=latest_metrics.get('candle_pattern_type'),
+            support_level=metrics_1h.get('support_level'),
+            resistance_level=metrics_1h.get('resistance_level'),
+            distance_to_support_pct=metrics_1h.get('distance_to_support_pct'),
+            distance_to_resistance_pct=metrics_1h.get('distance_to_resistance_pct'),
+            price_position=metrics_1h.get('price_position'),
+            candle_pattern=metrics_1h.get('candle_pattern'),
+            candle_pattern_type=metrics_1h.get('candle_pattern_type'),
             current_session=session_info['current_session'],
             session_score=session_info['session_score'],
-            atr=latest_metrics.get('atr'),
-            atr_percent=latest_metrics.get('atr_percent'),
+            atr=metrics_1h.get('atr'),
+            atr_percent=metrics_1h.get('atr_percent'),
             quality_score=quality_result.score,
             quality_grade=quality_result.grade,
-            entry_context_3m=entry_context_3m
+            entry_context_3m=entry_context,
         )
 
         validation = self.mcp.validate_signal(mcp_input)
 
-        # Atualizar state
         if self.state:
             self.state.update_signal(symbol, {
                 "signal": signal.action, "trend": trend,
+                "trend_4h": trend_4h, "trend_1h": trend_1h,
                 "quality_score": quality_result.score, "quality_grade": quality_result.grade,
                 "mcp_approved": validation.approved, "mcp_confidence": validation.confidence,
                 "session": session_info['current_session'], "price": close,
-                "rsi": latest_metrics.get('rsi'),
+                "rsi": metrics_1h.get('rsi'),
                 "blocked": None if validation.approved else "mcp_rejected",
             })
 
@@ -444,39 +495,33 @@ class TradingEngine:
             logger.debug(f"[{symbol}] Sinal rejeitado pelo MCP (confiança={validation.confidence:.2f}).")
             return None
 
-        # Calcular SL/TP ajustados ao timeframe (curto prazo = alvos menores e rápidos)
+        # --- 11. SL/TP baseado no ATR do 1h (operação swing) ---
         use_atr_stops = self.config.get("quality", {}).get("use_atr_stops", True)
-        atr = latest_metrics.get('atr')
+        atr = metrics_1h.get('atr')
 
-        # Multiplicadores ATR por timeframe:
-        # Timeframe curto (≤15m) → operação intraday curta → TP: 20-50% do ATR do período
-        # Timeframe médio (30-60m) → swing intraday
-        # Timeframe longo (≥4h) → swing/posicional
-        _tf_multipliers = {
-            1:    (0.5, 0.8),   # 1m  - scalp extremo
-            3:    (0.6, 1.0),   # 3m  - scalp
-            5:    (0.7, 1.2),   # 5m  - scalp
-            15:   (0.8, 1.5),   # 15m - curto prazo  ← operação atual
-            30:   (1.0, 2.0),   # 30m - intraday
-            60:   (1.2, 2.5),   # 1h  - swing intraday
-            240:  (1.5, 3.0),   # 4h  - swing
-            1440: (2.0, 4.0),   # 1D  - posicional
-        }
-        sl_mult, tp_mult = _tf_multipliers.get(interval, (0.8, 1.5))
+        # Estratégia longo prazo: SL curto (ATR 1h), TP amplo (múltiplos ATR 4h)
+        # RR alvo ≥ 5x — protege capital com stop apertado, deixa lucros correrem
+        atr_4h = metrics_4h.get('atr')
 
         if use_atr_stops and atr and atr > 0:
-            atr_pct = atr / close
-            sl_percent = max(atr_pct * sl_mult, 0.008)   # mínimo 0.8%
-            tp_percent = max(atr_pct * tp_mult, 0.012)   # mínimo 1.2%
+            # SL = 0.8x ATR do 1h (stop apertado próximo ao preço)
+            atr_pct_1h = atr / close
+            sl_percent = max(atr_pct_1h * 0.8, 0.008)    # mínimo 0.8%
 
-            # Garantir RR ≥ 1.5 (TP deve ser ao menos 1.5x o SL)
-            if tp_percent < sl_percent * 1.5:
-                tp_percent = sl_percent * 1.5
+            # TP = 5x ATR do 4h (alvos amplos de swing)
+            if atr_4h and atr_4h > 0:
+                atr_pct_4h = atr_4h / close
+                tp_percent = max(atr_pct_4h * 5.0, sl_percent * 5.0)  # mínimo RR 5:1
+            else:
+                tp_percent = max(atr_pct_1h * 6.0, sl_percent * 5.0)
 
-            logger.debug(f"[{symbol}] ATR Stop: SL={sl_percent*100:.2f}% TP={tp_percent*100:.2f}%")
+            # Garantir mínimo de 2% de TP para ser relevante
+            tp_percent = max(tp_percent, 0.02)
+
+            logger.debug(f"[{symbol}] SL={sl_percent*100:.2f}% TP={tp_percent*100:.2f}% (RR={tp_percent/sl_percent:.1f}x)")
         else:
-            sl_percent = self.config.get("risk", {}).get("stop_loss_percent", 0.02)
-            tp_percent = self.config.get("risk", {}).get("take_profit_percent", 0.03)
+            sl_percent = self.config.get("risk", {}).get("stop_loss_percent", 0.01)
+            tp_percent = self.config.get("risk", {}).get("take_profit_percent", 0.08)
 
         return {
             "symbol": symbol,
@@ -491,7 +536,7 @@ class TradingEngine:
             "tp_percent": tp_percent,
             "direction": "LONG" if signal.action.upper() == "CALL" else "SHORT",
             "session_info": session_info,
-            "latest_metrics": latest_metrics,
+            "latest_metrics": metrics_1h,
         }
 
     def execute_signal(self, candidate: Dict[str, Any]):
@@ -579,31 +624,78 @@ class TradingEngine:
             reason=f"{signal.reason} (Confiança MCP: {validation.confidence})"
         )
 
-    def _analyze_3m_entry(self, symbol: str, candles: list, signal_type: str) -> str:
-        if not candles or len(candles) < 5:
-            return "Dados insuficientes para análise 3m."
+    def _build_df(self, candles: list) -> pd.DataFrame:
+        cols = ['timestamp', 'open', 'high', 'low', 'close', 'volume', 'turnover']
+        df = pd.DataFrame(candles, columns=cols)
+        for col in ['timestamp', 'open', 'high', 'low', 'close', 'volume']:
+            df[col] = pd.to_numeric(df[col])
+        return df.sort_values('timestamp').reset_index(drop=True)
 
-        try:
-            cols = ['timestamp', 'open', 'high', 'low', 'close', 'volume', 'turnover']
-            df = pd.DataFrame(candles, columns=cols)
-            df['close'] = pd.to_numeric(df['close'])
+    def _fetch_candles_cached(self, symbol: str, interval: int, limit: int, cache_minutes: int) -> Optional[list]:
+        """
+        Busca candles com cache no DB. Se o cache ainda for válido, evita chamada à API.
+        """
+        if self.db:
+            cached_json = self.db.get_candles_cache(symbol, interval, max_age_minutes=cache_minutes)
+            if cached_json:
+                try:
+                    return json.loads(cached_json)
+                except Exception:
+                    pass
 
-            last_close = df['close'].iloc[-1]
-            prev_close = df['close'].iloc[-2]
+        candles = self.bybit.fetch_candles(symbol=symbol, interval=interval, limit=limit)
+        if candles and self.db:
+            try:
+                self.db.save_candles_cache(symbol, interval, json.dumps(candles))
+            except Exception as e:
+                logger.warning(f"[{symbol}] Falha ao salvar cache {interval}m: {e}")
+        return candles
 
-            if signal_type == "CALL":
-                if last_close > prev_close:
-                    return f"FOGO: Preço subindo em 3m ({last_close} > {prev_close}). Timing ideal."
-                else:
-                    return f"AGUARDE: Preço recuando em 3m ({last_close} <= {prev_close}). Possível pullback."
-            elif signal_type == "PUT":
-                if last_close < prev_close:
-                    return f"FOGO: Preço caindo em 3m ({last_close} < {prev_close}). Timing ideal."
-                else:
-                    return f"AGUARDE: Preço subindo em 3m ({last_close} >= {prev_close}). Possível pullback."
+    def _check_entry_timing(self, symbol: str, signal_type: str) -> tuple[bool, str]:
+        """
+        Verifica timing de entrada em 3m (fallback 5m).
+        Procura pullback concluído + candle de retomada na direção do sinal.
+        Retorna (ok: bool, contexto: str).
+        """
+        # Tentar 3m primeiro, depois 5m
+        for tf in [3, 5]:
+            candles = self.bybit.fetch_candles(symbol=symbol, interval=tf, limit=30)
+            if candles and len(candles) >= 10:
+                try:
+                    df = self._build_df(candles)
+                    closes = df['close'].values
+                    highs = df['high'].values
+                    lows = df['low'].values
 
-            return "Contexto 3m neutro."
+                    c0 = closes[-1]  # candle atual
+                    c1 = closes[-2]  # anterior
+                    c2 = closes[-3]
 
-        except Exception as e:
-            logger.error(f"Erro na análise 3m para {symbol}: {e}")
-            return f"Erro analise 3m: {e}"
+                    if signal_type == "CALL":
+                        # Pullback: c2 ou c1 foi recuo (c1 < c2), agora retomando (c0 > c1)
+                        pullback_ocorreu = c1 < c2 or lows[-2] < lows[-3]
+                        retomada = c0 > c1
+                        if pullback_ocorreu and retomada:
+                            return True, f"Pullback concluído em {tf}m. Retomada alta confirmada ({c1:.4f}→{c0:.4f})."
+                        elif retomada:
+                            # Aceita se simplesmente subindo (sem pullback claro)
+                            return True, f"Preço subindo em {tf}m. Timing favorável ({c1:.4f}→{c0:.4f})."
+                        else:
+                            return False, f"Aguardando retomada em {tf}m. Preço ainda recuando ({c0:.4f} ≤ {c1:.4f})."
+
+                    elif signal_type == "PUT":
+                        pullback_ocorreu = c1 > c2 or highs[-2] > highs[-3]
+                        retomada = c0 < c1
+                        if pullback_ocorreu and retomada:
+                            return True, f"Pullback concluído em {tf}m. Retomada baixa confirmada ({c1:.4f}→{c0:.4f})."
+                        elif retomada:
+                            return True, f"Preço caindo em {tf}m. Timing favorável ({c1:.4f}→{c0:.4f})."
+                        else:
+                            return False, f"Aguardando retomada em {tf}m. Preço ainda corrigindo ({c0:.4f} ≥ {c1:.4f})."
+
+                except Exception as e:
+                    logger.warning(f"[{symbol}] Erro no timing {tf}m: {e}")
+                    continue
+
+        # Sem dados suficientes → não bloquear (deixar MCP decidir)
+        return True, "Sem dados suficientes para timing de curto prazo."

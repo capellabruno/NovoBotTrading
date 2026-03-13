@@ -64,6 +64,26 @@ class CycleSnapshot(Base):
     cycle_number = Column(Integer, default=0)
 
 
+class SymbolState(Base):
+    """Estado persistente por símbolo: cooldown após loss, cache de candles."""
+    __tablename__ = "symbol_state"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    symbol = Column(String(20), nullable=False, unique=True, index=True)
+
+    # Cooldown após loss
+    cooldown_until = Column(DateTime, nullable=True)   # NULL = sem cooldown
+    cooldown_reason = Column(String(100), nullable=True)
+
+    # Cache de candles (JSON serializado)
+    candles_4h_json = Column(Text, nullable=True)
+    candles_4h_updated_at = Column(DateTime, nullable=True)
+    candles_1h_json = Column(Text, nullable=True)
+    candles_1h_updated_at = Column(DateTime, nullable=True)
+
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
 class LLMUsage(Base):
     """Registro de uso de tokens por chamada LLM (Gemini / Groq)."""
     __tablename__ = "llm_usage"

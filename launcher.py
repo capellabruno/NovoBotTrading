@@ -99,6 +99,22 @@ def main():
     logger = setup_logging(db_manager=db, state_manager=state)
 
     system_conf = config.get("system", {})
+
+    # --- Verificar integridade do banco ---
+    from database.startup import verify_tables, sync_trades_from_bybit
+    if not verify_tables(db):
+        logger.error("Falha crítica na verificação do banco. Encerrando.")
+        sys.exit(1)
+
+    # --- Sincronizar histórico de trades da Bybit (apenas em LIVE) ---
+    if run_engine and not system_conf.get("dry_run", True):
+        try:
+            from execution.bybit_client import BybitClient
+            _bybit_tmp = BybitClient(config)
+            sync_trades_from_bybit(db, _bybit_tmp, days_back=90)
+        except Exception as e:
+            logger.warning(f"Sincronização de trades ignorada: {e}")
+
     use_all_symbols = system_conf.get("use_all_symbols", False)
     symbols_info = "todos os símbolos USDT (dinâmico)" if use_all_symbols else str(system_conf.get("symbols", []))
 

@@ -12,7 +12,7 @@ from typing import Optional, List, Dict, Any
 from sqlalchemy import create_engine, func, desc
 from sqlalchemy.orm import sessionmaker, Session
 
-from .models import Base, Trade, SystemEvent, CycleSnapshot, LLMUsage
+from .models import Base, Trade, SystemEvent, CycleSnapshot, LLMUsage, SymbolState
 
 logger = logging.getLogger(__name__)
 
@@ -339,6 +339,129 @@ class DatabaseManager:
                 }
                 for r in rows
             ]
+
+    # -------------------------------------------------------------------------
+    # Symbol State (cooldown + cache de candles)
+    # -------------------------------------------------------------------------
+
+    def _get_or_create_symbol_state(self, sess: Session, symbol: str) -> SymbolState:
+        state = sess.query(SymbolState).filter(SymbolState.symbol == symbol).first()
+        if not state:
+            state = SymbolState(symbol=symbol)
+            sess.add(state)
+        return state
+
+    def set_symbol_cooldown(self, symbol: str, hours: float = 24.0, reason: str = "LOSS"):
+        """Coloca símbolo em cooldown por N horas."""
+        until = datetime.utcnow() + timedelta(hours=hours)
+        with self._lock:
+            with self._session() as sess:
+                state = self._get_or_create_symbol_state(sess, symbol)
+                state.cooldown_until = until
+                state.cooldown_reason = reason
+                state.updated_at = datetime.utcnow()
+                sess.commit()
+        logger.info(f"[{symbol}] Cooldown ativo por {hours:.0f}h até {until.strftime('%d/%m %H:%M')} | Motivo: {reason}")
+
+    def is_symbol_in_cooldown(self, symbol: str) -> bool:
+        """Retorna True se o símbolo ainda está em cooldown."""
+        with self._session() as sess:
+            state = sess.query(SymbolState).filter(SymbolState.symbol == symbol).first()
+            if state and state.cooldown_until and state.cooldown_until > datetime.utcnow():
+                return True
+        return False
+
+    def get_symbol_cooldown_info(self, symbol: str) -> Optional[Dict]:
+        """Retorna info do cooldown se ativo, senão None."""
+        with self._session() as sess:
+            state = sess.query(SymbolState).filter(SymbolState.symbol == symbol).first()
+            if state and state.cooldown_until and state.cooldown_until > datetime.utcnow():
+                remaining = (state.cooldown_until - datetime.utcnow()).total_seconds() / 3600
+                return {
+                    "until": state.cooldown_until.isoformat(),
+                    "reason": state.cooldown_reason,
+                    "remaining_hours": round(remaining, 1),
+                }
+        return None
+
+    def get_all_cooldowns(self) -> Dict[str, Dict]:
+        """Retorna todos os símbolos em cooldown ativo."""
+        now = datetime.utcnow()
+        with self._session() as sess:
+            rows = sess.query(SymbolState).filter(
+                SymbolState.cooldown_until.isnot(None),
+                SymbolState.cooldown_until > now,
+            ).all()
+            return {
+                r.symbol: {
+                    "until": r.cooldown_until.isoformat(),
+                    "reason": r.cooldown_reason,
+                    "remaining_hours": round((r.cooldown_until - now).total_seconds() / 3600, 1),
+                }
+                for r in rows
+            }
+
+    def save_candles_cache(self, symbol: str, interval: int, candles_json: str):
+        """Salva cache de candles para um símbolo/intervalo (60=1h, 240=4h)."""
+        now = datetime.utcnow()
+        with self._lock:
+            with self._session() as sess:
+                state = self._get_or_create_symbol_state(sess, symbol)
+                if interval == 240:
+                    state.candles_4h_json = candles_json
+                    state.candles_4h_updated_at = now
+                elif interval == 60:
+                    state.candles_1h_json = candles_json
+                    state.candles_1h_updated_at = now
+                state.updated_at = now
+                sess.commit()
+
+    def get_candles_cache(self, symbol: str, interval: int, max_age_minutes: int = 60) -> Optional[str]:
+        """
+        Retorna JSON do cache se ainda válido (dentro de max_age_minutes).
+        Retorna None se expirado ou inexistente.
+        """
+        with self._session() as sess:
+            state = sess.query(SymbolState).filter(SymbolState.symbol == symbol).first()
+            if not state:
+                return None
+            if interval == 240:
+                updated = state.candles_4h_updated_at
+                data = state.candles_4h_json
+            elif interval == 60:
+                updated = state.candles_1h_updated_at
+                data = state.candles_1h_json
+            else:
+                return None
+
+            if not updated or not data:
+                return None
+
+            age_minutes = (datetime.utcnow() - updated).total_seconds() / 60
+            if age_minutes > max_age_minutes:
+                return None
+            return data
+
+    def get_all_symbol_states(self) -> List[Dict]:
+        """Retorna estado de todos os símbolos (para dashboard)."""
+        now = datetime.utcnow()
+        with self._session() as sess:
+            rows = sess.query(SymbolState).order_by(SymbolState.symbol).all()
+            result = []
+            for r in rows:
+                in_cooldown = bool(r.cooldown_until and r.cooldown_until > now)
+                result.append({
+                    "symbol": r.symbol,
+                    "in_cooldown": in_cooldown,
+                    "cooldown_until": r.cooldown_until.isoformat() if r.cooldown_until else None,
+                    "cooldown_reason": r.cooldown_reason,
+                    "remaining_hours": round((r.cooldown_until - now).total_seconds() / 3600, 1) if in_cooldown else 0,
+                    "has_4h_cache": bool(r.candles_4h_json),
+                    "has_1h_cache": bool(r.candles_1h_json),
+                    "cache_4h_age_min": round((now - r.candles_4h_updated_at).total_seconds() / 60, 1) if r.candles_4h_updated_at else None,
+                    "cache_1h_age_min": round((now - r.candles_1h_updated_at).total_seconds() / 60, 1) if r.candles_1h_updated_at else None,
+                })
+            return result
 
     def get_llm_usage_summary(self, since_days: int = 7) -> Dict[str, Any]:
         cutoff = datetime.utcnow() - timedelta(days=since_days)
