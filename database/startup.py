@@ -107,10 +107,10 @@ def sync_trades_from_bybit(db: "DatabaseManager", bybit: "BybitClient",
     Retorna o número de trades importados.
     """
     logger.info("=" * 55)
-    logger.info(f"[DB] Sincronizando histórico de trades da Bybit (últimos {days_back} dias)...")
+    logger.info(f"[DB] Sincronizando historico de trades da Bybit (ultimos {days_back} dias)...")
 
-    if bybit.dry_run:
-        logger.info("[DB] Modo DRY RUN — sincronização ignorada.")
+    if not bybit.client:
+        logger.warning("[DB] Bybit client nao conectado. Sincronizacao ignorada.")
         logger.info("=" * 55)
         return 0
 
@@ -144,8 +144,10 @@ def sync_trades_from_bybit(db: "DatabaseManager", bybit: "BybitClient",
                 continue
 
             symbol = trade.get("symbol", "")
-            side = trade.get("side", "")  # "Buy" / "Sell"
-            direction = "LONG" if side == "Buy" else "SHORT"
+            # No get_closed_pnl o campo 'side' é o lado do fechamento (ordem de saída).
+            # LONG fecha vendendo (Sell), SHORT fecha comprando (Buy) — invertido.
+            side = trade.get("side", "")
+            direction = "LONG" if side == "Sell" else "SHORT"
 
             avg_entry = _safe_float(trade.get("avgEntryPrice") or trade.get("entryPrice"))
             avg_exit = _safe_float(trade.get("avgExitPrice") or trade.get("exitPrice"))
@@ -211,40 +213,63 @@ def sync_trades_from_bybit(db: "DatabaseManager", bybit: "BybitClient",
 # ---------------------------------------------------------------------------
 
 def _fetch_all_closed_pnl(bybit: "BybitClient", start_ms: int) -> list:
-    """Busca todo o histórico paginando até esgotar os resultados."""
+    """
+    Busca todo o historico de PnL fechado da Bybit.
+    A API limita janelas a 7 dias por chamada — itera em blocos de 7 dias
+    do mais recente para o mais antigo, paginando dentro de cada bloco.
+    """
+    from datetime import timezone, timedelta
+
+    WINDOW_MS = 7 * 24 * 60 * 60 * 1000   # 7 dias em ms
+    now_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
+
     all_trades = []
-    cursor = None
-    page = 0
+    seen_ids = set()
 
-    while True:
-        page += 1
-        try:
-            params = {
-                "category": "linear",
-                "limit": 100,
-                "startTime": start_ms,
-            }
-            if cursor:
-                params["cursor"] = cursor
+    window_end = now_ms
+    while window_end > start_ms:
+        window_start = max(window_end - WINDOW_MS, start_ms)
+        cursor = None
+        page = 0
 
-            response = bybit.client.get_closed_pnl(**params)
+        while True:
+            page += 1
+            try:
+                params = {
+                    "category": "linear",
+                    "limit": 100,
+                    "startTime": window_start,
+                    "endTime": window_end,
+                }
+                if cursor:
+                    params["cursor"] = cursor
 
-            if response.get("retCode") != 0:
-                logger.warning(f"[DB] Bybit retornou erro na página {page}: {response.get('retMsg')}")
+                response = bybit.client.get_closed_pnl(**params)
+
+                if response.get("retCode") != 0:
+                    logger.warning(f"[DB] Bybit erro (janela {page}): {response.get('retMsg')}")
+                    break
+
+                result = response.get("result", {})
+                batch = result.get("list", [])
+
+                for trade in batch:
+                    oid = trade.get("orderId")
+                    if oid and oid not in seen_ids:
+                        seen_ids.add(oid)
+                        all_trades.append(trade)
+
+                cursor = result.get("nextPageCursor")
+                if not cursor or not batch:
+                    break
+
+            except Exception as e:
+                logger.error(f"[DB] Erro ao paginar closed PnL: {e}")
                 break
 
-            result = response.get("result", {})
-            batch = result.get("list", [])
-            all_trades.extend(batch)
+        window_end = window_start  # próxima janela, mais antiga
 
-            cursor = result.get("nextPageCursor")
-            if not cursor or not batch:
-                break
-
-        except Exception as e:
-            logger.error(f"[DB] Erro ao paginar closed PnL (pág {page}): {e}")
-            break
-
+    logger.info(f"[DB] Total de trades buscados da Bybit: {len(all_trades)}")
     return all_trades
 
 

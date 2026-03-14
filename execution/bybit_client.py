@@ -61,10 +61,6 @@ class BybitClient:
         Retorna lista de strings como ['BTCUSDT', 'ETHUSDT', ...].
         """
         try:
-            client = self.client
-            if client is None:
-                client = HTTP(testnet=self.config.get("execution", {}).get("testnet", True))
-
             all_symbols = []
             cursor = None
 
@@ -77,7 +73,7 @@ class BybitClient:
                 if cursor:
                     params["cursor"] = cursor
 
-                response = client.get_instruments_info(**params)
+                response = self.client.get_instruments_info(**params)
 
                 if response.get("retCode") != 0:
                     logger.error(f"Erro ao buscar lista de símbolos: {response}")
