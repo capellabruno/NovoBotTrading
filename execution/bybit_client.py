@@ -8,13 +8,8 @@ class BybitClient:
     def __init__(self, config: Dict[str, Any]):
         self.config = config
         self.client = None
-        self.dry_run = config.get("system", {}).get("dry_run", True)
         self.symbol = config.get("system", {}).get("symbol", "BTCUSDT")
-
-        if not self.dry_run:
-            self._connect()
-        else:
-            logger.info("BybitClient inicializado em modo DRY RUN.")
+        self._connect()
 
     def _connect(self):
         try:
@@ -40,13 +35,7 @@ class BybitClient:
         interval_str = str(interval)
         
         try:
-            # Se estiver em dry_run sem chaves, podemos usar a API pública sem autenticação
-            # Mas o objeto HTTP foi criado com chaves (ou tentado).
-            # Para public endpoints, pybit funciona mesmo sem auth se instanciado corretamente,
-            # mas vamos criar uma instância limpa se self.client for None
             client = self.client
-            if client is None:
-                client = HTTP(testnet=self.config.get("execution", {}).get("testnet", True))
 
             response = client.get_kline(
                 category="linear",
@@ -116,9 +105,6 @@ class BybitClient:
 
     def get_instrument_info(self, symbol: str) -> dict:
         """Busca informações do instrumento (qtyStep, tickSize, etc)"""
-        if self.dry_run:
-            return {"qtyStep": "0.1", "minOrderQty": "5"} # Mock
-
         try:
             # Cachear isso seria ideal em produção
             response = self.client.get_instruments_info(
@@ -134,10 +120,6 @@ class BybitClient:
             return {}
 
     def execute_order(self, symbol: str, action: str, amount: float, current_price: float, sl_percent: float, tp_percent: float):
-        if self.dry_run:
-            logger.info(f"[DRY RUN] Executando ordem em {symbol}: {action} | Qtd: {amount} | Price: {current_price} | SL: {sl_percent} | TP: {tp_percent}")
-            return {"retCode": 0, "result": {"orderId": "mock_order_123"}}
-
         side = "Buy" if action.upper() == "CALL" else "Sell"
         
         # Calcular preços de SL e TP
@@ -208,9 +190,6 @@ class BybitClient:
         """
         Retorna o saldo disponível em USDT (Wallet Balance).
         """
-        if self.dry_run:
-            return 1000.0 # Mock balance
-
         try:
             # V5 Account Info
             response = self.client.get_wallet_balance(
@@ -237,9 +216,6 @@ class BybitClient:
         """
         Retorna lista de posições abertas.
         """
-        if self.dry_run:
-            return []
-
         try:
             response = self.client.get_positions(
                 category="linear",
@@ -277,10 +253,6 @@ class BybitClient:
             # Para fechar Buy, vendemos (Sell). Para fechar Sell, compramos (Buy).
             close_side = "Sell" if side == "Buy" else "Buy"
             
-            if self.dry_run:
-                logger.info(f"[DRY RUN] Fechando posição {symbol}: {close_side} {size}")
-                return True
-                
             logger.info(f"Fechando posição {symbol}: {close_side} {size} (ReduceOnly)")
             
             response = self.client.place_order(
@@ -310,9 +282,6 @@ class BybitClient:
         Busca histórico de PnL fechado.
         :param start_time: Timestamp em ms. Se None, últimas 50 entradas.
         """
-        if self.dry_run:
-            return []  # dry_run: sem posições reais, sem PnL real
-
         try:
             params = {
                 "category": "linear",

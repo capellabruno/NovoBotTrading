@@ -12,7 +12,6 @@ import logging
 import subprocess
 import sys
 import io
-import os
 import signal
 import threading
 import time
@@ -92,37 +91,34 @@ def main():
     from database.manager import DatabaseManager
 
     state = StateManager.get_instance()
-    # DATABASE_URL no ambiente → PostgreSQL (Railway/Supabase); senão SQLite local
-    db = DatabaseManager(db_path=str(ROOT / "trading.db"), database_url=os.environ.get("DATABASE_URL"))
+    db = DatabaseManager()
 
     # --- Configurar logging com integração ao state ---
     logger = setup_logging(db_manager=db, state_manager=state)
 
-    system_conf = config.get("system", {})
-
     # --- Verificar integridade do banco ---
-    from database.startup import verify_tables, sync_trades_from_bybit
+    from database.startup import verify_tables, sync_trades_from_bybit, sync_symbols_from_bybit
     if not verify_tables(db):
-        logger.error("Falha crítica na verificação do banco. Encerrando.")
+        logger.error("Falha critica na verificacao do banco. Encerrando.")
         sys.exit(1)
 
-    # --- Sincronizar histórico de trades da Bybit (apenas em LIVE) ---
-    if run_engine and not system_conf.get("dry_run", True):
+    # --- Sincronizar simbolos e historico de trades da Bybit ---
+    if run_engine:
         try:
             from execution.bybit_client import BybitClient
             _bybit_tmp = BybitClient(config)
+            sync_symbols_from_bybit(db, _bybit_tmp)
             sync_trades_from_bybit(db, _bybit_tmp, days_back=90)
         except Exception as e:
-            logger.warning(f"Sincronização de trades ignorada: {e}")
+            logger.warning(f"Sync inicial ignorado: {e}")
 
-    use_all_symbols = system_conf.get("use_all_symbols", False)
-    symbols_info = "todos os símbolos USDT (dinâmico)" if use_all_symbols else str(system_conf.get("symbols", []))
+    total_symbols = len(db.get_known_symbols())
 
     logger.info("=" * 60)
     logger.info("NovoBotTrading v2.0 - Inicializando...")
-    logger.info(f"Modo: {'DRY RUN' if system_conf.get('dry_run', False) else 'LIVE'}")
-    logger.info(f"Símbolos: {symbols_info}")
-    logger.info(f"Banco: {'PostgreSQL (Supabase)' if os.environ.get('DATABASE_URL') else 'SQLite local'}")
+    logger.info("Modo: LIVE")
+    logger.info(f"Simbolos no banco: {total_symbols}")
+    logger.info("Banco: PostgreSQL (Supabase)")
     logger.info("=" * 60)
 
     # --- Iniciar State API (Flask) ---

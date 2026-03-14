@@ -64,6 +64,16 @@ class CycleSnapshot(Base):
     cycle_number = Column(Integer, default=0)
 
 
+class KnownSymbol(Base):
+    """Lista de símbolos USDT perpétuos ativos na Bybit, cacheada no banco."""
+    __tablename__ = "known_symbols"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    symbol = Column(String(20), nullable=False, unique=True, index=True)
+    active = Column(Boolean, default=True)
+    updated_at = Column(DateTime, default=datetime.utcnow)
+
+
 class SymbolState(Base):
     """Estado persistente por símbolo: cooldown após loss, cache de candles."""
     __tablename__ = "symbol_state"

@@ -8,7 +8,6 @@ Uso:
     python scripts/cleanup_dryrun.py --confirm  # apaga de verdade
 """
 import sys
-import os
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -76,11 +75,10 @@ def main():
     confirm = "--confirm" in sys.argv
 
     load_config()  # carrega .env → DATABASE_URL no ambiente
-    db_url = os.environ.get("DATABASE_URL", "").strip('"').strip("'") or None
-    db = DatabaseManager(database_url=db_url)
+    db = DatabaseManager()
 
     print("=" * 50)
-    print(f"Banco: {'PostgreSQL (Supabase)' if os.environ.get('DATABASE_URL') else 'SQLite local'}")
+    print("Banco: PostgreSQL (Supabase)")
     print("=" * 50)
 
     cleanup(db, confirm)

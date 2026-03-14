@@ -114,7 +114,7 @@ def main():
     print("Conectando à Bybit...")
     config = load_config()
     bybit = BybitClient(config)
-    db = DatabaseManager(str(ROOT / "trading.db"))
+    db = DatabaseManager()
 
     open_before = len(db.get_open_trades())
     print(f"Trades abertos no DB antes: {open_before}")

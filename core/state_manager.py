@@ -27,7 +27,7 @@ class StateManager:
         # --- Estado do Sistema ---
         self.is_running: bool = False
         self.is_paused: bool = False
-        self.dry_run: bool = True
+        self.dry_run: bool = False
         self.cycle_number: int = 0
         self.cycle_status: str = "IDLE"   # IDLE / RUNNING / ERROR
         self.last_cycle_time: Optional[str] = None
@@ -58,10 +58,9 @@ class StateManager:
     # Atualizações pelo Engine
     # -------------------------------------------------------------------------
 
-    def set_running(self, dry_run: bool = True):
+    def set_running(self):
         with self._lock:
             self.is_running = True
-            self.dry_run = dry_run
             self.uptime_start = datetime.utcnow().isoformat()
 
     def start_cycle(self, cycle_number: int):

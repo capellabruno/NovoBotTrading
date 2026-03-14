@@ -6,7 +6,7 @@ Rotinas executadas UMA VEZ na inicialização do sistema:
 """
 import logging
 from datetime import datetime
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from sqlalchemy import inspect, text
 
@@ -73,6 +73,31 @@ def verify_tables(db: "DatabaseManager") -> bool:
 # ---------------------------------------------------------------------------
 # 2. Sincronização de trades históricos da Bybit
 # ---------------------------------------------------------------------------
+
+def sync_symbols_from_bybit(db: "DatabaseManager", bybit: "BybitClient") -> List[str]:
+    """
+    Sincroniza a lista de símbolos USDT perpétuos ativos da Bybit para o banco.
+    Retorna a lista de símbolos ativos (do banco após sync, ou do banco se API falhar).
+    """
+    logger.info("=" * 55)
+    logger.info("[DB] Sincronizando lista de símbolos da Bybit...")
+
+    fresh = bybit.get_all_symbols()
+    if fresh:
+        count = db.sync_known_symbols(fresh)
+        logger.info(f"[DB] {count} símbolos sincronizados no banco.")
+        logger.info("=" * 55)
+        return fresh
+
+    # Fallback: usar o que já está no banco
+    cached = db.get_known_symbols()
+    if cached:
+        logger.warning(f"[DB] API Bybit indisponível. Usando {len(cached)} símbolos do cache.")
+    else:
+        logger.error("[DB] Sem símbolos — nem da API nem do cache.")
+    logger.info("=" * 55)
+    return cached
+
 
 def sync_trades_from_bybit(db: "DatabaseManager", bybit: "BybitClient",
                             days_back: int = 90) -> int:

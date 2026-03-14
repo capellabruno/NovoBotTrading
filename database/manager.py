@@ -1,6 +1,5 @@
 """
-Gerenciador do banco de dados.
-Suporta SQLite (local) e PostgreSQL (Supabase/cloud).
+Gerenciador do banco de dados — PostgreSQL (Supabase).
 Thread-safe para uso simultâneo pelo engine e pelo dashboard.
 """
 import os
@@ -12,42 +11,39 @@ from typing import Optional, List, Dict, Any
 from sqlalchemy import create_engine, func, desc
 from sqlalchemy.orm import sessionmaker, Session
 
-from .models import Base, Trade, SystemEvent, CycleSnapshot, LLMUsage, SymbolState
+from .models import Base, Trade, SystemEvent, CycleSnapshot, LLMUsage, SymbolState, KnownSymbol
 
 logger = logging.getLogger(__name__)
 
 
 class DatabaseManager:
-    def __init__(self, db_path: str = "trading.db", database_url: str = None):
+    def __init__(self, database_url: str = None):
         """
         Args:
-            db_path: Caminho SQLite (fallback local).
-            database_url: URL PostgreSQL completa. Se não fornecido, tenta
-                          a variável de ambiente DATABASE_URL; senão usa SQLite.
+            database_url: URL PostgreSQL completa. Se não fornecido, usa
+                          a variável de ambiente DATABASE_URL.
+                          DATABASE_URL é obrigatória — sem ela o sistema não inicia.
         """
         self._lock = threading.Lock()
 
-        url = database_url or os.environ.get("DATABASE_URL")
-        if url:
-            # Supabase retorna "postgres://..." mas SQLAlchemy requer "postgresql://"
-            if url.startswith("postgres://"):
-                url = url.replace("postgres://", "postgresql://", 1)
-            engine = create_engine(
-                url,
-                pool_pre_ping=True,
-                pool_size=5,
-                max_overflow=10,
-                echo=False,
+        url = database_url or os.environ.get("DATABASE_URL", "").strip('"').strip("'")
+        if not url:
+            raise RuntimeError(
+                "DATABASE_URL não definida. Configure a variável de ambiente com a URL do Supabase."
             )
-            logger.info("DatabaseManager inicializado: PostgreSQL (cloud)")
-        else:
-            engine = create_engine(
-                f"sqlite:///{db_path}",
-                connect_args={"check_same_thread": False},
-                pool_pre_ping=True,
-                echo=False,
-            )
-            logger.info(f"DatabaseManager inicializado: SQLite ({db_path})")
+
+        # Supabase retorna "postgres://..." mas SQLAlchemy requer "postgresql://"
+        if url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql://", 1)
+
+        engine = create_engine(
+            url,
+            pool_pre_ping=True,
+            pool_size=5,
+            max_overflow=10,
+            echo=False,
+        )
+        logger.info("DatabaseManager inicializado: PostgreSQL (Supabase)")
 
         self._engine = engine
         Base.metadata.create_all(engine)
@@ -441,6 +437,43 @@ class DatabaseManager:
             if age_minutes > max_age_minutes:
                 return None
             return data
+
+    # -------------------------------------------------------------------------
+    # Known Symbols (cache da lista Bybit)
+    # -------------------------------------------------------------------------
+
+    def sync_known_symbols(self, symbols: List[str]) -> int:
+        """
+        Substitui a lista de símbolos conhecidos no banco.
+        Marca como inativo qualquer símbolo que sumiu da Bybit.
+        Retorna o número de símbolos ativos.
+        """
+        now = datetime.utcnow()
+        with self._lock:
+            with self._session() as sess:
+                # Marcar todos como inativo primeiro
+                sess.query(KnownSymbol).update({"active": False})
+                # Upsert de cada símbolo recebido
+                for sym in symbols:
+                    existing = sess.query(KnownSymbol).filter(KnownSymbol.symbol == sym).first()
+                    if existing:
+                        existing.active = True
+                        existing.updated_at = now
+                    else:
+                        sess.add(KnownSymbol(symbol=sym, active=True, updated_at=now))
+                sess.commit()
+        return len(symbols)
+
+    def get_known_symbols(self) -> List[str]:
+        """Retorna a lista de símbolos ativos cacheada no banco."""
+        with self._session() as sess:
+            rows = sess.query(KnownSymbol).filter(KnownSymbol.active == True).order_by(KnownSymbol.symbol).all()
+            return [r.symbol for r in rows]
+
+    def has_known_symbols(self) -> bool:
+        """Retorna True se há símbolos cacheados no banco."""
+        with self._session() as sess:
+            return sess.query(KnownSymbol).filter(KnownSymbol.active == True).count() > 0
 
     def get_all_symbol_states(self) -> List[Dict]:
         """Retorna estado de todos os símbolos (para dashboard)."""

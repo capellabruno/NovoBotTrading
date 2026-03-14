@@ -60,11 +60,4 @@ def load_config(path: str = "config/settings.yaml") -> dict:
             else:
                 logger.warning(f"Variável de ambiente {env_var} não definida para {section}.{key}")
 
-    # DRY_RUN: variável de ambiente tem prioridade sobre o settings.yaml
-    # Use DRY_RUN=true para simular ou DRY_RUN=false para live
-    dry_run_env = os.environ.get("DRY_RUN")
-    if dry_run_env is not None:
-        config.setdefault("system", {})["dry_run"] = dry_run_env.strip().lower() in ("1", "true", "yes")
-        logger.info(f"dry_run definido pela variável de ambiente DRY_RUN={dry_run_env!r}")
-
     return config

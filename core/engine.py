@@ -35,27 +35,22 @@ class TradingEngine:
         self.state = state_manager
         self.db = db_manager
 
-        # Suporte a multiplos simbolos - carrega todos da Bybit dinamicamente
+        # Carregar lista de simbolos: banco (cache) > settings.yaml
         system_conf = config.get("system", {})
-        use_all_symbols = system_conf.get("use_all_symbols", False)
-
-        if use_all_symbols:
-            self.symbols = self.bybit.get_all_symbols()
-            if not self.symbols:
-                logger.warning("Falha ao buscar símbolos da Bybit. Usando fallback do settings.yaml.")
-                self.symbols = system_conf.get("symbols", [system_conf.get("symbol", "BTCUSDT")])
-        elif "symbols" in system_conf:
-            self.symbols = system_conf.get("symbols")
+        if self.db and self.db.has_known_symbols():
+            self.symbols = self.db.get_known_symbols()
+            logger.info(f"Simbolos carregados do banco: {len(self.symbols)}")
         else:
-            self.symbols = [system_conf.get("symbol", "BTCUSDT")]
+            self.symbols = system_conf.get("symbols", [system_conf.get("symbol", "BTCUSDT")])
+            logger.info(f"Simbolos carregados do settings.yaml: {len(self.symbols)}")
 
-        # Número de workers para análise paralela por símbolo
+        # Numero de workers para analise paralela por simbolo
         self._symbol_workers = system_conf.get("symbol_workers", 10)
 
         # Publicar config no state
         if self.state:
             self.state.update_config(config)
-            self.state.set_running(dry_run=config.get("system", {}).get("dry_run", True))
+            self.state.set_running()
 
         # Otimização inicial se necessário
         if config.get("adaptive", {}).get("enabled", False):
@@ -68,9 +63,7 @@ class TradingEngine:
         Executa um ciclo completo de análise para CADA símbolo.
         """
         self._cycle_count += 1
-        dry_run = self.config.get("system", {}).get("dry_run", True)
-        mode_label = "DRY RUN" if dry_run else "LIVE"
-        logger.info(f"=== Ciclo #{self._cycle_count} | Modo: {mode_label} ===")
+        logger.info(f"=== Ciclo #{self._cycle_count} | Modo: LIVE ===")
 
         if self.state:
             self.state.start_cycle(self._cycle_count)
@@ -83,7 +76,7 @@ class TradingEngine:
             self.state.update_positions(positions_map)
 
         # --- Detectar fechamentos por SL/TP (exchange-side) ---
-        if self.db and not dry_run:
+        if self.db:
             self._reconcile_closed_trades(positions_map)
 
         # Atualizar saldo
@@ -572,8 +565,7 @@ class TradingEngine:
             tp_percent=tp_percent
         )
 
-        dry_run = self.config.get("system", {}).get("dry_run", True)
-        order_accepted = dry_run or (
+        order_accepted: bool = (
             order_response is not None and
             isinstance(order_response, dict) and
             order_response.get("retCode", -1) == 0
@@ -612,7 +604,7 @@ class TradingEngine:
                 session=session_info['current_session'],
                 mcp_confidence=validation.confidence,
                 order_id=order_id,
-                mode="dry_run" if dry_run else "live",
+                mode="live",
             )
 
         self.telegram.notify_trade(

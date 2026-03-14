@@ -57,12 +57,9 @@ st.markdown("""
 from dashboard.api_client import get_state, is_engine_online, send_pause, send_resume
 from database.manager import DatabaseManager
 
-# --- Inicialização ---
-DB_PATH = os.path.join(ROOT, "trading.db")
-
 @st.cache_resource
 def get_db():
-    return DatabaseManager(DB_PATH)
+    return DatabaseManager()
 
 db = get_db()
 
